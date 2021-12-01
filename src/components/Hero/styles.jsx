@@ -55,14 +55,15 @@ export const Text = styled.div`
 
   > h2 {
     color: #f0f0f5;
-    font-size: 2.25rem;
+    font-size: 2.55rem;
     font-weight: bold;
   }
 
   > p {
     color: #f0f0f5;
-    font-size: 1.45rem;
-    line-height: 2.5rem;
+    font-size: 1.65rem;
+    line-height: 3.30rem;
+    font-weight: 400;
     margin: 1rem 0;
   }
 
@@ -73,8 +74,8 @@ export const Text = styled.div`
     > button {
       outline: 0;
       border: 0;
-      height: 44px;
-      width: 132px;
+      height: 4.8rem;
+      width: 14.6rem;
       font-size: 1.25rem;
       font-weight: 600;
       border-radius: .5rem;

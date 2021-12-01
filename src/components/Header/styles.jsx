@@ -14,8 +14,8 @@ export const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 1024px;
-  width: 95%;
+  max-width: 1440px;
+  width: 90%;
   margin: 0 auto;
   height: 70px;
 `;
