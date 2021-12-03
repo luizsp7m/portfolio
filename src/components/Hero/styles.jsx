@@ -1,135 +1,128 @@
 import styled, { keyframes } from 'styled-components';
 
-const Jump = keyframes`
-  0% {
-    transform: translateY(0);
+import { AiFillGithub } from 'react-icons/ai';
+import { FaLinkedin } from 'react-icons/fa';
+import { MdEmail } from 'react-icons/md';
+
+export const Container = styled.div`
+  padding-top: 81px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+  position: relative;
+  cursor: default;
+`;
+
+export const Avatar = styled.div`
+  > img {
+
+  }
+`;
+
+export const Presentation = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+
+  > h1 {
+    color: #fafafa;
+    font-size: 3.2rem;
+  }
+
+  > span {
+    color: #fafafa;
+    font-size: 1.65rem;
+  }
+`;
+
+export const IconGitHub = styled(AiFillGithub)`
+`
+
+export const IconLinkedIn = styled(FaLinkedin)`
+`
+
+export const IconEmail = styled(MdEmail)`
+`
+
+export const Social = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 2.25rem;
+
+  > ${IconGitHub}, ${IconLinkedIn}, ${IconEmail} {
+    color: #fafafa;
+    cursor: pointer;
+  }
+`;
+
+export const Button = styled.button`
+  background-color: #FF4C60;
+  color: #fafafa;
+  padding: 1.6rem 3.6rem;
+  font-weight: 600;
+  font-size: 1.6rem;
+  border-radius: 1rem;
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+`;
+
+const moveMouseWheel = keyframes`
+  25% {
+    transform: translateY(4px);
   }
 
   50% {
-    transform: translateY(10px);
+    transform: translateY(0px);
+  }
+
+  75% {
+    transform: translateY(-4px);
   }
 
   100% {
-    transform: translateY(0);
+    transform: translateY(0px);
   }
 `;
 
-export const Container = styled.div`
-  height: 100vh;
-  padding-top: 70px;
-  cursor: default;
-  /* background: url('assets/blob.svg') no-repeat, #192a56; */
-  /* background: url('assets/blob.svg') no-repeat, linear-gradient(to right, #2c73d2, #2c73d2, #2c73d2, #2c73d2, #2c73d2); */
-  background: url('assets/blob.svg') no-repeat, #2c73d2;
-  background-size: 190% 200%;
-  background-position: right;
-`;
-
-export const Wrapper = styled.div`
-  max-width: 1024px;
-  width: 95%;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
-  align-items: center;
-  height: 100%;
-
-  @media(max-width: 768px) {
-    grid-template-columns: 1fr;
-  }
-`;
-
-export const Text = styled.div`
+export const ScrollDown = styled.div`
+  position: absolute;
+  bottom: 3rem;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  z-index: 10;
+  align-items: center;
+  gap: 2.25rem;
 
-  > h1 {
-    color: #f0f0f5;
-    font-size: 6rem;
-    text-transform: uppercase;
-    font-weight: 900;
+  > span {
+    font-size: 1.35rem;
+    color: #fafafa;
   }
 
-  > h2 {
-    color: #f0f0f5;
-    font-size: 2.55rem;
-    font-weight: bold;
-  }
+  > div.mouse {
+    width: 2rem;
+    height: 3rem;
+    border: 2px solid #fafafa;
+    border-radius: 1rem;
+    cursor: pointer;
 
-  > p {
-    color: #f0f0f5;
-    font-size: 1.65rem;
-    line-height: 3.30rem;
-    font-weight: 400;
-    margin: 1rem 0;
-  }
-
-  > div.button-group {
     display: flex;
-    gap: 1rem;
-
-    > button {
-      outline: 0;
-      border: 0;
-      height: 4.8rem;
-      width: 14.6rem;
-      font-size: 1.25rem;
-      font-weight: 600;
-      border-radius: .5rem;
-      cursor: pointer;
-      transition: all .3s ease-in-out;
-    }
-
-    > button.default {
-      color: #fafafa;
-      background-color: #0f0f0f;
-      transition: background-color .3s ease-in-out;
-
-      &:hover {
-        background-color: #151515;
-      }
-    }
-
-    > button.outline {
-      color: #fafafa;
-      border: 1px solid #fafafa;
-      background-color: transparent;
-
-      &:hover {
-        background-color: #fafafa;
-        color: #0f0f0f;
-      }
-    }
-  }
-
-  @media(max-width: 768px) {
+    justify-content: center;
     align-items: center;
 
-    > h1 {
-      text-align: center;
-    }
+    > div.wheel {
+      width: .35rem;
+      height: .35rem;
+      background-color: #fafafa;
+      border-radius: 50%;
 
-    > p {
-      text-align: center;
+      animation: ${moveMouseWheel} 5s linear infinite;
     }
   }
 `;
 
-export const Image = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  animation: ${Jump} 8s infinite;
-
-  > img {
-    width: 90%;
-    height: auto;
-  }
-
-  @media(max-width: 768px) {
-    display: none;
-  }
+export const Mouse = styled.div`
 `;

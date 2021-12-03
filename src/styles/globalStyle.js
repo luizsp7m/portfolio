@@ -9,29 +9,17 @@ export const GlobalStyle = createGlobalStyle`
 
  html {
    font-size: 62.5%;
+
+   @media(max-width: 768px) {
+     font-size: 50%;
+   }
  }
 
  body, input, button {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Rubik', sans-serif;
  }
  
  body {
    background-color: #2E4C6D;
-   overflow-x: hidden;
-
-   &::-webkit-scrollbar {
-    width: 8px;
   }
-
-  &::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, .6);
-    height: 10px;
-  }
- }
-
- @media(max-width: 425px) {
-   html {
-    font-size: 50%;
-   }
- }
 `

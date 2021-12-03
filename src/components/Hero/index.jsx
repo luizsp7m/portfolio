@@ -1,26 +1,44 @@
-import { Container, Wrapper, Image, Text } from './styles';
+import {
+  Container,
+  Avatar,
+  Presentation,
+  Social,
+  Button,
+  IconGitHub,
+  IconLinkedIn,
+  IconEmail,
+  ScrollDown,
+} from './styles';
 
 export default function Hero() {
   return (
     <Container>
-      <Wrapper>
-        <Text>
-          <h1>Luiz <br /> Oliveira</h1>
-          <h2>Desenvolvedor Front-end</h2>
-          <p>
-            Similique dolores omnis molestias esse ducimus, fuga assumenda numquam dicta, officia iure repudiandae explicabo placeat porro dolor!
-          </p>
+      <Avatar>
+        <img src="/assets/avatar.svg" alt="Avatar Image" />
+      </Avatar>
 
-          <div className="button-group">
-            <button className="default">Default</button>
-            <button className="outline">Outline</button>
-          </div>
-        </Text>
+      <Presentation>
+        <h1>Luiz Oliveira</h1>
+        <span>I'm Front-end developer</span>
+      </Presentation>
 
-        <Image>
-          <img src="/assets/hero.svg" alt="Hero" />
-        </Image>
-      </Wrapper>
+      <Social>
+        <IconGitHub size={24} />
+        <IconLinkedIn size={24} />
+        <IconEmail size={24} />
+      </Social>
+
+      <Button>
+        Hire me
+      </Button>
+
+      <ScrollDown>
+        <span>Scroll down</span>
+
+        <div className="mouse">
+          <div className="wheel" />
+        </div>
+      </ScrollDown>
     </Container>
   );
 }

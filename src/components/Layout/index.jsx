@@ -4,7 +4,6 @@ import { Container } from './styles';
 
 import Header from '../Header';
 import Hero from '../Hero';
-import About from '../About';
 
 export default function Layout() {
   return (
@@ -15,7 +14,7 @@ export default function Layout() {
 
       <Header />
       <Hero />
-      <About />
+
     </Container>
   );
 }
