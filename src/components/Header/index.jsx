@@ -11,7 +11,7 @@ export default function Header() {
         <Logo>Logo</Logo>
 
         <Nav showMenu={showMenu}>
-          <NavItem href="www.google.com">Início</NavItem>
+          <NavItem>Início</NavItem>
           <NavItem>Sobre mim</NavItem>
           <NavItem>Projetos</NavItem>
           <NavItem>Habilidades</NavItem>

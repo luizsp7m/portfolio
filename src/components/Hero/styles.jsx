@@ -69,6 +69,12 @@ export const Button = styled.button`
   border: 0;
   outline: 0;
   cursor: pointer;
+  transition: background .3s ease-in-out, color .3s ease-in-out;
+
+  &:hover {
+    background-color: #fafafa;
+    color: #FF4C60;
+  }
 `;
 
 const moveMouseWheel = keyframes`

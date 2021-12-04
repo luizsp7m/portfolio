@@ -4,6 +4,9 @@ import { Container } from './styles';
 
 import Header from '../Header';
 import Hero from '../Hero';
+import Projects from '../Projects';
+import Technologies from '../Technologies';
+import About from '../About';
 
 export default function Layout() {
   return (
@@ -14,7 +17,9 @@ export default function Layout() {
 
       <Header />
       <Hero />
-
+      <About />
+      <Projects />
+      <Technologies />
     </Container>
   );
 }
