@@ -1,0 +1,39 @@
+.container {
+  background-color: red;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  nav {
+    position: fixed;
+    bottom: 1rem;
+    background: #2C3A47;
+    // background: #6c5ce7;
+    // backdrop-filter: blur(17px);
+    z-index: 10;
+    border-radius: 0.3rem;
+    padding: 1.4rem 3rem;
+    display: flex;
+    align-items: center;
+    gap: 2.2rem;
+
+    a {
+      height: 4rem;
+      width: 4rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.5rem;
+      border-radius: 50%;
+      transition: background 0.3s ease-in-out;
+
+      &:hover {
+        background: #7A86DD;
+      }
+    }
+
+    a.selected {
+      background: #7A86DD;
+    }
+  }
+}

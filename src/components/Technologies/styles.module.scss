@@ -1,0 +1,56 @@
+.container {
+  background: #1a202c;
+  padding: 6rem 0;
+}
+
+.wrapper {
+  width: 100%;
+  max-width: 1084px;
+  margin: 0 auto;
+  padding: 0 3rem;
+
+  h1 {
+    color: #f0f0f5;
+    font-size: 2.6rem;
+  }
+
+  p {
+    color: #f0f0f5;
+    font-size: 1.6rem;
+    margin: 2.6rem 0;
+  }
+}
+
+.technologies {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 1.6rem;
+}
+
+.tech {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  align-items: center;
+  background: #293140;
+  padding: 2.2rem;
+  border-radius: 0.15rem;
+  transition: opacity 0.3s ease-in-out;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.85;
+  }
+
+  img {
+    width: 5rem;
+    height: 5rem;
+    object-fit: contain;
+  }
+
+  span {
+    font-size: 1.4rem;
+    color: #f0f0f5;
+    font-weight: 500;
+  }
+}

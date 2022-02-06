@@ -6,10 +6,11 @@ export function ProjectCard() {
   return (
     <div className={styles.container}>
       <div className={styles.projectImage}>
+        <img src="https://github.com/luizsp7m/frontend-mentor-challenges/raw/master/ecommerce-product-page/public/design/desktop-preview.jpg" alt="" />
+
         <button>
           <FiExternalLink size={18} color="#f0f0f5" />
         </button>
-        <img src="https://github.com/luizsp7m/frontend-mentor-challenges/raw/master/ecommerce-product-page/public/design/desktop-preview.jpg" alt="" />
       </div>
 
       <div className={styles.projectBody}>

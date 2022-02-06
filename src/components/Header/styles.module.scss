@@ -1,23 +1,49 @@
 .container {
-  position: absolute;
-  top: 3rem;
-  background: #293140;
-  width: 1024px;
+  position: fixed;
+  width: 100%;
+  background: #1A202C;
+  z-index: 10;
+  transition: background 0.25s ease-in-out;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.025);
+}
+
+.container.toggled {
+  background: #1A202C;
+}
+
+.wrapper {
+  width: 100%;
+  max-width: 1084px;
+  margin: 0 auto;
+  padding: 0 3rem;
   height: 8rem;
   display: flex;
   align-items: center;
-  justify-content: center;
-  border-radius: 0.5rem;
+  justify-content: space-between;
+
+  h1 {
+    font-size: 2.8rem;
+    color: #f0f0f5;
+  }
+
+  button {
+    font-size: 0;
+    border: 0;
+    height: 3.2rem;
+    width: 3.2rem;
+    border-radius: 0.25rem;
+    background: none;
+  }
 
   nav {
     display: flex;
     align-items: center;
-    gap: 4.4rem;
+    gap: 3.2rem;
 
     a {
       font-size: 1.4rem;
-      color: #f0f0f5;
       text-decoration: none;
+      color: #f0f0f5;
     }
   }
 }

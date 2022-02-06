@@ -1,17 +1,18 @@
-import { ProjectCard } from "../ProjectCard";
 import styles from "./styles.module.scss";
 
-export function Projects() {
+import { ProjectCard } from "../ProjectCard";
+
+export function ProjectList() {
   return (
-    <div className={styles.container}>
+    <div id="projects" className={styles.container}>
       <div className={styles.wrapper}>
         <h1>Projetos</h1>
 
         <nav>
-          <span>Todos</span>
-          <span>Next.js</span>
-          <span>React</span>
-          <span>Vanilla</span>
+          <button className={styles.selected}>Todos</button>
+          <button>Next.js</button>
+          <button>React</button>
+          <button>Vanilla</button>
         </nav>
 
         <div className={styles.projectList}>
@@ -24,7 +25,7 @@ export function Projects() {
         </div>
 
         <div className={styles.pagination}>
-          <div className={styles.paginationItem}>1</div>
+          <div className={`${styles.paginationItem} ${styles.selected}`}>1</div>
           <div className={styles.paginationItem}>2</div>
           <div className={styles.paginationItem}>3</div>
           <div className={styles.paginationItem}>4</div>

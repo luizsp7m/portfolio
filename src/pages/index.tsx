@@ -1,39 +1,29 @@
 import Head from "next/head";
 import styles from "../styles/home.module.scss";
 
-import { AiFillGithub } from "react-icons/ai";
-import { IoLogoLinkedin } from "react-icons/io";
-import { MdEmail, MdOutlineMouse } from "react-icons/md";
+import { Hero } from "../components/Hero";
+import { ProjectList } from "../components/ProjectList";
+import { Technologies } from "../components/Technologies";
+import { BsArrowUpShort } from "react-icons/bs";
 import { Header } from "../components/Header";
-import { Projects } from "../components/Projects";
+import { Menu } from "../components/Menu";
 
 export default function Home() {
   return (
     <div className={styles.container}>
-      <div className={styles.hero}>
-        <Header />
+      <Head>
+        <title>Luiz Oliveira - Portfólio</title>
+      </Head>
 
-        <div className={styles.presentation}>
-          <img src="/assets/user-default.png" alt="user-default" />
-          <h1>Luiz Oliveira</h1>
-          <p>Desenvolvedor Front-end</p>
-
-          <div className={styles.icons}>
-            <AiFillGithub className={styles.icon} color="#f0f0f5" size={28} />
-            <IoLogoLinkedin className={styles.icon} color="#f0f0f5" size={28} />
-            <MdEmail className={styles.icon} color="#f0f0f5" size={28} />
-          </div>
-
-          <button type="button">Baixar CV</button>
-        </div>
-
-        <div className={styles.scrollDown}>
-          <span>Scroll down</span>
-          <MdOutlineMouse className={styles.icon} color="#f0f0f5" size={24} />
-        </div>
-      </div>
-
-      <Projects />
+      <Header />
+      <Menu />
+      <Hero />
+      <ProjectList />
+      <Technologies />
+{/* 
+      <button>
+        <BsArrowUpShort size={24} color="#f0f0f5" />
+      </button> */}
     </div>
   );
 }
