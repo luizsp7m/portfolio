@@ -1,5 +1,4 @@
 .container {
-  background-color: red;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -7,9 +6,7 @@
   nav {
     position: fixed;
     bottom: 1rem;
-    background: #2C3A47;
-    // background: #6c5ce7;
-    // backdrop-filter: blur(17px);
+    background: #2c3a47;
     z-index: 10;
     border-radius: 0.3rem;
     padding: 1.4rem 3rem;
@@ -28,12 +25,12 @@
       transition: background 0.3s ease-in-out;
 
       &:hover {
-        background: #7A86DD;
+        background: var(--primary-color);
       }
     }
 
     a.selected {
-      background: #7A86DD;
+      background: var(--primary-color);
     }
   }
 }

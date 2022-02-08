@@ -1,7 +1,7 @@
 import styles from "./styles.module.scss";
 import Particles from "react-tsparticles";
 
-import { AiFillGithub, AiOutlineDownload } from "react-icons/ai";
+import { AiFillGithub } from "react-icons/ai";
 import { IoLogoLinkedin } from "react-icons/io";
 import { MdEmail } from "react-icons/md";
 import { FaMouse } from "react-icons/fa";
@@ -10,20 +10,21 @@ export function Hero() {
   return (
     <div id="home" className={styles.container}>
       <div className={styles.wrapper}>
-        <div className={styles.imageWrapper}>
-          <img src="/assets/user-default.png" alt="user-default" />
-          {/* <img src="https://github.com/luizsp7m.png" alt="user-default" /> */}
+        <div data-aos="fade-down" className={styles.presentation}>
+          <div className={styles.imageWrapper}>
+            <img src="/assets/user-default.png" alt="user-default" />
+            {/* <img src="https://github.com/luizsp7m.png" alt="user-default" /> */}
+          </div>
+
+          <h1>Luiz Oliveira</h1>
+          <p>Desenvolvedor Front-end</p>
+
+          <button type="button">
+            Download CV
+          </button>
         </div>
-        
-        <h1>Luiz Oliveira</h1>
-        <p>Desenvolvedor Front-end</p>
 
-        <button type="button">
-          Contato
-          <AiOutlineDownload className={styles.iconButtonAnimation} size={18} />
-        </button>
-
-        <div className={styles.social}>
+        <div data-aos="fade-up" className={styles.social}>
           <a href="#">
             <AiFillGithub size={24} />
           </a>
@@ -37,7 +38,7 @@ export function Hero() {
           </a>
         </div>
 
-        <div className={styles.scroll}>
+        <div data-aos="fade-up" className={styles.scroll}>
           <FaMouse className={styles.mouse} size={18} />
           <span>Scroll down</span>
         </div>

@@ -1,21 +1,31 @@
 import styles from "./styles.module.scss";
 
 import { FiExternalLink } from "react-icons/fi";
+import Link from "next/link";
 
-export function ProjectCard() {
+interface ProjectCardProps {
+  title: string;
+  description: string;
+  image: string;
+  url: string;
+}
+
+export function ProjectCard({ title, description, image, url }: ProjectCardProps) {
   return (
     <div className={styles.container}>
       <div className={styles.projectImage}>
-        <img src="https://github.com/luizsp7m/frontend-mentor-challenges/raw/master/ecommerce-product-page/public/design/desktop-preview.jpg" alt="" />
+        <img src={image} alt="" />
 
-        <button>
-          <FiExternalLink size={18} color="#f0f0f5" />
-        </button>
+        <Link href={url} passHref>
+          <a target="_blank">
+            <FiExternalLink size={18} color="var(--text-primary)" />
+          </a>
+        </Link>
       </div>
 
       <div className={styles.projectBody}>
-        <h5>Project name</h5>
-        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Optio reprehenderit ut eius labore mollitia veniam, quas ipsum vel eveniet magni sit</p>
+        <h5>{title}</h5>
+        <p>{description}</p>
         <div className={styles.tags}>
           <div className={styles.tag}>HTML</div>
           <div className={styles.tag}>CSS</div>

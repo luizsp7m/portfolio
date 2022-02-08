@@ -1,10 +1,13 @@
 import styles from "./styles.module.scss";
+import data from "../../data.json";
 
 import { ProjectCard } from "../ProjectCard";
 
 export function ProjectList() {
+  const projects = data.projects;
+
   return (
-    <div id="projects" className={styles.container}>
+    <div data-aos="fade-right" id="projects" className={styles.container}>
       <div className={styles.wrapper}>
         <h1>Projetos</h1>
 
@@ -16,12 +19,15 @@ export function ProjectList() {
         </nav>
 
         <div className={styles.projectList}>
-          <ProjectCard />
-          <ProjectCard />
-          <ProjectCard />
-          <ProjectCard />
-          <ProjectCard />
-          <ProjectCard />
+          {projects.map(project => (
+            <ProjectCard 
+              key={project.id}
+              title={project.title}
+              image={project.image}
+              description={project.description}
+              url={project.url}
+            />
+          ))}
         </div>
 
         <div className={styles.pagination}>

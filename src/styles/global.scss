@@ -4,13 +4,28 @@
   box-sizing: border-box;
 }
 
+:root {
+  --background-primary: #151B28;
+  --background-secondary: #293140;
+  --text-primary: #f0F0F5;
+  --text-secondary: #CCCCCC;
+  --primary-color: #6673D7; 
+  --primary-color-hover: #7A86DD;
+
+  --border-radius: 0.25rem;
+}
+
 html {
   font-size: 62.5%;
   scroll-behavior: smooth;
 }
 
-body, input, button {
+body, input, button, textarea {
   font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background: #151b28;
 }
 
 @media(max-width: 475px) {

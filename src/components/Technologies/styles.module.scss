@@ -1,5 +1,4 @@
 .container {
-  background: #1a202c;
   padding: 6rem 0;
 }
 
@@ -10,12 +9,12 @@
   padding: 0 3rem;
 
   h1 {
-    color: #f0f0f5;
+    color: var(--text-primary);
     font-size: 2.6rem;
   }
 
   p {
-    color: #f0f0f5;
+    color: var(--text-primary);
     font-size: 1.6rem;
     margin: 2.6rem 0;
   }
@@ -27,30 +26,35 @@
   gap: 1.6rem;
 }
 
-.tech {
+.technology {
   display: flex;
   flex-direction: column;
   gap: 1.6rem;
   align-items: center;
-  background: #293140;
+  background: var(--background-secondary);
   padding: 2.2rem;
   border-radius: 0.15rem;
   transition: opacity 0.3s ease-in-out;
   cursor: pointer;
 
-  &:hover {
-    opacity: 0.85;
-  }
-
   img {
     width: 5rem;
     height: 5rem;
     object-fit: contain;
+    transition: transform 0.3s ease-in-out;
   }
 
   span {
     font-size: 1.4rem;
-    color: #f0f0f5;
+    color: var(--text-primary);
     font-weight: 500;
+  }
+
+  &:hover {
+    opacity: 0.85;
+
+    img {
+      transform: translateY(-3px);
+    }
   }
 }

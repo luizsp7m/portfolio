@@ -1,14 +1,9 @@
 .container {
   position: fixed;
   width: 100%;
-  background: #1A202C;
   z-index: 10;
-  transition: background 0.25s ease-in-out;
   border-bottom: 1px solid rgba(255, 255, 255, 0.025);
-}
-
-.container.toggled {
-  background: #1A202C;
+  background: var(--background-primary);
 }
 
 .wrapper {
@@ -23,27 +18,16 @@
 
   h1 {
     font-size: 2.8rem;
-    color: #f0f0f5;
+    color: var(--text-primary);
   }
 
   button {
     font-size: 0;
     border: 0;
-    height: 3.2rem;
-    width: 3.2rem;
+    height: 3.6rem;
+    width: 3.6rem;
     border-radius: 0.25rem;
     background: none;
-  }
-
-  nav {
-    display: flex;
-    align-items: center;
-    gap: 3.2rem;
-
-    a {
-      font-size: 1.4rem;
-      text-decoration: none;
-      color: #f0f0f5;
-    }
+    cursor: pointer;
   }
 }
