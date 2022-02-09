@@ -1,5 +1,6 @@
 .container {
   padding: 6rem 0;
+  scroll-margin-top: 50px;
 }
 
 .wrapper {
@@ -10,40 +11,49 @@
 
   display: flex;
   flex-direction: column;
-  gap: 2.6rem;
+  gap: 3.2rem;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 2.2rem;
 
   h1 {
     color: var(--text-primary);
     font-size: 2.6rem;
   }
 
-  nav {
+  p {
+    color: var(--text-primary);
+    font-size: 1.6rem;
+  }
+
+  > a {
     display: flex;
-    gap: 1.6rem;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 1.45rem;
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease-in-out;
 
-    button {
-      background: var(--background-secondary);
-      border: 0;
-      width: 8rem;
-      height: 3.6rem;
-      font-size: 1.4rem;
-      color: var(--text-primary);
-      border-radius: 0.3rem;
-      cursor: pointer;
-      transition: background 0.3s ease-in-out;
+    &:hover {
+      color: var(--primary-color-hover);
 
-      &:hover {
-        background: #7a86dd;
+      .icon {
+        transform: translateX(2px);
       }
-    }
-
-    button.selected {
-      background: var(--primary-color);
     }
   }
 }
 
-.projectList {
+.icon {
+  transition: transform 0.3s ease-in-out;
+}
+
+.main {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
   gap: 1.7rem;

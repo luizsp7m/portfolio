@@ -1,5 +1,6 @@
 import styles from "./styles.module.scss";
 import Particles from "react-tsparticles";
+import Link from "next/link";
 
 import { AiFillGithub } from "react-icons/ai";
 import { IoLogoLinkedin } from "react-icons/io";
@@ -11,9 +12,8 @@ export function Hero() {
     <div id="home" className={styles.container}>
       <div className={styles.wrapper}>
         <div data-aos="fade-down" className={styles.presentation}>
-          <div className={styles.imageWrapper}>
-            <img src="/assets/user-default.png" alt="user-default" />
-            {/* <img src="https://github.com/luizsp7m.png" alt="user-default" /> */}
+          <div className={styles.image}>
+            <img src="https://github.com/luizsp7m.png" alt="Luiz, o Antonio" />
           </div>
 
           <h1>Luiz Oliveira</h1>
@@ -25,17 +25,23 @@ export function Hero() {
         </div>
 
         <div data-aos="fade-up" className={styles.social}>
-          <a href="#">
-            <AiFillGithub size={24} />
-          </a>
+          <Link href="https://github.com/luizsp7m">
+            <a target="_blank">
+              <AiFillGithub size={24} />
+            </a>
+          </Link>
 
-          <a href="#">
-            <IoLogoLinkedin size={24} />
-          </a>
+          <Link href="https://www.linkedin.com/in/luiz-oliveira-08/">
+            <a target="_blank">
+              <IoLogoLinkedin size={24} />
+            </a>
+          </Link>
 
-          <a href="#">
-            <MdEmail size={24} />
-          </a>
+          <Link href="#">
+            <a href="#">
+              <MdEmail size={24} />
+            </a>
+          </Link>
         </div>
 
         <div data-aos="fade-up" className={styles.scroll}>

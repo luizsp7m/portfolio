@@ -1,24 +1,30 @@
+import Link from "next/link";
 import styles from "./styles.module.scss";
 
-import { FiExternalLink } from "react-icons/fi";
-import Link from "next/link";
+import { FiExternalLink, FiArrowRight } from "react-icons/fi";
+import { Technology } from "../../types";
 
 interface ProjectCardProps {
+  id: string;
   title: string;
   description: string;
-  image: string;
-  url: string;
+  repository: string;
+  deploy: string;
+  thumbnail: string;
+  technologies: Technology[];
 }
 
-export function ProjectCard({ title, description, image, url }: ProjectCardProps) {
+export function ProjectCard({
+  id, title, description, repository, deploy, thumbnail, technologies
+}: ProjectCardProps) {
   return (
-    <div className={styles.container}>
+    <div data-aos="fade-up" className={styles.container}>
       <div className={styles.projectImage}>
-        <img src={image} alt="" />
+        <img src={thumbnail} alt={title} />
 
-        <Link href={url} passHref>
+        <Link href={deploy} passHref>
           <a target="_blank">
-            <FiExternalLink size={18} color="var(--text-primary)" />
+            <FiExternalLink size={18} />
           </a>
         </Link>
       </div>
@@ -26,10 +32,11 @@ export function ProjectCard({ title, description, image, url }: ProjectCardProps
       <div className={styles.projectBody}>
         <h5>{title}</h5>
         <p>{description}</p>
-        <div className={styles.tags}>
-          <div className={styles.tag}>HTML</div>
-          <div className={styles.tag}>CSS</div>
-          <div className={styles.tag}>Javascript</div>
+        <Link href={repository} passHref>
+          <a target="_blank">Ver repositório <FiArrowRight className={styles.icon} size={16} /></a>
+        </Link>
+        <div className={styles.technologies}>
+          {technologies.map(technology => <div key={technology.id} className={styles.technology}>{technology.name}</div>)}
         </div>
       </div>
     </div>

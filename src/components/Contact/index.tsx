@@ -8,7 +8,14 @@ export function Contact() {
       <div className={styles.wrapper}>
         <h1>Contato</h1>
 
-        <div className={styles.grid}>
+        <form className={styles.form} action="#">
+          <input type="text" placeholder="Nome" />
+          <input type="text" placeholder="E-mail" />
+          <textarea rows={5} placeholder="Mensagem"></textarea>
+          <button>Enviar</button>
+        </form>
+
+        {/* <div className={styles.grid}>
           <div className={styles.info}>
             🚧🚨🚧🚨🚧
           </div>
@@ -19,7 +26,7 @@ export function Contact() {
             <textarea rows={5} placeholder="Mensagem"></textarea>
             <button>Enviar</button>
           </form>
-        </div>
+        </div> */}
       </div>
     </div>
   );

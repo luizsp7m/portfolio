@@ -1,4 +1,5 @@
 .container {
+  cursor: default;
 }
 
 .wrapper {
@@ -40,7 +41,6 @@
 
   button {
     border: 0;
-    // width: 15.5rem;
     padding: 0 2.2rem;
     height: 4.4rem;
     font-size: 1.6rem;
@@ -48,10 +48,9 @@
     color: var(--text-primary);
     border-radius: 0.25rem;
     background: var(--primary-color);
-    cursor: pointer;
-    margin-top: 0.75rem;
-
+    margin-top: 0.8rem;
     transition: background 0.3s ease-in-out;
+    cursor: pointer;
 
     &:hover {
       background: var(--primary-color-hover);
@@ -59,7 +58,7 @@
   }
 }
 
-.imageWrapper {
+.image {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -104,10 +103,6 @@
     height: 5rem;
     background: #7a86dd;
   }
-}
-
-.mouse {
-  transition: transform 0.3s ease-in-out;
 }
 
 .scroll {

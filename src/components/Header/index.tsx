@@ -1,16 +1,29 @@
+import Link from "next/link";
 import styles from "./styles.module.scss";
 
-import { BsFillSunFill } from "react-icons/bs";
+import { FiArrowRight } from "react-icons/fi";
 
-export function Header() {
+interface HeaderProps {
+  destination: string;
+}
+
+export function Header({ destination }: HeaderProps) {
   return (
     <div className={styles.container}>
       <div className={styles.wrapper}>
         <h1>Logo</h1>
 
-        <button>
-          <BsFillSunFill size={18} color="var(--text-primary)" />
-        </button>
+        {destination === "home" && (
+          <Link href="/" passHref>
+            <a>Início <FiArrowRight className={styles.icon} size={16} /></a>
+          </Link>
+        )}
+
+        {destination === "projects" && (
+          <Link href="/projects" passHref>
+            <a>Projetos <FiArrowRight className={styles.icon} size={16} /></a>
+          </Link>
+        )}
       </div>
     </div>
   );

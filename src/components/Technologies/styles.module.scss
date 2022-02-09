@@ -1,5 +1,6 @@
 .container {
   padding: 6rem 0;
+  scroll-margin-top: 50px;
 }
 
 .wrapper {
@@ -7,6 +8,16 @@
   max-width: 1084px;
   margin: 0 auto;
   padding: 0 3rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: 3.2rem;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 2.2rem;
 
   h1 {
     color: var(--text-primary);
@@ -16,7 +27,6 @@
   p {
     color: var(--text-primary);
     font-size: 1.6rem;
-    margin: 2.6rem 0;
   }
 }
 
@@ -29,7 +39,7 @@
 .technology {
   display: flex;
   flex-direction: column;
-  gap: 1.6rem;
+  gap: 1.85rem;
   align-items: center;
   background: var(--background-secondary);
   padding: 2.2rem;
@@ -48,6 +58,9 @@
     font-size: 1.4rem;
     color: var(--text-primary);
     font-weight: 500;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   &:hover {
@@ -56,5 +69,13 @@
     img {
       transform: translateY(-3px);
     }
+  }
+}
+
+@media (max-width: 360px) {
+  .technologies {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.6rem;
   }
 }

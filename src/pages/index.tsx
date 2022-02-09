@@ -1,17 +1,24 @@
 import Head from "next/head";
-import styles from "../styles/home.module.scss";
 import Aos from "aos";
+import styles from "../styles/home.module.scss";
 
+import { Header } from "../components/Header";
 import { Hero } from "../components/Hero";
+import { Menu } from "../components/Menu";
 import { ProjectList } from "../components/ProjectList";
 import { Technologies } from "../components/Technologies";
-import { BsArrowUpShort } from "react-icons/bs";
-import { Header } from "../components/Header";
-import { Menu } from "../components/Menu";
 import { Contact } from "../components/Contact";
 import { useEffect } from "react";
+import { GetStaticProps } from "next";
+import { getProjects, getTechnologies } from "../services/datocms";
+import { Project, Technology } from "../types";
 
-export default function Home() {
+interface HomeProps {
+  projects: Project[];
+  technologies: Technology[];
+}
+
+export default function Home({ projects, technologies }: HomeProps) {
   useEffect(() => {
     Aos.init({
       duration: 1500,
@@ -21,19 +28,29 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Luiz Oliveira - Portfólio</title>
+      <title>Luiz Oliveira - Início</title>
       </Head>
 
-      <Header />
+      <Header destination="projects" />
       <Menu />
       <Hero />
-      <ProjectList />
-      <Technologies />
+      <ProjectList projects={projects} />
+      <Technologies technologies={technologies.reverse()} />
       <Contact />
-{/* 
-      <button>
-        <BsArrowUpShort size={24} color="#f0f0f5" />
-      </button> */}
     </div>
   );
+}
+
+export const getStaticProps: GetStaticProps = async (context) => {
+  const allProjects = await getProjects();
+  const projects = allProjects.filter(project => project.pinned === true);
+  
+  const technologies = await getTechnologies();
+
+  return {
+    props: {
+      projects,
+      technologies,
+    },
+  }
 }

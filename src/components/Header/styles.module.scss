@@ -21,13 +21,26 @@
     color: var(--text-primary);
   }
 
-  button {
-    font-size: 0;
-    border: 0;
-    height: 3.6rem;
-    width: 3.6rem;
-    border-radius: 0.25rem;
-    background: none;
-    cursor: pointer;
+  a {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 1.45rem;
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease-in-out;
+
+    &:hover {
+      color: var(--primary-color-hover);
+
+      .icon {
+        transform: translateX(2px);
+      }
+    }
   }
+}
+
+.icon {
+  transition: transform 0.3s ease-in-out;
 }
