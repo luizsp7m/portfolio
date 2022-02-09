@@ -20,7 +20,7 @@ async function getData(query: string) {
 
 export async function getTechnologies() {
   const technologies = await getData(`{
-    allTechnologies {
+    allTechnologies(orderBy: [createdAt_ASC]) {
       id name defaultVisible logo { url }
     }
   }`);

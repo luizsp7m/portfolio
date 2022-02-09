@@ -35,7 +35,7 @@ export default function Home({ projects, technologies }: HomeProps) {
       <Menu />
       <Hero />
       <ProjectList projects={projects} />
-      <Technologies technologies={technologies.reverse()} />
+      <Technologies technologies={technologies} />
       <Contact />
     </div>
   );
