@@ -42,8 +42,9 @@ export default function Home({ projects, technologies }: HomeProps) {
 }
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  const allProjects = await getProjects();
-  const projects = allProjects.filter(project => project.pinned === true);
+  const projects = await getProjects().then(response => {
+    return response.filter(project => project.pinned === true);
+  });
   
   const technologies = await getTechnologies();
 

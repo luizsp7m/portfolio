@@ -21,7 +21,12 @@ async function getData(query: string) {
 export async function getTechnologies() {
   const technologies = await getData(`{
     allTechnologies(orderBy: [createdAt_ASC]) {
-      id name defaultVisible logo { url }
+      id 
+      name 
+      defaultVisible 
+      logo { 
+        url 
+      }
     }
   }`);
 
@@ -30,9 +35,26 @@ export async function getTechnologies() {
 
 export async function getProjects() {
   const projects = await getData(`{
-    allProjects(first: 50) {
-      id title description deploy repository pinned defaultVisible thumbnail { url } 
-      technologies { id name logo { url } }
+    allProjects(first: 50, filter: {
+      defaultVisible: {
+        eq: true
+      }
+    }) {
+      id 
+      title 
+      description 
+      deploy 
+      repository 
+      pinned 
+      defaultVisible 
+      thumbnail { url } 
+      technologies { 
+        id 
+        name 
+        logo { 
+          url 
+        } 
+      }
     }
   }`);
 

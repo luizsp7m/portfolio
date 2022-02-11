@@ -6,10 +6,65 @@
   max-width: 1084px;
   margin: 0 auto;
   padding: 12rem 3rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: 3.2rem;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+
+  h1 {
+    color: var(--text-primary);
+    font-size: 2.6rem;
+  }
+
+  select {
+    width: 30rem;
+    border: 0;
+    outline: 0;
+    padding: 0 0.6rem;
+    border-radius: 0.25rem;
+    background: var(--background-secondary);
+    color: var(--text-primary);
+  }
 }
 
 .main {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
   gap: 1.7rem;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.6rem;
+}
+
+.paginationItem {
+  height: 4rem;
+  width: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #293140;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  color: #f0f0f5;
+  font-size: 1.2rem;
+  font-weight: 500;
+
+  transition: background 0.3s ease-in-out;
+
+  &:hover {
+    background: var(--primary-color);
+  }
+}
+
+.paginationItem.selected {
+  background: var(--primary-color);
 }
