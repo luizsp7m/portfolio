@@ -78,6 +78,7 @@ export default function Projects({ projects, technologies }: ProjectsProps) {
               deploy={project.deploy}
               thumbnail={project.thumbnail.url}
               technologies={project.technologies}
+              animation={false}
             />
           ))}
         </div>
