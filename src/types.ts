@@ -16,6 +16,7 @@ export type Project = {
   technologies: Technology[];
   defaultVisible: boolean;
   pinned: boolean;
+  animation: boolean;
   thumbnail: {
     url: string;
   };
