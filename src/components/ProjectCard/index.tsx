@@ -12,13 +12,14 @@ interface ProjectCardProps {
   deploy: string;
   thumbnail: string;
   technologies: Technology[];
+  animation: boolean;
 }
 
 export function ProjectCard({
-  id, title, description, repository, deploy, thumbnail, technologies
+  id, title, description, repository, deploy, thumbnail, technologies, animation
 }: ProjectCardProps) {
   return (
-    <div data-aos="fade-up" className={styles.container}>
+    <div data-aos={ animation ? "fade-up" : "" } className={styles.container}>
       <div className={styles.projectImage}>
         <img src={thumbnail} alt={title} />
 

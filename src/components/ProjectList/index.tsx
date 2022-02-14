@@ -33,6 +33,7 @@ export function ProjectList({ projects }: ProjectListProps) {
               deploy={project.deploy}
               thumbnail={project.thumbnail.url}
               technologies={project.technologies}
+              animation={true}
             />
           ))}
         </div>

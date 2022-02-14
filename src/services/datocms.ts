@@ -33,6 +33,23 @@ export async function getTechnologies() {
   return technologies.data.allTechnologies;
 }
 
+export async function getTechnologyByID(id: string) {
+  const technology = await getData(`{
+    allTechnologies(filter: {
+      id: { eq: ${id} }
+    }) {
+      id
+      name
+      defaultVisible
+      logo {
+        url
+      }
+    }
+  }`);
+
+  return technology.data.allTechnologies[0];
+}
+
 export async function getProjects() {
   const projects = await getData(`{
     allProjects(first: 50, filter: {
@@ -59,4 +76,8 @@ export async function getProjects() {
   }`);
 
   return projects.data.allProjects;
+}
+
+export async function getProjectsByTechnology(id: string) {
+
 }
