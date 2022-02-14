@@ -18,15 +18,23 @@ export default function Projects({ projects, technologies }: ProjectsProps) {
   const [projectsFiltered, setProjectsFiltered] = useState<Project[]>(projects);
   const [filter, setFilter] = useState("");
 
+  const itemsPerPage = 6;
+  const [currentPage, setCurrentPage] = useState(0);
+
+  const pages = Math.ceil(projectsFiltered.length / itemsPerPage);
+  const startIndex = currentPage * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const currentProjects = projectsFiltered.slice(startIndex, endIndex);
+
   useEffect(() => {
-    if(filter === "") return;
+    if (filter === "") return;
 
     const newProjectsFiltered = [];
 
     projects.map(project => {
       const technologyExistsInProject = project.technologies.find(technology => technology.name === filter);
 
-      if(technologyExistsInProject) {
+      if (technologyExistsInProject) {
         newProjectsFiltered.push(project);
       }
     });
@@ -53,14 +61,14 @@ export default function Projects({ projects, technologies }: ProjectsProps) {
         <div className={styles.header}>
           <h1>Projetos</h1>
           <select onChange={({ target }) => setFilter(target.value)}>
-            { technologies.map(technology => (
+            {technologies.map(technology => (
               <option key={technology.id} value={technology.name}>{technology.name}</option>
-            )) }
+            ))}
           </select>
         </div>
 
         <div className={styles.main}>
-          {projectsFiltered.map(project => (
+          {currentProjects.map(project => (
             <ProjectCard
               key={project.id}
               id={project.id}
@@ -75,7 +83,16 @@ export default function Projects({ projects, technologies }: ProjectsProps) {
         </div>
 
         <div className={styles.pagination}>
-          
+          {Array.from(Array(pages), (item, index) => {
+            return <button
+              className={`${styles.paginationItem} ${currentPage === index && styles.selected}`}
+              key={index}
+              value={index}
+              onClick={() => setCurrentPage(index)}
+            >
+              {index + 1}
+            </button>
+          })}
         </div>
       </div>
     </div>
