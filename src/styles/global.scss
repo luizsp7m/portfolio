@@ -5,12 +5,12 @@
 }
 
 :root {
-  --background-primary: #151B28;
+  --background-primary: #151b28;
   --background-secondary: #293140;
-  --text-primary: #f0F0F5;
-  --text-secondary: #CCCCCC;
-  --primary-color: #6673D7; 
-  --primary-color-hover: #7A86DD;
+  --text-primary: #f0f0f5;
+  --text-secondary: #cccccc;
+  --primary-color: #6673d7;
+  --primary-color-hover: #7a86dd;
 }
 
 html {
@@ -18,16 +18,34 @@ html {
   scroll-behavior: smooth;
 }
 
-body, input, button, textarea {
-  font-family: 'Poppins', sans-serif;
+body,
+input,
+button,
+textarea {
+  font-family: "Poppins", sans-serif;
 }
 
 body {
   background: #151b28;
 }
 
-@media(max-width: 475px) {
+@media (max-width: 475px) {
   html {
     font-size: 50%;
   }
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--background-secondary);
 }

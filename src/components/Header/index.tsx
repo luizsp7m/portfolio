@@ -20,7 +20,7 @@ export function Header({ destination }: HeaderProps) {
         )}
 
         {destination === "projects" && (
-          <Link href="/projects" passHref>
+          <Link href="/projects/react" passHref>
             <a>Projetos <FiArrowRight className={styles.icon} size={16} /></a>
           </Link>
         )}

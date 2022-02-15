@@ -28,6 +28,23 @@
   }
 }
 
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  select {
+    width: 256px;
+    height: 4rem;
+    border-radius: 0.25rem;
+    border: 0;
+    background: var(--background-secondary);
+    color: var(--text-primary);
+    padding: 0 1.2rem;
+    outline: 0;
+  }
+}
+
 .main {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));

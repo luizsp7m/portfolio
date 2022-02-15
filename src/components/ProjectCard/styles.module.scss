@@ -73,7 +73,7 @@
     letter-spacing: 0.025rem;
   }
 
-  a {
+  > a {
     display: flex;
     align-items: center;
     gap: 0.6rem;
@@ -100,18 +100,25 @@
   margin-top: 2rem;
   display: flex;
   gap: 0.6rem;
-}
 
-.technology {
-  padding: 0.5rem 1rem;
-  background: rgba(0, 0, 0, 0.1);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: var(--border-radius);
-  color: #f0f0f5;
-  font-weight: 500;
-  font-size: 1.15rem;
+  > a {
+    padding: 0.5rem 1rem;
+    background: rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.25rem;
+    color: #f0f0f5;
+    font-weight: 500;
+    font-size: 1.15rem;
+    text-decoration: none;
+    transition: background 0.25s ease-in-out;
+
+    &:hover {
+      background: rgba(0, 0, 0, 0.3);
+      text-decoration: underline;
+    }
+  }
 }
 
 @keyframes zoomIn {

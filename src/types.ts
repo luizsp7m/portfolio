@@ -1,6 +1,7 @@
 export type Technology = {
   id: string;
   name: string;
+  slug: string;
   defaultVisible: boolean;
   logo: {
     url: string;

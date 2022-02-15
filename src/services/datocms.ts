@@ -23,6 +23,7 @@ export async function getTechnologies() {
     allTechnologies(orderBy: [createdAt_ASC]) {
       id 
       name 
+      slug
       defaultVisible 
       logo { 
         url 
@@ -33,13 +34,14 @@ export async function getTechnologies() {
   return technologies.data.allTechnologies;
 }
 
-export async function getTechnologyByID(id: string) {
+export async function getTechnologyByID(slug: string) {
   const technology = await getData(`{
     allTechnologies(filter: {
-      id: { eq: ${id} }
+      slug: { eq: "${slug}" }
     }) {
       id
       name
+      slug
       defaultVisible
       logo {
         url
@@ -68,6 +70,7 @@ export async function getProjects() {
       technologies { 
         id 
         name 
+        slug
         logo { 
           url 
         } 
