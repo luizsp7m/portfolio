@@ -82,5 +82,29 @@ export async function getProjects() {
 }
 
 export async function getProjectsByTechnology(id: string) {
+  const projects = await getData(`{
+    projects: allProjects(filter: {
+      defaultVisible: { eq: true }
+      technologies: { allIn: ["${id}"] }
+    }) {
+      id 
+      title 
+      description 
+      deploy 
+      repository 
+      pinned 
+      defaultVisible 
+      thumbnail { url } 
+      technologies { 
+        id 
+        name 
+        slug
+        logo { 
+          url 
+        } 
+      }
+    }
+  }`);
 
+  return projects.data.projects;
 }

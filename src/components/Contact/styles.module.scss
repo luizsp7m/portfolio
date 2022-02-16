@@ -14,24 +14,47 @@
   gap: 2.6rem;
 
   h1 {
-    color: #f0f0f5;
+    color: var(--text-primary);
     font-size: 2.6rem;
   }
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: 396px 1fr;
-  gap: 3.2rem;
-}
+// .row {
+//   display: grid;
+//   grid-template-columns: 330px 1fr;
+//   gap: 3.2rem;
+// }
 
-.info {
-  display: flex;
-  flex-direction: column;
-  gap: 1.6rem;
+// .social {
+//   display: flex;
+//   flex-direction: column;
+//   gap: 2.4rem;
+// }
 
-  font-size: 1.6rem;
-}
+// .item {
+//   display: flex;
+//   align-items: center;
+//   gap: 1.6rem;
+//   padding: 1.2rem 1.6rem;
+//   border-left: 4px solid var(--primary-color);
+//   color: var(--text-primary);
+//   cursor: pointer;
+
+//   background-image: linear-gradient(to right, var(--background-secondary) 50%, var(--background-primary) 50%);
+//   background-size: 200%;
+//   background-position: right;
+//   transition: background-position 0.45s ease-in-out;
+
+//   a {
+//     font-size: 1.45rem;
+//     color: var(--text-primary);
+//     text-decoration: none;
+//   }
+
+//   &:hover {
+//     background-position: left;
+//   }
+// }
 
 .form {
   display: flex;

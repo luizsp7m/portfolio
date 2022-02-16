@@ -2,11 +2,12 @@ import Head from "next/head";
 import styles from "../../styles/projects.module.scss";
 
 import { GetStaticPaths, GetStaticProps } from "next";
-import { getProjects, getTechnologies, getTechnologyByID } from "../../services/datocms";
+import { getProjects, getProjectsByTechnology, getTechnologies, getTechnologyByID } from "../../services/datocms";
 import { Project, Technology } from "../../types";
 import { Header } from "../../components/Header";
 import { ProjectCard } from "../../components/ProjectCard";
 import { useRouter } from "next/router";
+import { Footer } from "../../components/Footer";
 
 interface SlugProps {
   projects: Project[];
@@ -64,6 +65,8 @@ export default function Slug({ projects, technology, technologies }: SlugProps) 
           ))}
         </div>
       </div>
+
+      <Footer />
     </div>
   );
 }
@@ -84,23 +87,13 @@ export const getStaticPaths: GetStaticPaths = async () => {
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const projects = await getProjects();
-  const technologies = await getTechnologies();
   const technology = await getTechnologyByID(`${params.slug}`);
-
-  let filtered = [];
-
-  projects.forEach(project => {
-    const exists = project.technologies.find(technology => technology.slug === params.slug);
-
-    if (exists) {
-      filtered.push(project);
-    }
-  });
+  const projects = await getProjectsByTechnology(technology.id);
+  const technologies = await getTechnologies();
 
   return {
     props: {
-      projects: filtered,
+      projects,
       technologies,
       technology,
     }

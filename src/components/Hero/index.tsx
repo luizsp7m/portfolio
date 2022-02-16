@@ -37,8 +37,8 @@ export function Hero() {
             </a>
           </Link>
 
-          <Link href="#">
-            <a href="#">
+          <Link href="mailto:luizoliveira2808@gmail.com" passHref>
+            <a target="_blank" rel="noopener noreferrer">
               <MdEmail size={24} />
             </a>
           </Link>

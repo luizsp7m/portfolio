@@ -12,6 +12,7 @@ import { useEffect } from "react";
 import { GetStaticProps } from "next";
 import { getProjects, getTechnologies } from "../services/datocms";
 import { Project, Technology } from "../types";
+import { Footer } from "../components/Footer";
 
 interface HomeProps {
   projects: Project[];
@@ -37,6 +38,7 @@ export default function Home({ projects, technologies }: HomeProps) {
       <ProjectList projects={projects} />
       <Technologies technologies={technologies} />
       <Contact />
+      <Footer paddingBottom={true} />
     </div>
   );
 }

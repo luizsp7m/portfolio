@@ -9,23 +9,23 @@ export function Menu() {
     <div className={styles.container}>
       <Scrollspy className={styles.navbar} items={['home', 'about', 'projects', 'technologies', 'contact']} currentClassName={styles.selected}>
         <a href="#home">
-          <AiOutlineHome size={22} color="f0f0f5" />
+          <AiOutlineHome size={20} color="f0f0f5" />
         </a>
 
         <a href="#about">
-          <AiOutlineUser size={22} color="f0f0f5" />
+          <AiOutlineUser size={20} color="f0f0f5" />
         </a>
 
         <a href="#projects">
-          <BiBriefcaseAlt2 size={22} color="f0f0f5" />
+          <BiBriefcaseAlt2 size={20} color="f0f0f5" />
         </a>
 
         <a href="#technologies">
-          <BiBook size={22} color="f0f0f5" />
+          <BiBook size={20} color="f0f0f5" />
         </a>
 
         <a href="#contact">
-          <BiMessageSquareDetail size={22} color="f0f0f5" />
+          <BiMessageSquareDetail size={20} color="f0f0f5" />
         </a>
       </Scrollspy>
     </div>
