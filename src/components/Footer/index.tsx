@@ -16,11 +16,25 @@ export function Footer({ paddingBottom }: FooterProps) {
         <h1>Logo</h1>
 
         <nav className={styles.navbar}>
-          <a href="#home">Início</a>
-          <a href="#about">Sobre mim</a>
-          <a href="#projects">Projetos</a>
-          <a href="#technologies">Tecnologias</a>
-          <a href="#contact">Contato</a>
+          <Link href="/#home" passHref>
+            <a>Início</a>
+          </Link>
+
+          <Link href="/#about">
+            <a href="#home">Sobre mim</a>
+          </Link>
+
+          <Link href="/#projects">
+            <a href="#home">Projetos</a>
+          </Link>
+
+          <Link href="/#tecnologies">
+            <a href="#home">Tecnologias</a>
+          </Link>
+
+          <Link href="/#contact">
+            <a href="#home">Contato</a>
+          </Link>
         </nav>
 
         <div className={styles.social}>

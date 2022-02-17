@@ -13,6 +13,7 @@ import { GetStaticProps } from "next";
 import { getProjects, getTechnologies } from "../services/datocms";
 import { Project, Technology } from "../types";
 import { Footer } from "../components/Footer";
+import { About } from "../components/About";
 
 interface HomeProps {
   projects: Project[];
@@ -35,6 +36,7 @@ export default function Home({ projects, technologies }: HomeProps) {
       <Header destination="projects" />
       <Menu />
       <Hero />
+      <About />
       <ProjectList projects={projects} />
       <Technologies technologies={technologies} />
       <Contact />

@@ -1,0 +1,32 @@
+.container {
+  padding: 6rem 0;
+  scroll-margin-top: 50px;
+}
+
+.wrapper {
+  width: 100%;
+  max-width: 1084px;
+  margin: 0 auto;
+  padding: 0 3rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: 2.6rem;
+
+  h1 {
+    color: var(--text-primary);
+    font-size: 2.6rem;
+  }
+}
+
+.row {
+
+}
+
+.presentation {
+  p {
+    font-size: 1.55rem;
+    color: var(--text-primary);
+    line-height: 3.2rem;
+  }
+}

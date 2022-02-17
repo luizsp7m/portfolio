@@ -4,8 +4,15 @@ import styles from "./styles.module.scss";
 import { AiFillGithub } from "react-icons/ai";
 import { IoLogoLinkedin } from "react-icons/io";
 import { MdEmail } from "react-icons/md";
+import { FormEvent } from "react";
 
 export function Contact() {
+  function submitEmail(event: FormEvent) {
+    event.preventDefault();
+    
+    alert("Oops, não implementei ainda 🐱‍🐉");
+  }
+
   return (
     <div id="contact" data-aos="fade-right" className={styles.container}>
       <div className={styles.wrapper}>
@@ -35,11 +42,11 @@ export function Contact() {
             </div>
           </div> */}
 
-          <form className={styles.form} action="#">
-            <input type="text" placeholder="Nome" />
-            <input type="text" placeholder="E-mail" />
-            <textarea rows={5} placeholder="Mensagem"></textarea>
-            <button>Enviar</button>
+          <form className={styles.form} onSubmit={submitEmail}>
+            <input type="text" required={true} placeholder="Nome" />
+            <input type="email" required={true} placeholder="E-mail" />
+            <textarea rows={5} required={true} placeholder="Mensagem"></textarea>
+            <button type="submit">Enviar</button>
           </form>
         </div>
       </div>
