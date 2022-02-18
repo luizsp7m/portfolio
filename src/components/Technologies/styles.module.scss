@@ -45,6 +45,7 @@
   padding: 2.2rem;
   border-radius: 0.15rem;
   transition: opacity 0.3s ease-in-out;
+  text-decoration: none;
   cursor: pointer;
 
   img {
@@ -64,8 +65,6 @@
   }
 
   &:hover {
-    opacity: 0.85;
-
     img {
       transform: translateY(-3px);
     }

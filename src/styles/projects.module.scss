@@ -51,6 +51,10 @@
   gap: 1.7rem;
 }
 
+.main.nothing {
+  height: calc(50vh);
+}
+
 .pagination {
   display: flex;
   justify-content: center;

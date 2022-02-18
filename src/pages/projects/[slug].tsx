@@ -2,7 +2,7 @@ import Head from "next/head";
 import styles from "../../styles/projects.module.scss";
 
 import { GetStaticPaths, GetStaticProps } from "next";
-import { getProjects, getProjectsByTechnology, getTechnologies, getTechnologyByID } from "../../services/datocms";
+import { getProjectsByTechnology, getTechnologies, getTechnologyByID } from "../../services/datocms";
 import { Project, Technology } from "../../types";
 import { Header } from "../../components/Header";
 import { ProjectCard } from "../../components/ProjectCard";
@@ -28,7 +28,7 @@ export default function Slug({ projects, technology, technologies }: SlugProps) 
         <title>Luiz Oliveira - Projetos com {technology.name}</title>
       </Head>
 
-      <Header destination="home" />
+      <Header />
 
       <div className={styles.wrapper}>
         <div className={styles.header}>
@@ -49,7 +49,7 @@ export default function Slug({ projects, technology, technologies }: SlugProps) 
           <p>Lista de projetos desenvolvidos com {technology.name}</p>
         </div>
 
-        <div className={styles.main}>
+        <div className={`${styles.main} ${projects.length === 0 && styles.nothing}`}>
           {projects.map(project => (
             <ProjectCard
               key={project.id}

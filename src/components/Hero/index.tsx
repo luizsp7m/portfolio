@@ -6,6 +6,7 @@ import { AiFillGithub } from "react-icons/ai";
 import { IoLogoLinkedin } from "react-icons/io";
 import { MdEmail } from "react-icons/md";
 import { FaMouse } from "react-icons/fa";
+import { FiArrowRight } from "react-icons/fi";
 
 export function Hero() {
   return (
@@ -19,9 +20,9 @@ export function Hero() {
           <h1>Luiz Oliveira</h1>
           <p>Desenvolvedor Front-end</p>
 
-          <button type="button">
-            Download CV
-          </button>
+          <Link href="/projects/react">
+            <a>Projetos <FiArrowRight className={styles.icon} size={18} /></a>
+          </Link>
         </div>
 
         <div data-aos="fade-up" className={styles.social}>
@@ -50,7 +51,7 @@ export function Hero() {
         </div>
       </div>
 
-      {/* <Particles
+      <Particles
         options={{
           fpsLimit: 60,
           particles: {
@@ -60,22 +61,22 @@ export function Hero() {
               enable: true,
               outModes: "out",
               random: false,
-              speed: 2,
+              speed: 0.65,
               straight: false
             },
-            number: { density: { enable: true, area: 800 }, value: 80 },
+            number: { density: { enable: true, area: 3200 }, value: 80 },
             opacity: {
-              value: 0.5
+              value: 0.85
             },
             shape: {
               type: "circle"
             },
             size: {
-              value: { min: 1, max: 5 }
+              value: { min: 1, max: 1 }
             }
           },
         }}
-      /> */}
+      />
     </div>
   );
 }

@@ -1,6 +1,7 @@
 import styles from "./styles.module.scss";
 
 import { Technology } from "../../types";
+import Link from "next/link";
 
 interface TechnologiesProps {
   technologies: Technology[];
@@ -16,11 +17,13 @@ export function Technologies({ technologies }: TechnologiesProps) {
         </div>
 
         <div className={styles.technologies}>
-          {technologies.map(technology => technology.defaultVisible && (
-            <div data-aos="fade-up" key={technology.id} className={styles.technology}>
-              <img src={technology.logo.url} alt={technology.name} />
-              <span>{technology.name}</span>
-            </div>
+          {technologies.map(technology => (
+            <Link key={technology.id} href={`/projects/${technology.slug}`}>
+              <a data-aos="fade-up" className={styles.technology}>
+                <img src={technology.logo.url} alt={technology.name} />
+                <span>{technology.name}</span>
+              </a>
+            </Link>
           ))}
         </div>
       </div>

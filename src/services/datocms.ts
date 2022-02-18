@@ -20,7 +20,9 @@ async function getData(query: string) {
 
 export async function getTechnologies() {
   const technologies = await getData(`{
-    allTechnologies(orderBy: [createdAt_ASC]) {
+    allTechnologies(first: 12, orderBy: [createdAt_ASC], filter: {
+      defaultVisible: { eq: true }
+    }) {
       id 
       name 
       slug
@@ -52,10 +54,12 @@ export async function getTechnologyByID(slug: string) {
   return technology.data.allTechnologies[0];
 }
 
-export async function getProjects() {
+export async function getProjectsPinned() {
   const projects = await getData(`{
-    allProjects(first: 50, filter: {
+    allProjects(first: 6, orderBy: [createdAt_ASC], filter: {
       defaultVisible: {
+        eq: true
+      }, pinned: {
         eq: true
       }
     }) {

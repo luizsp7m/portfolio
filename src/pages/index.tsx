@@ -10,7 +10,7 @@ import { Technologies } from "../components/Technologies";
 import { Contact } from "../components/Contact";
 import { useEffect } from "react";
 import { GetStaticProps } from "next";
-import { getProjects, getTechnologies } from "../services/datocms";
+import { getProjectsPinned, getTechnologies } from "../services/datocms";
 import { Project, Technology } from "../types";
 import { Footer } from "../components/Footer";
 import { About } from "../components/About";
@@ -33,22 +33,20 @@ export default function Home({ projects, technologies }: HomeProps) {
       <title>Luiz Oliveira - Início</title>
       </Head>
 
-      <Header destination="projects" />
-      <Menu />
+      <Header />
+      {/* <Menu /> */}
       <Hero />
       <About />
       <ProjectList projects={projects} />
       <Technologies technologies={technologies} />
       <Contact />
-      <Footer paddingBottom={true} />
+      <Footer />
     </div>
   );
 }
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  const projects = await getProjects().then(response => {
-    return response.filter(project => project.pinned === true);
-  });
+  const projects = await getProjectsPinned();
   
   const technologies = await getTechnologies();
 

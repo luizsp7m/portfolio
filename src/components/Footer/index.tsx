@@ -5,13 +5,9 @@ import { AiFillGithub } from "react-icons/ai";
 import { IoLogoLinkedin } from "react-icons/io";
 import { MdEmail } from "react-icons/md";
 
-interface FooterProps {
-  paddingBottom?: boolean;
-}
-
-export function Footer({ paddingBottom }: FooterProps) {
+export function Footer() {
   return (
-    <div className={`${styles.container} ${paddingBottom && styles.paddingHome}`}>
+    <div className={styles.container}>
       <div className={styles.wrapper}>
         <h1>Logo</h1>
 
@@ -28,7 +24,7 @@ export function Footer({ paddingBottom }: FooterProps) {
             <a href="#home">Projetos</a>
           </Link>
 
-          <Link href="/#tecnologies">
+          <Link href="/#technologies">
             <a href="#home">Tecnologias</a>
           </Link>
 
