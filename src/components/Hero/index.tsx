@@ -51,7 +51,7 @@ export function Hero() {
         </div>
       </div>
 
-      <Particles
+      {/* <Particles
         options={{
           fpsLimit: 60,
           particles: {
@@ -76,7 +76,7 @@ export function Hero() {
             }
           },
         }}
-      />
+      /> */}
     </div>
   );
 }
