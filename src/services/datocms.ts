@@ -54,6 +54,37 @@ export async function getTechnologyByID(slug: string) {
   return technology.data.allTechnologies[0];
 }
 
+export async function getProjects() {
+  const total = await getData(`{
+    count: _allProjectsMeta {
+      count
+    }
+  }`);
+
+  const projects = await getData(`{
+    projects: allProjects (first: ${total.data.count.count}) {
+      id 
+      title 
+      description 
+      deploy 
+      repository 
+      pinned 
+      defaultVisible 
+      thumbnail { url } 
+      technologies { 
+        id 
+        name 
+        slug
+        logo { 
+          url 
+        } 
+      }
+    }
+  }`);
+
+  return projects.data.projects;
+}
+
 export async function getProjectsPinned() {
   const projects = await getData(`{
     allProjects(first: 6, orderBy: [createdAt_ASC], filter: {
