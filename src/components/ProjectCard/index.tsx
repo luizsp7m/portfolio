@@ -37,7 +37,7 @@ export function ProjectCard({
           <a target="_blank">Ver repositório <FiArrowRight className={styles.icon} size={16} /></a>
         </Link>
         <div className={styles.technologies}>
-          {technologies.map(technology => <Link key={technology.id} href={`/projects/${technology.slug}`} passHref>
+          {technologies.map(technology => <Link key={technology.id} href={`/${technology.slug}/page/1`} passHref>
             <a>{technology.name}</a>
           </Link>)}
         </div>

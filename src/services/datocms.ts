@@ -36,7 +36,7 @@ export async function getTechnologies() {
   return technologies.data.allTechnologies;
 }
 
-export async function getTechnologyByID(slug: string) {
+export async function getTechnologyBySlug(slug: string) {
   const technology = await getData(`{
     allTechnologies(filter: {
       slug: { eq: "${slug}" }
@@ -142,4 +142,16 @@ export async function getProjectsByTechnology(id: string) {
   }`);
 
   return projects.data.projects;
+}
+
+export async function getCountProjects(id: string) {
+  const count = await getData(`{
+    count: _allProjectsMeta(filter: {
+      technologies: { allIn: ["${id}"] }
+    }) {
+      count
+    }
+  }`);
+
+  return count.data.count.count;
 }

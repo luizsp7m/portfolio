@@ -1,0 +1,17 @@
+.container {
+  display: flex;
+  gap: 1.6rem;
+}
+
+.technology {
+  a {
+    font-size: 1.4rem;
+    text-decoration: none;
+    color: var(--text-secondary);
+    transition: color 0.25s ease-in-out;
+
+    &:hover {
+      color: var(--primary-color);
+    }
+  }
+}

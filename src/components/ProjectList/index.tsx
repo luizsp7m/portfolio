@@ -17,7 +17,7 @@ export function ProjectList({ projects }: ProjectListProps) {
           <h1>Projetos</h1>
           <p>Principais projetos que desenvolvi durante minha trajetória como desenvolvedor Front-end</p>
 
-          <Link href="/projects/react" passHref>
+          <Link href="/react/page/1" passHref>
             <a>Ver lista completa <FiArrowRight className={styles.icon} size={18} /></a>
           </Link>
         </div>

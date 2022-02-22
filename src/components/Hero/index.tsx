@@ -20,7 +20,7 @@ export function Hero() {
           <h1>Luiz Oliveira</h1>
           <p>Desenvolvedor Front-end</p>
 
-          <Link href="/projects/react">
+          <Link href="/react/page/1" passHref>
             <a>Projetos <FiArrowRight className={styles.icon} size={18} /></a>
           </Link>
         </div>
@@ -51,7 +51,7 @@ export function Hero() {
         </div>
       </div>
 
-      {/* <Particles
+      <Particles
         options={{
           fpsLimit: 60,
           particles: {
@@ -76,7 +76,7 @@ export function Hero() {
             }
           },
         }}
-      /> */}
+      />
     </div>
   );
 }
