@@ -1,5 +1,6 @@
 .container {
   display: flex;
+  flex-wrap: wrap;
   gap: 1.6rem;
 }
 
@@ -9,6 +10,8 @@
     text-decoration: none;
     color: var(--text-secondary);
     transition: color 0.25s ease-in-out;
+    border: 2px solid red;
+    padding: 1rem 2rem;
 
     &:hover {
       color: var(--primary-color);

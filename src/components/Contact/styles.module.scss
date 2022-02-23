@@ -11,7 +11,7 @@
 
   display: flex;
   flex-direction: column;
-  gap: 2.6rem;
+  gap: 3.2rem;
 
   h1 {
     color: var(--text-primary);
@@ -19,42 +19,64 @@
   }
 }
 
-// .row {
-//   display: grid;
-//   grid-template-columns: 330px 1fr;
-//   gap: 3.2rem;
-// }
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 2.2rem;
 
-// .social {
-//   display: flex;
-//   flex-direction: column;
-//   gap: 2.4rem;
-// }
+  h1 {
+    color: var(--text-primary);
+    font-size: 2.6rem;
+  }
 
-// .item {
-//   display: flex;
-//   align-items: center;
-//   gap: 1.6rem;
-//   padding: 1.2rem 1.6rem;
-//   border-left: 4px solid var(--primary-color);
-//   color: var(--text-primary);
-//   cursor: pointer;
+  p {
+    color: var(--text-primary);
+    font-size: 1.6rem;
+  }
+}
 
-//   background-image: linear-gradient(to right, var(--background-secondary) 50%, var(--background-primary) 50%);
-//   background-size: 200%;
-//   background-position: right;
-//   transition: background-position 0.45s ease-in-out;
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.6rem;
+}
 
-//   a {
-//     font-size: 1.45rem;
-//     color: var(--text-primary);
-//     text-decoration: none;
-//   }
+.social {
+  display: flex;
+  flex-direction: column;
+  gap: 2.6rem;
 
-//   &:hover {
-//     background-position: left;
-//   }
-// }
+  img {
+    height: 15rem;
+    width: auto;
+    object-fit: contain;
+  }
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+
+  a,
+  span {
+    font-size: 1.4rem;
+    text-decoration: none;
+    color: var(--text-primary);
+    cursor: pointer;
+  }
+}
+
+.icon {
+  color: var(--primary-color);
+  height: 4rem;
+  width: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--background-secondary);
+  border-radius: 0.25rem;
+}
 
 .form {
   display: flex;
@@ -104,6 +126,7 @@
   }
 
   button {
+    width: 100%;
     border: 0;
     color: var(--text-primary);
     background: var(--primary-color);
@@ -117,4 +140,15 @@
       background: var(--primary-color-hover);
     }
   }
+}
+
+@media (max-width: 840px) {
+  .social {
+    display: none;
+  }
+  
+  .row {
+    grid-template-columns: 1fr;
+  }
+  
 }

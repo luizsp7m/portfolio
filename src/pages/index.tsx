@@ -33,14 +33,14 @@ export default function Home({ projects, technologies }: HomeProps) {
       <title>Luiz Oliveira - Início</title>
       </Head>
 
-      <Header />
-      {/* <Menu /> */}
+      <Header showNavbar={false} />
+      <Menu />
       <Hero />
       <About />
       <ProjectList projects={projects} />
       <Technologies technologies={technologies} />
       <Contact />
-      <Footer />
+      <Footer paddingBottom={true} />
     </div>
   );
 }

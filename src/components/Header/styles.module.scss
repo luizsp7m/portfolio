@@ -19,6 +19,7 @@
   h1 {
     font-size: 2.8rem;
     color: var(--text-primary);
+    cursor: pointer;
   }
 
   nav {
@@ -41,9 +42,32 @@
   button {
     display: none;
   }
+
+  a {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 1.45rem;
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease-in-out;
+
+    &:hover {
+      color: var(--primary-color-hover);
+
+      .icon {
+        transform: translateX(2px);
+      }
+    }
+  }
+
+  .icon {
+    transition: transform 0.3s ease-in-out;
+  }
 }
 
-@media(max-width: 660px) {
+@media (max-width: 660px) {
   .wrapper {
     nav {
       position: absolute;

@@ -6,7 +6,6 @@ import { AiFillGithub } from "react-icons/ai";
 import { IoLogoLinkedin } from "react-icons/io";
 import { MdEmail } from "react-icons/md";
 import { FaMouse } from "react-icons/fa";
-import { FiArrowRight } from "react-icons/fi";
 
 export function Hero() {
   return (
@@ -20,9 +19,9 @@ export function Hero() {
           <h1>Luiz Oliveira</h1>
           <p>Desenvolvedor Front-end</p>
 
-          <Link href="/react/page/1" passHref>
-            <a>Projetos <FiArrowRight className={styles.icon} size={18} /></a>
-          </Link>
+          <button>
+            Download CV
+          </button>
         </div>
 
         <div data-aos="fade-up" className={styles.social}>

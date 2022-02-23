@@ -39,10 +39,7 @@
     font-size: 1.8rem;
   }
 
-  a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  button {
     border: 0;
     padding: 0 2.2rem;
     height: 4.4rem;
@@ -52,20 +49,11 @@
     border-radius: 0.25rem;
     background: var(--primary-color);
     margin-top: 0.8rem;
-    text-decoration: none;
     transition: background 0.3s ease-in-out;
     cursor: pointer;
 
-    display: flex;
-    align-items: center;
-    gap: 0.8rem;
-
     &:hover {
       background: var(--primary-color-hover);
-
-      .icon {
-        transform: translateX(1px);
-      }
     }
   }
 }

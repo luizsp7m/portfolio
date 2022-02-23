@@ -5,9 +5,13 @@ import { AiFillGithub } from "react-icons/ai";
 import { IoLogoLinkedin } from "react-icons/io";
 import { MdEmail } from "react-icons/md";
 
-export function Footer() {
+interface FooterProps {
+  paddingBottom: boolean;
+}
+
+export function Footer({ paddingBottom }: FooterProps) {
   return (
-    <div className={styles.container}>
+    <div className={`${styles.container} ${paddingBottom && styles.paddingBottom}`}>
       <div className={styles.wrapper}>
         <h1>Logo</h1>
 
