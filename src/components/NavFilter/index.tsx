@@ -22,8 +22,8 @@ export function NavFilter() {
   return (
     <div className={styles.container}>
       {technologies.map(technology => (
-        <div className={styles.technology}>
-          <Link key={technology.id} href={`/${technology.slug}/page/1`} passHref>
+        <div key={technology.id} className={styles.technology}>
+          <Link href={`/${technology.slug}/page/1`} passHref>
             <a>{ technology.name }</a>
           </Link>
         </div>
