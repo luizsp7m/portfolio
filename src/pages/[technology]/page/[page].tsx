@@ -43,7 +43,7 @@ export default function Page({ technology, projects, pages, currentPage, technol
 
             <select onChange={({ target }) => redirectUser(target.value)} defaultValue={technology.slug}>
               { technologies.map(technology => (
-                <option value={technology.slug}>
+                <option key={tecnology.id} value={technology.slug}>
                   {technology.name}
                 </option>
               )) }
