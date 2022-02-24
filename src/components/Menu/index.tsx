@@ -1,13 +1,12 @@
 import styles from "./styles.module.scss";
-import Scrollspy from "react-scrollspy";
 
 import { AiOutlineHome, AiOutlineUser } from "react-icons/ai";
-import { BiMessageSquareDetail, BiBriefcaseAlt2, BiBook } from "react-icons/bi";
+import { BiBriefcaseAlt2, BiBook } from "react-icons/bi";
 
 export function Menu() {
   return (
     <div className={styles.container}>
-      <Scrollspy className={styles.navbar} items={['home', 'about', 'projects', 'technologies', 'contact']} currentClassName={styles.selected}>
+      <div className={styles.navbar}>
         <a href="#home">
           <AiOutlineHome size={20} color="f0f0f5" />
         </a>
@@ -23,11 +22,7 @@ export function Menu() {
         <a href="#technologies">
           <BiBook size={20} color="f0f0f5" />
         </a>
-
-        <a href="#contact">
-          <BiMessageSquareDetail size={20} color="f0f0f5" />
-        </a>
-      </Scrollspy>
+      </div>
     </div>
   );
 }

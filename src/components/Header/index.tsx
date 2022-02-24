@@ -22,7 +22,9 @@ export function Header({ showNavbar }: HeaderProps) {
     <div className={styles.container}>
       <div className={styles.wrapper}>
         <Link href="/">
-          <h1>Logo</h1>
+          <a>
+            <img src="/assets/logo.svg" alt="Logo" />
+          </a>
         </Link>
 
         {showNavbar && (
@@ -42,10 +44,6 @@ export function Header({ showNavbar }: HeaderProps) {
 
               <Link href="/#technologies" passHref>
                 <a>Tecnologias</a>
-              </Link>
-
-              <Link href="/#contact" passHref>
-                <a>Contato</a>
               </Link>
             </nav>
 

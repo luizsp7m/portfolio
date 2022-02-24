@@ -18,7 +18,7 @@ export function Technologies({ technologies }: TechnologiesProps) {
 
         <div className={styles.technologies}>
           {technologies.map(technology => (
-            <Link key={technology.id} href={`/projects/${technology.slug}`}>
+            <Link key={technology.id} href={`/${technology.slug}/page/1`}>
               <a data-aos="fade-up" className={styles.technology}>
                 <img src={technology.logo.url} alt={technology.name} />
                 <span>{technology.name}</span>

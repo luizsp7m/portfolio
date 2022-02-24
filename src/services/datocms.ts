@@ -54,40 +54,40 @@ export async function getTechnologyBySlug(slug: string) {
   return technology.data.allTechnologies[0];
 }
 
-export async function getProjects() {
-  const total = await getData(`{
-    count: _allProjectsMeta {
-      count
-    }
-  }`);
+// export async function getProjects() {
+//   const total = await getData(`{
+//     count: _allProjectsMeta {
+//       count
+//     }
+//   }`);
 
-  const projects = await getData(`{
-    projects: allProjects (first: ${total.data.count.count}) {
-      id 
-      title 
-      description 
-      deploy 
-      repository 
-      pinned 
-      defaultVisible 
-      thumbnail { url } 
-      technologies { 
-        id 
-        name 
-        slug
-        logo { 
-          url 
-        } 
-      }
-    }
-  }`);
+//   const projects = await getData(`{
+//     projects: allProjects (first: ${total.data.count.count}) {
+//       id 
+//       title 
+//       description 
+//       deploy 
+//       repository 
+//       pinned 
+//       defaultVisible 
+//       thumbnail { url } 
+//       technologies { 
+//         id 
+//         name 
+//         slug
+//         logo { 
+//           url 
+//         } 
+//       }
+//     }
+//   }`);
 
-  return projects.data.projects;
-}
+//   return projects.data.projects;
+// }
 
 export async function getProjectsPinned() {
   const projects = await getData(`{
-    allProjects(first: 6, orderBy: [createdAt_ASC], filter: {
+    allProjects(first: 6, orderBy: [createdAt_DESC], filter: {
       defaultVisible: {
         eq: true
       }, pinned: {
@@ -121,7 +121,7 @@ export async function getProjectsByTechnology(id: string) {
     projects: allProjects(filter: {
       defaultVisible: { eq: true }
       technologies: { allIn: ["${id}"] }
-    }) {
+    }, orderBy: [createdAt_DESC]) {
       id 
       title 
       description 

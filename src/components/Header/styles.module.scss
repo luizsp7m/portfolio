@@ -16,10 +16,11 @@
   align-items: center;
   justify-content: space-between;
 
-  h1 {
-    font-size: 2.8rem;
-    color: var(--text-primary);
-    cursor: pointer;
+  a {
+    img {
+      width: 8.5rem;
+      height: auto;
+    }
   }
 
   nav {

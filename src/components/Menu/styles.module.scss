@@ -11,10 +11,11 @@
     justify-content: center;
     padding: 0.5rem;
     border-radius: 50%;
-    transition: background 0.3s ease-in-out;
+    transition: background 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 
     &:hover {
       background: var(--primary-color);
+      box-shadow: 0 0 14px var(--primary-color-hover);
     }
   }
 
@@ -26,11 +27,12 @@
 .navbar {
   position: fixed;
   bottom: 1rem;
-  background: #2c3a47;
   z-index: 10;
   border-radius: 0.6rem;
   padding: 1.4rem 3rem;
   display: flex;
   align-items: center;
   gap: 2.2rem;
+  backdrop-filter: blur(16px);
+  background: rgba(44, 58, 71, 0.75);
 }

@@ -1,9 +1,8 @@
 import Link from "next/link";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { Header } from "../../../components/Header";
-import { NavFilter } from "../../../components/NavFilter";
 import { ProjectCard } from "../../../components/ProjectCard";
-import { getCountProjects, getProjects, getProjectsByTechnology, getTechnologies, getTechnologyBySlug } from "../../../services/datocms";
+import { getCountProjects, getProjectsByTechnology, getTechnologies, getTechnologyBySlug } from "../../../services/datocms";
 
 import styles from "../../../styles/projects.module.scss";
 import { Project, Technology } from "../../../types";
@@ -42,11 +41,11 @@ export default function Page({ technology, projects, pages, currentPage, technol
             <h1>Projetos</h1>
 
             <select onChange={({ target }) => redirectUser(target.value)} defaultValue={technology.slug}>
-              { technologies.map(technology => (
+              {technologies.map(technology => (
                 <option key={technology.id} value={technology.slug}>
                   {technology.name}
                 </option>
-              )) }
+              ))}
             </select>
           </div>
           <p>Lista de projetos desenvolvidos com {technology.name}</p>
@@ -78,7 +77,7 @@ export default function Page({ technology, projects, pages, currentPage, technol
           })}
         </div>
       </div>
-      
+
       <Footer paddingBottom={false} />
     </div>
   );
@@ -90,7 +89,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const counter = technologies.map(async technology => {
     const count = await getCountProjects(technology.id);
 
-    let numberPages = Math.ceil(count / 6);
+    let numberPages = Math.ceil(count / ITEMS_PER_PAGE);
     numberPages = numberPages > 0 ? numberPages : 1;
 
     return {
@@ -136,6 +135,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       projects: projects.slice(startIndex, endIndex),
       pages: Math.ceil(pages / ITEMS_PER_PAGE),
       currentPage: Number(params.page),
-    }
+    },
+
+    revalidate: 86400, // 24h
   };
 }

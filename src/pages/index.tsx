@@ -39,7 +39,7 @@ export default function Home({ projects, technologies }: HomeProps) {
       <About />
       <ProjectList projects={projects} />
       <Technologies technologies={technologies} />
-      <Contact />
+      {/* <Contact /> */}
       <Footer paddingBottom={true} />
     </div>
   );
@@ -55,5 +55,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
       projects,
       technologies,
     },
+
+    revalidate: 86400, // 24h
   }
 }

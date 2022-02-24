@@ -1,5 +1,5 @@
 .container {
-  padding: 6rem 0;
+  padding: 12rem 0 6rem;
   scroll-margin-top: 50px;
 }
 
@@ -11,7 +11,7 @@
 
   display: flex;
   flex-direction: column;
-  gap: 2.6rem;
+  gap: 2.2rem;
 
   h1 {
     color: var(--text-primary);
