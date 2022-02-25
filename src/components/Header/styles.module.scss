@@ -16,13 +16,6 @@
   align-items: center;
   justify-content: space-between;
 
-  a {
-    img {
-      width: 8.5rem;
-      height: auto;
-    }
-  }
-
   nav {
     display: flex;
     gap: 3.2rem;
@@ -61,6 +54,10 @@
         transform: translateX(2px);
       }
     }
+  }
+
+  a.logo {
+    font-weight: 600;
   }
 
   .icon {

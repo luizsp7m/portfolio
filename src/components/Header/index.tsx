@@ -22,8 +22,8 @@ export function Header({ showNavbar }: HeaderProps) {
     <div className={styles.container}>
       <div className={styles.wrapper}>
         <Link href="/">
-          <a>
-            <img src="/assets/logo.svg" alt="Logo" />
+          <a className={styles.logo}>
+            Luiz Oliveira
           </a>
         </Link>
 

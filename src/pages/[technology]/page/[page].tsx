@@ -40,7 +40,7 @@ export default function Page({ technology, projects, pages, currentPage, technol
           <div className={styles.row}>
             <h1>Projetos</h1>
 
-            <select onChange={({ target }) => redirectUser(target.value)} defaultValue={technology.slug}>
+            <select onChange={({ target }) => redirectUser(target.value)} value={technology.slug}>
               {technologies.map(technology => (
                 <option key={technology.id} value={technology.slug}>
                   {technology.name}

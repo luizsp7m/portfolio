@@ -13,7 +13,7 @@ export function Footer({ paddingBottom }: FooterProps) {
   return (
     <div className={`${styles.container} ${paddingBottom && styles.paddingBottom}`}>
       <div className={styles.wrapper}>
-        <img src="/assets/logo.svg" alt="Logo" />
+        <h5>Luiz Oliveira</h5>
 
         <nav className={styles.navbar}>
           <Link href="/#home" passHref>

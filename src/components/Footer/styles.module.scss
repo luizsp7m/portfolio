@@ -18,6 +18,13 @@
   gap: 2.6rem;
   align-items: center;
 
+  h5 {
+    font-size: 1.45rem;
+    color: var(--primary-color);
+    font-weight: 600;
+    cursor: default;
+  }
+
   img {
     width: 10rem;
     height: auto;
