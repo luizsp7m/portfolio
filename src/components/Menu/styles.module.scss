@@ -1,38 +1,36 @@
 .container {
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+}
+
+.menu {
+  position: fixed;
+  bottom: 1rem;
+  z-index: 10;
+  border-radius: 0.5rem;
+  padding: 1.6rem 3.2rem;
+  display: flex;
+  align-items: center;
+  gap: 2.2rem;
+  backdrop-filter: blur(16px);
+  background: rgba(44, 58, 71, 0.75);
 
   a {
     height: 4rem;
     width: 4rem;
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
     padding: 0.5rem;
     border-radius: 50%;
-    transition: background 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    color: var(--text-primary);
+    transition: 0.25s ease-in-out;
+    cursor: pointer;
 
     &:hover {
       background: var(--primary-color);
       box-shadow: 0 0 14px var(--primary-color-hover);
     }
   }
-
-  a.selected {
-    background: var(--primary-color);
-  }
-}
-
-.navbar {
-  position: fixed;
-  bottom: 1rem;
-  z-index: 10;
-  border-radius: 0.6rem;
-  padding: 1.4rem 3rem;
-  display: flex;
-  align-items: center;
-  gap: 2.2rem;
-  backdrop-filter: blur(16px);
-  background: rgba(44, 58, 71, 0.75);
 }

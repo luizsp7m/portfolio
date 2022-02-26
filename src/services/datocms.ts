@@ -54,36 +54,38 @@ export async function getTechnologyBySlug(slug: string) {
   return technology.data.allTechnologies[0];
 }
 
-// export async function getProjects() {
-//   const total = await getData(`{
-//     count: _allProjectsMeta {
-//       count
-//     }
-//   }`);
+export async function getProjects() {
+  const total = await getData(`{
+    count: _allProjectsMeta {
+      count
+    }
+  }`);
 
-//   const projects = await getData(`{
-//     projects: allProjects (first: ${total.data.count.count}) {
-//       id 
-//       title 
-//       description 
-//       deploy 
-//       repository 
-//       pinned 
-//       defaultVisible 
-//       thumbnail { url } 
-//       technologies { 
-//         id 
-//         name 
-//         slug
-//         logo { 
-//           url 
-//         } 
-//       }
-//     }
-//   }`);
+  const projects = await getData(`{
+    projects: allProjects (filter: {
+      defaultVisible: { eq: true },
+    }, first: ${total.data.count.count}, orderBy: [createdAt_DESC]) {
+      id 
+      title 
+      description 
+      deploy 
+      repository 
+      pinned 
+      defaultVisible 
+      thumbnail { url } 
+      technologies { 
+        id 
+        name 
+        slug
+        logo { 
+          url 
+        } 
+      }
+    }
+  }`);
 
-//   return projects.data.projects;
-// }
+  return projects.data.projects;
+}
 
 export async function getProjectsPinned() {
   const projects = await getData(`{
@@ -117,11 +119,13 @@ export async function getProjectsPinned() {
 }
 
 export async function getProjectsByTechnology(id: string) {
+  const total = await getCountProjects(id);
+
   const projects = await getData(`{
     projects: allProjects(filter: {
       defaultVisible: { eq: true }
       technologies: { allIn: ["${id}"] }
-    }, orderBy: [createdAt_DESC]) {
+    }, orderBy: [createdAt_DESC], first: ${total} ) {
       id 
       title 
       description 
@@ -148,6 +152,7 @@ export async function getCountProjects(id: string) {
   const count = await getData(`{
     count: _allProjectsMeta(filter: {
       technologies: { allIn: ["${id}"] }
+      defaultVisible: { eq: true }
     }) {
       count
     }

@@ -14,7 +14,7 @@ export type Project = {
   description: string;
   deploy: string;
   repository: string;
-  technologies: Technology[];
+  technologies: Array<Technology>;
   defaultVisible: boolean;
   pinned: boolean;
   animation: boolean;

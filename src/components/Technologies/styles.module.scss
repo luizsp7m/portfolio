@@ -1,20 +1,12 @@
 .container {
-  padding: 6rem 0 12rem;
-  scroll-margin-top: 50px;
-}
-
-.wrapper {
-  width: 100%;
-  max-width: 1084px;
-  margin: 0 auto;
-  padding: 0 3rem;
-
+  padding: 6rem 0 12rem 0;
   display: flex;
   flex-direction: column;
   gap: 3.2rem;
+  scroll-margin-top: 60px;
 }
 
-.header {
+.row {
   display: flex;
   flex-direction: column;
   gap: 2.2rem;
@@ -25,8 +17,8 @@
   }
 
   p {
-    color: var(--text-primary);
     font-size: 1.6rem;
+    color: var(--text-primary);
   }
 }
 
@@ -34,47 +26,44 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   gap: 1.6rem;
-}
 
-.technology {
-  display: flex;
-  flex-direction: column;
-  gap: 1.85rem;
-  align-items: center;
-  background: var(--background-secondary);
-  padding: 2.2rem;
-  border-radius: 0.15rem;
-  transition: opacity 0.3s ease-in-out;
-  text-decoration: none;
-  cursor: pointer;
+  a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.85rem;
+    background: var(--background-secondary);
+    padding: 2.2rem;
+    border-radius: 0.25rem;
+    text-decoration: none;
+    cursor: pointer;
 
-  img {
-    width: 5rem;
-    height: 5rem;
-    object-fit: contain;
-    transition: transform 0.3s ease-in-out;
-  }
-
-  span {
-    font-size: 1.4rem;
-    color: var(--text-primary);
-    font-weight: 500;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-
-  &:hover {
     img {
-      transform: translateY(-3px);
+      height: 5rem;
+      width: 5rem;
+      object-fit: contain;
+      transition: transform 0.25s ease-in-out;
+    }
+
+    span {
+      font-size: 1.4rem;
+      color: var(--text-primary);
+      font-weight: 500;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    &:hover {
+      img {
+        transform: translateY(-2px);
+      }
     }
   }
 }
 
 @media (max-width: 360px) {
   .technologies {
-    display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 1.6rem;
   }
 }

@@ -5,41 +5,44 @@ import { FiExternalLink, FiArrowRight } from "react-icons/fi";
 import { Technology } from "../../types";
 
 interface ProjectCardProps {
-  id: string;
   title: string;
   description: string;
   repository: string;
   deploy: string;
   thumbnail: string;
-  technologies: Technology[];
-  animation: boolean;
+  technologies: Array<Technology>;
 }
 
 export function ProjectCard({
-  id, title, description, repository, deploy, thumbnail, technologies, animation
+  title, description, repository, deploy, thumbnail, technologies
 }: ProjectCardProps) {
   return (
-    <div data-aos={animation ? "fade-up" : ""} className={styles.container}>
-      <div className={styles.projectImage}>
+    <div className={styles.container}>
+      <div className={styles.project_image}>
         <img src={thumbnail} alt={title} />
 
-        <Link href={deploy} passHref>
+        <Link href={deploy}>
           <a target="_blank">
             <FiExternalLink size={18} />
           </a>
         </Link>
       </div>
 
-      <div className={styles.projectBody}>
+      <div className={styles.project_body}>
         <h5>{title}</h5>
         <p>{description}</p>
-        <Link href={repository} passHref>
-          <a target="_blank">Ver repositório <FiArrowRight className={styles.icon} size={16} /></a>
+        <Link href={repository}>
+          <a target="_blank">Ver repositório <FiArrowRight size={16} /></a>
         </Link>
+
         <div className={styles.technologies}>
-          {technologies.map(technology => <Link key={technology.id} href={`/${technology.slug}/page/1`} passHref>
-            <a>{technology.name}</a>
-          </Link>)}
+          {technologies.map(technology => (
+            <Link key={technology.id} href="#">
+              <a>
+                {technology.name}
+              </a>
+            </Link>
+          ))}
         </div>
       </div>
     </div>
