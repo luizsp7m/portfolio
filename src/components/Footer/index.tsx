@@ -16,10 +16,21 @@ export function Footer({ paddingBottom = false }: FooterProps) {
         <h5>Luiz Oliveira</h5>
 
         <nav>
-          <a href="/#home">Início</a>
-          <a href="/#about">Sobre mim</a>
-          <a href="/#projects">Projetos</a>
-          <a href="/#technologies">Tecnologias</a>
+          <Link href="/#home">
+            <a>Início</a>
+          </Link>
+
+          <Link href="/#about">
+            <a>Sobre mim</a>
+          </Link>
+
+          <Link href="/#projects">
+            <a>Projetos</a>
+          </Link>
+
+          <Link href="/#technologies">
+            <a>Tecnologias</a>
+          </Link>
         </nav>
 
         <div className={styles.social}>
