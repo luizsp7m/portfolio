@@ -2,23 +2,25 @@ import Link from "next/link";
 import Head from "next/head";
 import styles from "../../../styles/projects.module.scss";
 
-import { getProjects } from "../../../services/datocms";
+import { getProjects, getTechnologies } from "../../../services/datocms";
 import { GetStaticPaths, GetStaticProps } from "next";
 
 import { Header } from "../../../components/Header";
-import { Project } from "../../../types";
+import { Project, Technology } from "../../../types";
 import { ProjectCard } from "../../../components/ProjectCard";
 import { Footer } from "../../../components/Footer";
+import { TechnologyNavigation } from "../../../components/TechnologyNavigation";
 
 const ITEMS_PER_PAGE = 9;
 
 interface ProjectsProps {
   projects: Array<Project>;
+  technologies: Array<Technology>;
   numberPages: number;
   currentPage: number;
 }
 
-export default function Projects({ projects, numberPages, currentPage }: ProjectsProps) {
+export default function Projects({ projects, technologies, numberPages, currentPage }: ProjectsProps) {
   return (
     <>
       <Head>
@@ -33,6 +35,8 @@ export default function Projects({ projects, numberPages, currentPage }: Project
             <h1>Projetos</h1>
 
             <p>Lista de todos os projetos que desenvolvi durante minha trajetória como desenvolvedor Front-end</p>
+
+            <TechnologyNavigation technologies={technologies} />
 
             <span>Página {currentPage} de {numberPages}</span>
           </div>
@@ -85,6 +89,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const projects = await getProjects();
+  const technologies = await getTechnologies();
 
   const numberPages = Math.ceil(projects.length / ITEMS_PER_PAGE);
   const currentPage = Number(params.page);
@@ -97,6 +102,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   return {
     props: {
       projects: currentProjects,
+      technologies,
       numberPages,
       currentPage,
     },

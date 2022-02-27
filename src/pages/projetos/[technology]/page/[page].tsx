@@ -9,17 +9,19 @@ import { Header } from "../../../../components/Header";
 import { Project, Technology } from "../../../../types";
 import { ProjectCard } from "../../../../components/ProjectCard";
 import { Footer } from "../../../../components/Footer";
+import { TechnologyNavigation } from "../../../../components/TechnologyNavigation";
 
 const ITEMS_PER_PAGE = 9;
 
 interface ProjectsProps {
   projects: Array<Project>;
+  technologies: Array<Technology>;
   technology: Technology;
   numberPages: number;
   currentPage: number;
 }
 
-export default function Projects({ projects, technology, numberPages, currentPage }: ProjectsProps) {
+export default function Projects({ projects, technologies, technology, numberPages, currentPage }: ProjectsProps) {
   return (
     <>
       <Head>
@@ -34,6 +36,8 @@ export default function Projects({ projects, technology, numberPages, currentPag
             <h1>Projetos</h1>
 
             <p>Lista de projetos desenvolvidos com {technology.name}</p>
+
+            <TechnologyNavigation technologies={technologies} technologyId={technology.id} />
 
             <span>Página {currentPage} de {numberPages}</span>
           </div>
@@ -105,6 +109,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const technology = await getTechnologyBySlug(params.technology + "");
+  const technologies = await getTechnologies();
   const projects = await getProjectsByTechnology(technology.id);
 
   const numberPages = Math.ceil(projects.length / ITEMS_PER_PAGE);
@@ -118,6 +123,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   return {
     props: {
       projects: currentProjects,
+      technologies,
       technology,
       numberPages,
       currentPage,

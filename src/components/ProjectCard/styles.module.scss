@@ -101,7 +101,7 @@
   display: flex;
   gap: 0.6rem;
 
-  a {
+  a, span {
     padding: 0.5rem 1rem;
     border-radius: 0.25rem;
     font-size: 1.15rem;
@@ -111,15 +111,17 @@
     background: rgba(0, 0, 0, 0.1);
     transition: background 0.25s ease-in-out;
 
-    // max-width: 33%;
-    // overflow: hidden;
-    // text-overflow: ellipsis;
-    // white-space: nowrap;
-
     &:hover {
       background: rgba(0, 0, 0, 0.2);
       text-decoration: underline;
     }
+  }
+
+  a.width {
+    max-width: 33%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 }
 

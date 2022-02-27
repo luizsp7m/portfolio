@@ -36,17 +36,17 @@ export function ProjectCard({
         </Link>
 
         <div className={styles.technologies}>
-          {technologies.map(technology => (
+          {technologies.map((technology, index) => index < 3 && (
             <Link key={technology.id} href={`/projetos/${technology.slug}/page/1`}>
-              <a>
+              <a className={`${technologies.length > 3 && styles.width}`}>
                 {technology.name}
               </a>
             </Link>
           ))}
 
-          {/* <a>
-            +1
-          </a> */}
+          {technologies.length > 3 && <span>
+            +{technologies.length - 3}
+          </span>}
         </div>
       </div>
     </div>

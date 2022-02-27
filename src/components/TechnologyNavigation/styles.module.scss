@@ -1,0 +1,41 @@
+.container {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+.technology {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  background: var(--background-secondary);
+  gap: 1rem;
+  padding: 0.8rem 1.4rem;
+  border-radius: 0.25rem;
+  transition: background 0.25s ease-in-out;
+  cursor: pointer;
+
+  img {
+    width: 1.6rem;
+    height: 1.6rem;
+    object-fit: contain;
+  }
+
+  span {
+    font-size: 1.15rem;
+    color: var(--text-secondary);
+  }
+
+  &:hover {
+    background: var(--primary-color);
+  }
+}
+
+.selected {
+  background: var(--primary-color);
+
+  span {
+    color: var(--text-primary);
+  }
+}
