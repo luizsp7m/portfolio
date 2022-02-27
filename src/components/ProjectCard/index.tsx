@@ -44,9 +44,21 @@ export function ProjectCard({
             </Link>
           ))}
 
-          {technologies.length > 3 && <span>
-            +{technologies.length - 3}
-          </span>}
+          {technologies.length > 3 && (
+            <span>
+              +{technologies.length - 3}
+
+              <div className={styles.popover_area}>
+                <div className={styles.popover}>
+                  {technologies.map((technology, index) => index >= 3 && (
+                    <Link key={technology.id} href={`/projetos/${technology.slug}/page/1`}>
+                      <a>{technology.name}</a>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </span>
+          )}
         </div>
       </div>
     </div>

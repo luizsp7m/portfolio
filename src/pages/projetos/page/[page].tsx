@@ -28,7 +28,7 @@ export default function Projects({ projects, technologies, numberPages, currentP
       </Head>
 
       <div className={styles.container}>
-        <Header />
+        <Header to="home" />
 
         <div className={styles.main}>
           <div className={styles.row}>
@@ -36,7 +36,7 @@ export default function Projects({ projects, technologies, numberPages, currentP
 
             <p>Lista de todos os projetos que desenvolvi durante minha trajetória como desenvolvedor Front-end</p>
 
-            <TechnologyNavigation technologies={technologies} />
+            {/* <TechnologyNavigation technologies={technologies} /> */}
 
             <span>Página {currentPage} de {numberPages}</span>
           </div>

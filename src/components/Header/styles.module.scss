@@ -42,4 +42,12 @@
       }
     }
   }
+
+  a.back {
+    &:hover {
+      svg {
+        transform: translateX(-2px);
+      }
+    }
+  }
 }

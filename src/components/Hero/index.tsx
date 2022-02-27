@@ -1,7 +1,7 @@
 import Link from "next/link";
 import styles from "./styles.module.scss";
 
-import { FaGithub, FaLinkedinIn, FaEnvelope, FaAngleDoubleDown } from "react-icons/fa";
+import { FaGithub, FaLinkedinIn, FaEnvelope } from "react-icons/fa";
 
 export function Hero() {
   return (
@@ -39,7 +39,7 @@ export function Hero() {
       <div data-aos="fade-up" className={styles.scroll}>
         <Link href="#about">
           <a>
-            <FaAngleDoubleDown size={20} />
+            Scroll down
           </a>
         </Link>
       </div>

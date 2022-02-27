@@ -34,7 +34,7 @@ export default function Home({ projects, technologies }: HomeProps) {
       </Head>
 
       <div className={styles.container}>
-        <Header />
+        <Header to="projetos" />
 
         <div className={styles.main}>
           <Hero />

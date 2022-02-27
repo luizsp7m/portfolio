@@ -53,7 +53,7 @@ export function Footer({ paddingBottom = false }: FooterProps) {
           </Link>
         </div>
 
-        <span>&copy; Luiz Oliveira {currentYear}. Todos os direitos reservados</span>
+        <span>&copy; Luiz Oliveira {currentYear}. Todos os direitos reservados.</span>
       </div>
     </div>
   );

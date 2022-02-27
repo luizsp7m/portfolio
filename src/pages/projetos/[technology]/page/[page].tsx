@@ -29,7 +29,7 @@ export default function Projects({ projects, technologies, technology, numberPag
       </Head>
 
       <div className={styles.container}>
-        <Header />
+        <Header to="home" />
 
         <div className={styles.main}>
           <div className={styles.row}>
@@ -37,7 +37,7 @@ export default function Projects({ projects, technologies, technology, numberPag
 
             <p>Lista de projetos desenvolvidos com {technology.name}</p>
 
-            <TechnologyNavigation technologies={technologies} technologyId={technology.id} />
+            {/* <TechnologyNavigation technologies={technologies} technologyId={technology.id} /> */}
 
             <span>Página {currentPage} de {numberPages}</span>
           </div>
