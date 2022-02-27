@@ -1,3 +1,4 @@
+import Head from "next/head";
 import styles from "../styles/home.module.scss";
 import Aos from "aos";
 
@@ -12,7 +13,7 @@ import { About } from "../components/About";
 import { Projects } from "../components/Projects";
 import { Technologies } from "../components/Technologies";
 import { Menu } from "../components/Menu";
-import Head from "next/head";
+import { Footer } from "../components/Footer";
 
 interface HomeProps {
   projects: Array<Project>;
@@ -42,6 +43,8 @@ export default function Home({ projects, technologies }: HomeProps) {
           <Technologies technologies={technologies} />
           <Menu />
         </div>
+
+        <Footer paddingBottom={true} />
       </div>
     </>
   );
@@ -55,6 +58,8 @@ export const getStaticProps: GetStaticProps = async () => {
     props: {
       projects,
       technologies,
-    }
+    },
+
+    revalidate: 86400,
   }
 }

@@ -37,12 +37,16 @@ export function ProjectCard({
 
         <div className={styles.technologies}>
           {technologies.map(technology => (
-            <Link key={technology.id} href="#">
+            <Link key={technology.id} href={`/projetos/${technology.slug}/page/1`}>
               <a>
                 {technology.name}
               </a>
             </Link>
           ))}
+
+          {/* <a>
+            +1
+          </a> */}
         </div>
       </div>
     </div>

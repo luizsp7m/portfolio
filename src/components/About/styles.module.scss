@@ -17,3 +17,9 @@
     color: var(--text-primary);
   }
 }
+
+@media (max-width: 425px) {
+  .container {
+    padding: 10rem 0 4rem 0;
+  }
+}

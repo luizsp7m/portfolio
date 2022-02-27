@@ -111,6 +111,11 @@
     background: rgba(0, 0, 0, 0.1);
     transition: background 0.25s ease-in-out;
 
+    // max-width: 33%;
+    // overflow: hidden;
+    // text-overflow: ellipsis;
+    // white-space: nowrap;
+
     &:hover {
       background: rgba(0, 0, 0, 0.2);
       text-decoration: underline;

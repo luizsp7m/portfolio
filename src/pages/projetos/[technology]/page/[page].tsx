@@ -1,28 +1,29 @@
 import Link from "next/link";
 import Head from "next/head";
-import styles from "../../../styles/projects.module.scss";
+import styles from "../../../../styles/projects.module.scss";
 
-import { getProjects } from "../../../services/datocms";
+import { getCountProjects, getProjects, getProjectsByTechnology, getTechnologies, getTechnologyBySlug } from "../../../../services/datocms";
 import { GetStaticPaths, GetStaticProps } from "next";
 
-import { Header } from "../../../components/Header";
-import { Project } from "../../../types";
-import { ProjectCard } from "../../../components/ProjectCard";
-import { Footer } from "../../../components/Footer";
+import { Header } from "../../../../components/Header";
+import { Project, Technology } from "../../../../types";
+import { ProjectCard } from "../../../../components/ProjectCard";
+import { Footer } from "../../../../components/Footer";
 
 const ITEMS_PER_PAGE = 9;
 
 interface ProjectsProps {
   projects: Array<Project>;
+  technology: Technology;
   numberPages: number;
   currentPage: number;
 }
 
-export default function Projects({ projects, numberPages, currentPage }: ProjectsProps) {
+export default function Projects({ projects, technology, numberPages, currentPage }: ProjectsProps) {
   return (
     <>
       <Head>
-        <title>Projetos - Página {currentPage}</title>
+        <title>Projetos com {technology.name} - Página {currentPage}</title>
       </Head>
 
       <div className={styles.container}>
@@ -32,7 +33,7 @@ export default function Projects({ projects, numberPages, currentPage }: Project
           <div className={styles.row}>
             <h1>Projetos</h1>
 
-            <p>Lista de todos os projetos que desenvolvi durante minha trajetória como desenvolvedor Front-end</p>
+            <p>Lista de projetos desenvolvidos com {technology.name}</p>
 
             <span>Página {currentPage} de {numberPages}</span>
           </div>
@@ -53,7 +54,7 @@ export default function Projects({ projects, numberPages, currentPage }: Project
 
           <div className={styles.pagination}>
             {Array.from(Array(numberPages), (item, index) => (
-              <Link key={index} href={`/projetos/page/${index + 1}`}>
+              <Link key={index} href={`/projetos/${technology.slug}/page/${index + 1}`}>
                 <a className={`${styles.pagination_item} ${index + 1 === currentPage && styles.selected}`}>{index + 1}</a>
               </Link>
             ))}
@@ -67,15 +68,34 @@ export default function Projects({ projects, numberPages, currentPage }: Project
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const projects = await getProjects();
+  const technologies = await getTechnologies();
 
-  const numberPages = Math.ceil(projects.length / ITEMS_PER_PAGE);
+  const counter = technologies.map(async technology => {
+    const numberProjects = await getCountProjects(technology.id);
+
+    let numberPages = Math.ceil(numberProjects / ITEMS_PER_PAGE);
+    numberPages = numberPages > 0 ? numberPages : 1;
+
+    return {
+      technology: technology.slug,
+      numberPages,
+    }
+  });
+
+  const pages = await Promise.all(counter);
 
   let paths = [];
 
-  for (let i = 0; i < numberPages; i++) {
-    paths.push({ params: { page: `${i + 1}` } });
-  }
+  pages.map(page => {
+    for (let i = 0; i < page.numberPages; i++) {
+      paths.push({
+        params: {
+          technology: page.technology,
+          page: `${i + 1}`,
+        }
+      });
+    }
+  });
 
   return {
     paths,
@@ -84,7 +104,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const projects = await getProjects();
+  const technology = await getTechnologyBySlug(params.technology + "");
+  const projects = await getProjectsByTechnology(technology.id);
 
   const numberPages = Math.ceil(projects.length / ITEMS_PER_PAGE);
   const currentPage = Number(params.page);
@@ -97,6 +118,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   return {
     props: {
       projects: currentProjects,
+      technology,
       numberPages,
       currentPage,
     },

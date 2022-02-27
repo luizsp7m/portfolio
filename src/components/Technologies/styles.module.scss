@@ -20,6 +20,11 @@
     font-size: 1.6rem;
     color: var(--text-primary);
   }
+
+  span {
+    font-size: 1.35rem;
+    color: var(--text-secondary);
+  }
 }
 
 .technologies {
@@ -49,6 +54,7 @@
       font-size: 1.4rem;
       color: var(--text-primary);
       font-weight: 500;
+      max-width: 100%;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
@@ -62,8 +68,26 @@
   }
 }
 
+@media (max-width: 425px) {
+  .container {
+    padding: 4rem 0 10rem 0;
+  }
+}
+
 @media (max-width: 360px) {
   .technologies {
     grid-template-columns: repeat(2, 1fr);
+
+    a {
+      span {
+        max-width: 10rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 320px) {
+  .technologies {
+    grid-template-columns: repeat(1, 1fr);
   }
 }
