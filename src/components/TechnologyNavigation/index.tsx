@@ -12,7 +12,7 @@ export function TechnologyNavigation({ technologies, technologyId = "" }: Techno
   return (
     <div className={styles.container}>
       {technologies.map(technology => (
-        <Link href={`/projetos/${technology.slug}/page/1`}>
+        <Link key={technology.id} href={`/projetos/${technology.slug}/page/1`}>
           <a className={`${styles.technology} ${technologyId === technology.id && styles.selected}`}>
             <img src={technology.logo.url} alt={technology.name} />
             <span>{technology.name}</span>

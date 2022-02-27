@@ -11,7 +11,7 @@ export function Footer({ paddingBottom = false }: FooterProps) {
   const currentYear = new Date().getFullYear();
 
   return (
-    <div className={`${styles.container} ${paddingBottom && styles.paddingBottom}`}>
+    <div id="footer" className={`${styles.container} ${paddingBottom && styles.paddingBottom}`}>
       <div className={styles.main}>
         <h5>Luiz Oliveira</h5>
 
