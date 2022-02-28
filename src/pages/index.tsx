@@ -24,6 +24,7 @@ export default function Home({ projects, technologies }: HomeProps) {
   useEffect(() => {
     Aos.init({
       duration: 1500,
+      once: true,
     });
   }, []);
 

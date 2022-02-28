@@ -11,7 +11,7 @@ interface ProjectsProps {
 
 export function Projects({ projects }: ProjectsProps) {
   return (
-    <div id="projects" className={styles.container}>
+    <div data-aos="fade-in" id="projects" className={styles.container}>
       <div className={styles.row}>
         <h1>Projetos</h1>
         <p>Principais projetos que desenvolvi durante minha trajetória como desenvolvedor Front-end</p>

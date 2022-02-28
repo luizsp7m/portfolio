@@ -32,11 +32,12 @@ export default function Projects({ projects, technologies, numberPages, currentP
 
         <div className={styles.main}>
           <div className={styles.row}>
-            <h1>Projetos</h1>
+            <div className={styles.header}>
+              <h1>Projetos</h1>
+              <TechnologyNavigation technologies={technologies} />
+            </div>
 
             <p>Lista de todos os projetos que desenvolvi durante minha trajetória como desenvolvedor Front-end</p>
-
-            {/* <TechnologyNavigation technologies={technologies} /> */}
 
             <span>Página {currentPage} de {numberPages}</span>
           </div>

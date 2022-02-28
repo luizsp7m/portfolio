@@ -9,7 +9,7 @@ interface TechnologiesProps {
 
 export function Technologies({ technologies }: TechnologiesProps) {
   return (
-    <div id="technologies" className={styles.container}>
+    <div data-aos="fade-in" id="technologies" className={styles.container}>
       <div className={styles.row}>
         <h1>Tecnologias</h1>
         <p>Principais tecnologias que eu tenho conhecimento e uso no dia a dia no desenvolvimento de aplicações</p>

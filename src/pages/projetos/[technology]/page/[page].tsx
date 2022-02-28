@@ -33,11 +33,12 @@ export default function Projects({ projects, technologies, technology, numberPag
 
         <div className={styles.main}>
           <div className={styles.row}>
-            <h1>Projetos</h1>
+            <div className={styles.header}>
+              <h1>Projetos</h1>
+              <TechnologyNavigation technologies={technologies} currentTechnology={technology.name} />
+            </div>
 
             <p>Lista de projetos desenvolvidos com {technology.name}</p>
-
-            {/* <TechnologyNavigation technologies={technologies} technologyId={technology.id} /> */}
 
             <span>Página {currentPage} de {numberPages}</span>
           </div>
