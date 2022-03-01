@@ -3,16 +3,15 @@ import styles from "./styles.module.scss";
 
 import { Technology } from "../../types";
 
-import { FiChevronDown } from "react-icons/fi";
+import { BsFilterRight } from "react-icons/bs";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
 interface TechnologyNavigationProps {
   technologies: Array<Technology>;
-  currentTechnology?: string;
 }
 
-export function TechnologyNavigation({ technologies, currentTechnology }: TechnologyNavigationProps) {
+export function Filter({ technologies }: TechnologyNavigationProps) {
   const [openDropdown, setOpenDropdown] = useState(false);
 
   const router = useRouter();
@@ -23,21 +22,26 @@ export function TechnologyNavigation({ technologies, currentTechnology }: Techno
 
   return (
     <div className={styles.container}>
-      <div onClick={() => setOpenDropdown(!openDropdown)} className={`${styles.select} ${openDropdown && styles.rotate}`}>
-        {currentTechnology ? currentTechnology : "Todos"}
-        <FiChevronDown size={18} />
-      </div>
+      <button className={`${openDropdown && styles.actived}`} onClick={() => setOpenDropdown(!openDropdown)}>
+        <BsFilterRight size={20} />
+      </button>
 
-      <div className={`${styles.option_group} ${openDropdown && styles.dropdown_open}`}>
-        <Link href={`/projetos/page/1`}>
-          <a className={styles.option}>Todos</a>
-        </Link>
-
+      <div className={`${styles.select} ${openDropdown && styles.open}`}>
         {technologies.map(technology => (
           <Link key={technology.id} href={`/projetos/${technology.slug}/page/1`}>
-            <a className={styles.option}>{technology.name}</a>
+            <a>
+              <img src={technology.logo.url} alt={technology.name} />
+              {technology.name}
+            </a>
           </Link>
         ))}
+
+        <Link href={`/projetos/page/1`}>
+          <a>
+            <img src="/assets/list.svg" alt="Todos os projetos" />
+            Todos os projetos
+          </a>
+        </Link>
       </div>
     </div>
   );

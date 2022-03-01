@@ -9,7 +9,7 @@ import { Header } from "../../../../components/Header";
 import { Project, Technology } from "../../../../types";
 import { ProjectCard } from "../../../../components/ProjectCard";
 import { Footer } from "../../../../components/Footer";
-import { TechnologyNavigation } from "../../../../components/TechnologyNavigation";
+import { Filter } from "../../../../components/Filter";
 
 const ITEMS_PER_PAGE = 9;
 
@@ -35,7 +35,7 @@ export default function Projects({ projects, technologies, technology, numberPag
           <div className={styles.row}>
             <div className={styles.header}>
               <h1>Projetos</h1>
-              <TechnologyNavigation technologies={technologies} currentTechnology={technology.name} />
+              <Filter technologies={technologies} />
             </div>
 
             <p>Lista de projetos desenvolvidos com {technology.name}</p>
