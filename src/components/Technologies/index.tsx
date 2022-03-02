@@ -13,7 +13,7 @@ export function Technologies({ technologies }: TechnologiesProps) {
       <div className={styles.row}>
         <h1>Tecnologias</h1>
         <p>Principais tecnologias que eu tenho conhecimento e uso no dia a dia no desenvolvimento de aplicações</p>
-        <span>Clique em alguma tecnologia para ver os projetos que foram desenvolvidos com ela</span>
+        {/* <span>Clique em alguma tecnologia para ver os projetos que foram desenvolvidos com ela</span> */}
       </div>
 
       <div className={styles.technologies}>

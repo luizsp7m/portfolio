@@ -22,7 +22,7 @@
     font-size: 1.8rem;
   }
 
-  button {
+  a {
     border: 0;
     outline: 0;
     height: 4.4rem;
@@ -35,6 +35,11 @@
     background: var(--primary-color);
     transition: background 0.25s ease-in-out;
     cursor: pointer;
+
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     &:hover {
       background: var(--primary-color-hover);

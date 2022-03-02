@@ -44,7 +44,7 @@
     font-size: 0;
     background: var(--primary-color);
     color: var(--text-primary);
-    animation: zoomIn 0.25s ease-in-out;
+    animation: fadeIn 0.25s ease-in-out;
     transition: background 0.25s ease-in-out;
 
     &:hover {
@@ -125,7 +125,9 @@
 
     &:hover {
       .popover_area {
-        display: block;
+        visibility: visible;
+        opacity: 1;
+        padding-bottom: 1.2rem;
       }
     }
   }
@@ -139,11 +141,13 @@
 }
 
 .popover_area {
-  display: none;
   position: absolute;
   right: 0;
   bottom: 2.7rem;
-  padding-bottom: 1.2rem;
+  padding-bottom: 0.6rem;
+  visibility: hidden;
+  opacity: 0;
+  transition: 0.25s ease-in-out;
 }
 
 .popover {
@@ -155,6 +159,7 @@
   background: #252c39;
   padding: 0.6rem 0;
   position: relative;
+  transition: 0.25s ease-in-out;
 
   &::before {
     content: "";
@@ -186,7 +191,7 @@
   }
 }
 
-@keyframes zoomIn {
+@keyframes fadeIn {
   from {
     opacity: 0;
   }

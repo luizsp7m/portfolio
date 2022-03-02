@@ -15,7 +15,7 @@ export function Projects({ projects }: ProjectsProps) {
       <div className={styles.row}>
         <h1>Projetos</h1>
         <p>Principais projetos que desenvolvi durante minha trajetória como desenvolvedor Front-end</p>
-        <span>+ de 30 projetos desenvolvidos</span>
+        {/* <span>+ de 30 projetos desenvolvidos</span> */}
 
         <Link href="/projetos/page/1">
           <a>Ver lista completa <FiArrowRight size={16} /></a>
