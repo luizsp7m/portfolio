@@ -13,7 +13,7 @@ export function Hero() {
 
         <h1>Luiz Oliveira</h1>
         <span>Desenvolvedor Front-end</span>
-        <a href="/assets/curriculo.pdf" download="CV - Luiz Antonio S de Oliveira">Download CV</a>
+        <a href="/assets/Currículo - Luiz Antonio S. de Oliveira - 032022.pdf" download="Currículo - Luiz Antonio S de Oliveira">Download CV</a>
       </div>
 
       <div data-aos="fade-up" className={styles.social}>
