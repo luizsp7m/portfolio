@@ -2,16 +2,60 @@ import Link from "next/link";
 import Head from "next/head";
 import styles from "../../../styles/projects.module.scss";
 
-import { getProjects, getTechnologies } from "../../../services/datocms";
 import { GetStaticPaths, GetStaticProps } from "next";
-
 import { Header } from "../../../components/Header";
 import { Project, Technology } from "../../../types";
 import { ProjectCard } from "../../../components/ProjectCard";
 import { Footer } from "../../../components/Footer";
 import { Filter } from "../../../components/Filter";
+import { client } from "../../../services/apollo";
+import { gql } from "@apollo/client";
 
 const ITEMS_PER_PAGE = 9;
+
+const GET_COUNT_PROJECTS_QUERY = gql`
+  query MyQuery($allIn: [ItemId]) {
+    _allProjectsMeta(filter: {display: {eq: "true"}, technologies: {allIn: $allIn}}) {
+      count
+    }
+  }
+`;
+
+const GET_ALL_TECHNOLOGIES_QUERY = gql`
+  query MyQuery {
+    allTechnologies(filter: {display: {eq: "true"}}) {
+      id
+      name
+      slug
+      logo {
+        url
+      }
+    }
+  }
+`;
+
+const GET_PROJECTS_BY_TECHNOLOGY = gql`
+  query GET_PROJECTS_BY_TECHNOLOGY($allIn: [ItemId], $first: IntType = 9, $skip: IntType = 0) {
+    allProjects(filter: {technologies: {allIn: $allIn}, display: {eq: "true"}}, orderBy: createdAt_DESC, first: $first, skip: $skip) {
+      id
+      title
+      description
+      deploy
+      repository
+      thumbnail {
+        url
+      }
+      technologies {
+        id
+        name
+        slug
+        logo {
+          url
+        }
+      }
+    }
+  }
+`;
 
 interface ProjectsProps {
   projects: Array<Project>;
@@ -72,9 +116,11 @@ export default function Projects({ projects, technologies, numberPages, currentP
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const projects = await getProjects();
+  const { data } = await client.query({
+    query: GET_COUNT_PROJECTS_QUERY,
+  });
 
-  const numberPages = Math.ceil(projects.length / ITEMS_PER_PAGE);
+  const numberPages = Math.ceil(data._allProjectsMeta.count / ITEMS_PER_PAGE);
 
   let paths = [];
 
@@ -88,22 +134,32 @@ export const getStaticPaths: GetStaticPaths = async () => {
   }
 }
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const projects = await getProjects();
-  const technologies = await getTechnologies();
-
-  const numberPages = Math.ceil(projects.length / ITEMS_PER_PAGE);
+export const getStaticProps: GetStaticProps = async ({ params }) => {  
   const currentPage = Number(params.page);
-
   const startIndex = currentPage * ITEMS_PER_PAGE - ITEMS_PER_PAGE;
-  const endIndex = startIndex + ITEMS_PER_PAGE;
 
-  const currentProjects = projects.slice(startIndex, endIndex);
+  const { data: technologies } = await client.query({
+    query: GET_ALL_TECHNOLOGIES_QUERY,
+  });
+
+  const { data: countProjects } = await client.query({
+    query: GET_COUNT_PROJECTS_QUERY,
+  });
+
+  const { data: projects } = await client.query({
+    query: GET_PROJECTS_BY_TECHNOLOGY,
+    variables: {
+      first: ITEMS_PER_PAGE,
+      skip: startIndex,
+    },
+  });
+
+  const numberPages = Math.ceil(countProjects._allProjectsMeta.count / ITEMS_PER_PAGE);
 
   return {
     props: {
-      projects: currentProjects,
-      technologies,
+      projects: projects.allProjects,
+      technologies: technologies.allTechnologies,
       numberPages,
       currentPage,
     },

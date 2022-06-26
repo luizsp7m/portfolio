@@ -2,16 +2,73 @@ import Link from "next/link";
 import Head from "next/head";
 import styles from "../../../../styles/projects.module.scss";
 
-import { getCountProjects, getProjects, getProjectsByTechnology, getTechnologies, getTechnologyBySlug } from "../../../../services/datocms";
 import { GetStaticPaths, GetStaticProps } from "next";
-
 import { Header } from "../../../../components/Header";
 import { Project, Technology } from "../../../../types";
 import { ProjectCard } from "../../../../components/ProjectCard";
 import { Footer } from "../../../../components/Footer";
 import { Filter } from "../../../../components/Filter";
+import { gql } from "@apollo/client";
+import { client } from "../../../../services/apollo";
 
 const ITEMS_PER_PAGE = 9;
+
+const GET_COUNT_PROJECTS_QUERY = gql`
+  query MyQuery($allIn: [ItemId]) {
+    _allProjectsMeta(filter: {display: {eq: "true"}, technologies: {allIn: $allIn}}) {
+      count
+    }
+  }
+`;
+
+const GET_ALL_TECHNOLOGIES_QUERY = gql`
+  query MyQuery {
+    allTechnologies(filter: {display: {eq: "true"}}) {
+      id
+      name
+      slug
+      logo {
+        url
+      }
+    }
+  }
+`;
+
+const GET_PROJECTS_BY_TECHNOLOGY = gql`
+  query GET_PROJECTS_BY_TECHNOLOGY($allIn: [ItemId], $first: IntType = 9, $skip: IntType = 0) {
+    allProjects(filter: {technologies: {allIn: $allIn}, display: {eq: "true"}}, orderBy: createdAt_DESC, first: $first, skip: $skip) {
+      id
+      title
+      description
+      deploy
+      repository
+      thumbnail {
+        url
+      }
+      technologies {
+        id
+        name
+        slug
+        logo {
+          url
+        }
+      }
+    }
+  }
+`;
+
+const GET_TECHNOLOGY_BY_SLUG = gql`
+  query MyQuery($slug: String = "") {
+    allTechnologies(filter: {slug: {eq: $slug}}) {
+      id
+      name
+      slug
+      logo {
+        url
+      }
+    }
+  }
+`;
 
 interface ProjectsProps {
   projects: Array<Project>;
@@ -73,12 +130,19 @@ export default function Projects({ projects, technologies, technology, numberPag
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const technologies = await getTechnologies();
+  const { data: technologies } = await client.query({
+    query: GET_ALL_TECHNOLOGIES_QUERY,
+  });
 
-  const counter = technologies.map(async technology => {
-    const numberProjects = await getCountProjects(technology.id);
+  const counter = technologies.allTechnologies.map(async technology => {
+    const { data: countProjects } = await client.query({
+      query: GET_COUNT_PROJECTS_QUERY,
+      variables: {
+        allIn: technology.id,
+      },
+    });
 
-    let numberPages = Math.ceil(numberProjects / ITEMS_PER_PAGE);
+    let numberPages = Math.ceil(countProjects._allProjectsMeta.count / ITEMS_PER_PAGE);
     numberPages = numberPages > 0 ? numberPages : 1;
 
     return {
@@ -109,23 +173,43 @@ export const getStaticPaths: GetStaticPaths = async () => {
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const technology = await getTechnologyBySlug(params.technology + "");
-  const technologies = await getTechnologies();
-  const projects = await getProjectsByTechnology(technology.id);
-
-  const numberPages = Math.ceil(projects.length / ITEMS_PER_PAGE);
   const currentPage = Number(params.page);
-
   const startIndex = currentPage * ITEMS_PER_PAGE - ITEMS_PER_PAGE;
-  const endIndex = startIndex + ITEMS_PER_PAGE;
 
-  const currentProjects = projects.slice(startIndex, endIndex);
+  const { data: technology } = await client.query({
+    query: GET_TECHNOLOGY_BY_SLUG,
+    variables: {
+      slug: params.technology,
+    }
+  });
+
+  const { data: technologies } = await client.query({
+    query: GET_ALL_TECHNOLOGIES_QUERY,
+  });
+
+  const { data: countProjects } = await client.query({
+    query: GET_COUNT_PROJECTS_QUERY,
+    variables: {
+      allIn: technology.allTechnologies[0].id,
+    },
+  });
+
+  const { data: projects } = await client.query({
+    query: GET_PROJECTS_BY_TECHNOLOGY,
+    variables: {
+      allIn: technology.allTechnologies[0].id,
+      first: ITEMS_PER_PAGE,
+      skip: startIndex,
+    },
+  });
+
+  const numberPages = Math.ceil(countProjects._allProjectsMeta.count / ITEMS_PER_PAGE);
 
   return {
     props: {
-      projects: currentProjects,
-      technologies,
-      technology,
+      projects: projects.allProjects,
+      technologies: technologies.allTechnologies,
+      technology: technology.allTechnologies[0],
       numberPages,
       currentPage,
     },
