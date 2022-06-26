@@ -4,7 +4,6 @@ import Aos from "aos";
 
 import { Project, Technology } from "../types";
 import { GetStaticProps } from "next";
-import { getProjectsPinned, getTechnologies } from "../services/datocms";
 import { useEffect } from "react";
 
 import { Header } from "../components/Header";
@@ -14,13 +13,59 @@ import { Projects } from "../components/Projects";
 import { Technologies } from "../components/Technologies";
 import { Menu } from "../components/Menu";
 import { Footer } from "../components/Footer";
+import { gql } from "@apollo/client";
+import { client } from "../services/apollo";
 
-interface HomeProps {
-  projects: Array<Project>;
-  technologies: Array<Technology>;
+interface GetTechnologiesPinnedResponse {
+  allTechnologies: Array<Technology>
 }
 
-export default function Home({ projects, technologies }: HomeProps) {
+interface GetProjectsPinnedResponse {
+  allProjects: Array<Project>;
+}
+
+const GET_TECHNOLOGIES_PINNED_QUERY = gql`
+  query MyQuery($first: IntType) {
+    allTechnologies(orderBy: createdAt_ASC, filter: {pinned: {eq: "true"}, display: {eq: "true"}}, first: $first) {
+      id
+      name
+      slug
+      logo {
+        url
+      }
+    }
+  }
+`;
+
+const GET_PROJECTS_PINNED_QUERY = gql`
+  query MyQuery($first: IntType) {
+    allProjects(filter: {pinned: {eq: "true"}, display: {eq: "true"}}, orderBy: createdAt_DESC, first: $first) {
+      id
+      title
+      description
+      deploy
+      repository
+      thumbnail {
+        url
+      }
+      technologies {
+        id
+        name
+        slug
+        logo {
+          url
+        }
+      }
+    }
+  }
+`;
+
+interface HomeProps {
+  technologies: Array<Technology>;
+  projects: Array<Project>;
+}
+
+export default function Home({ technologies, projects }: HomeProps) {
   useEffect(() => {
     Aos.init({
       duration: 1500,
@@ -40,9 +85,9 @@ export default function Home({ projects, technologies }: HomeProps) {
         <div className={styles.main}>
           <Hero />
           <About />
+          <Menu />
           <Projects projects={projects} />
           <Technologies technologies={technologies} />
-          <Menu />
         </div>
 
         <Footer paddingBottom={true} />
@@ -52,13 +97,24 @@ export default function Home({ projects, technologies }: HomeProps) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const projects = await getProjectsPinned();
-  const technologies = await getTechnologies();
+  const { data: technologies } = await client.query<GetTechnologiesPinnedResponse>({
+    query: GET_TECHNOLOGIES_PINNED_QUERY,
+    variables: {
+      first: 12
+    }
+  });
+
+  const { data: projects } = await client.query<GetProjectsPinnedResponse>({
+    query: GET_PROJECTS_PINNED_QUERY,
+    variables: {
+      first: 6
+    }
+  });
 
   return {
     props: {
-      projects,
-      technologies,
+      technologies: technologies.allTechnologies,
+      projects: projects.allProjects,
     },
 
     revalidate: 86400,

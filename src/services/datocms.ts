@@ -21,12 +21,12 @@ async function getData(query: string) {
 export async function getTechnologies() {
   const technologies = await getData(`{
     allTechnologies(first: 12, orderBy: [createdAt_ASC], filter: {
-      defaultVisible: { eq: true }
+      display: { eq: true }
     }) {
       id 
       name 
       slug
-      defaultVisible 
+      display 
       logo { 
         url 
       }
@@ -44,7 +44,7 @@ export async function getTechnologyBySlug(slug: string) {
       id
       name
       slug
-      defaultVisible
+      display
       logo {
         url
       }
@@ -63,7 +63,7 @@ export async function getProjects() {
 
   const projects = await getData(`{
     projects: allProjects (filter: {
-      defaultVisible: { eq: true },
+      display: { eq: true },
     }, first: ${total.data.count.count}, orderBy: [createdAt_DESC]) {
       id 
       title 
@@ -71,7 +71,7 @@ export async function getProjects() {
       deploy 
       repository 
       pinned 
-      defaultVisible 
+      display 
       thumbnail { url } 
       technologies { 
         id 
@@ -90,7 +90,7 @@ export async function getProjects() {
 export async function getProjectsPinned() {
   const projects = await getData(`{
     allProjects(first: 6, orderBy: [createdAt_DESC], filter: {
-      defaultVisible: {
+      display: {
         eq: true
       }, pinned: {
         eq: true
@@ -102,7 +102,7 @@ export async function getProjectsPinned() {
       deploy 
       repository 
       pinned 
-      defaultVisible 
+      display 
       thumbnail { url } 
       technologies { 
         id 
@@ -123,7 +123,7 @@ export async function getProjectsByTechnology(id: string) {
 
   const projects = await getData(`{
     projects: allProjects(filter: {
-      defaultVisible: { eq: true }
+      display: { eq: true }
       technologies: { allIn: ["${id}"] }
     }, orderBy: [createdAt_DESC], first: ${total} ) {
       id 
@@ -132,7 +132,7 @@ export async function getProjectsByTechnology(id: string) {
       deploy 
       repository 
       pinned 
-      defaultVisible 
+      display 
       thumbnail { url } 
       technologies { 
         id 
@@ -152,7 +152,7 @@ export async function getCountProjects(id: string) {
   const count = await getData(`{
     count: _allProjectsMeta(filter: {
       technologies: { allIn: ["${id}"] }
-      defaultVisible: { eq: true }
+      display: { eq: true }
     }) {
       count
     }
