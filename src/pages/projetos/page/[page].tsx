@@ -9,53 +9,10 @@ import { ProjectCard } from "../../../components/ProjectCard";
 import { Footer } from "../../../components/Footer";
 import { Filter } from "../../../components/Filter";
 import { client } from "../../../services/apollo";
-import { gql } from "@apollo/client";
+
+import { GET_ALL_TECHNOLOGIES_QUERY, GET_COUNT_PROJECTS_QUERY, GET_PROJECTS_BY_TECHNOLOGY } from "../../../graphql/queries";
 
 const ITEMS_PER_PAGE = 9;
-
-const GET_COUNT_PROJECTS_QUERY = gql`
-  query MyQuery($allIn: [ItemId]) {
-    _allProjectsMeta(filter: {display: {eq: "true"}, technologies: {allIn: $allIn}}) {
-      count
-    }
-  }
-`;
-
-const GET_ALL_TECHNOLOGIES_QUERY = gql`
-  query MyQuery {
-    allTechnologies(filter: {display: {eq: "true"}}) {
-      id
-      name
-      slug
-      logo {
-        url
-      }
-    }
-  }
-`;
-
-const GET_PROJECTS_BY_TECHNOLOGY = gql`
-  query GET_PROJECTS_BY_TECHNOLOGY($allIn: [ItemId], $first: IntType = 9, $skip: IntType = 0) {
-    allProjects(filter: {technologies: {allIn: $allIn}, display: {eq: "true"}}, orderBy: createdAt_DESC, first: $first, skip: $skip) {
-      id
-      title
-      description
-      deploy
-      repository
-      thumbnail {
-        url
-      }
-      technologies {
-        id
-        name
-        slug
-        logo {
-          url
-        }
-      }
-    }
-  }
-`;
 
 interface ProjectsProps {
   projects: Array<Project>;
