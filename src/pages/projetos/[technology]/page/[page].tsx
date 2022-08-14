@@ -43,7 +43,7 @@ export default function Projects({ projects, technologies, technology, numberPag
 
         <div className={styles.pagination}>
           {Array.from(Array(numberPages), (item, index) => (
-            <Link key={index} href={`/projetos/page/${index + 1}`}>
+            <Link key={index} href={`/projetos/${technology.slug}/page/${index + 1}`}>
               <a className={`${styles.pagination_item} ${index + 1 === currentPage && styles.selected}`}>{index + 1}</a>
             </Link>
           ))}
