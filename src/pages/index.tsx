@@ -1,4 +1,4 @@
-import { Project, Technology } from "../types";
+import { Curriculum, Project, Technology } from "../types";
 import { GetServerSideProps, GetStaticProps } from "next";
 import { Layout } from "../components/Layout";
 import { Hero } from "../components/Hero";
@@ -6,11 +6,12 @@ import { About } from "../components/About";
 import { ProjectList } from "../components/ProjectList";
 import { TechnologyList } from "../components/TechnologyList";
 import { client } from "../services/apollo";
-import { GET_LATEST_PROJECTS_QUERY, GET_TECHNOLOGIES_QUERY } from "../graphql/queries";
+import { GET_CURRICULUM_QUERY, GET_LATEST_PROJECTS_QUERY, GET_TECHNOLOGIES_QUERY } from "../graphql/queries";
 
 interface Props {
   projects: Array<Project>;
   technologies: Array<Technology>;
+  curriculum: Curriculum;
 }
 
 interface GetLatestProjectsResponse {
@@ -21,10 +22,10 @@ interface GetTechnologiesResponse {
   allTechnologies: Array<Technology>;
 }
 
-export default function Home({ projects, technologies }: Props) {
+export default function Home({ projects, technologies, curriculum }: Props) {
   return (
     <Layout title="Portfólio - Luiz Oliveira" currentPage="home">
-      <Hero />
+      <Hero curriculum={curriculum} />
       <About />
       <ProjectList projects={projects} />
       <TechnologyList technologies={technologies} />
@@ -41,10 +42,15 @@ export const getServerSideProps: GetServerSideProps = async () => {
     query: GET_TECHNOLOGIES_QUERY
   });
 
+  const { data: curriculum } = await client.query({
+    query: GET_CURRICULUM_QUERY
+  });
+
   return {
     props: {
       projects: projects.allProjects,
       technologies: technologies.allTechnologies,
+      curriculum: curriculum.curriculum,
     }
   }
 }

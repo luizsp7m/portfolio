@@ -3,8 +3,13 @@ import styles from "./styles.module.scss";
 import Link from "next/link";
 
 import { FaGithub, FaLinkedinIn, FaEnvelope } from "react-icons/fa";
+import { Curriculum } from "../../types";
 
-export function Hero() {
+interface Props {
+  curriculum: Curriculum;
+}
+
+export function Hero({ curriculum }: Props) {
   return (
     <div id="home" className={styles.container}>
       <div className={styles.presentation}>
@@ -14,7 +19,10 @@ export function Hero() {
 
         <h1>Luiz Oliveira</h1>
         <span>Desenvolvedor Front-end</span>
-        <a href="/assets/Currículo - Luiz Antonio S. de Oliveira - 032022.pdf" download="Currículo - Luiz Antonio S de Oliveira">Download CV</a>
+
+        <Link href={curriculum.file.url}>
+          <a target="_blank">Download CV</a>
+        </Link>
       </div>
 
       <div className={styles.social}>

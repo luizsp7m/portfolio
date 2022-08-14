@@ -18,3 +18,9 @@ export type Project = {
     url: string;
   };
 }
+
+export type Curriculum = {
+  file: {
+    url: string;
+  }
+}
