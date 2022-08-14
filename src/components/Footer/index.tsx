@@ -1,17 +1,18 @@
-import Link from "next/link";
 import styles from "./styles.module.scss";
+
+import Link from "next/link";
 
 import { FaGithub, FaLinkedinIn, FaEnvelope } from "react-icons/fa";
 
-interface FooterProps {
-  paddingBottom?: boolean;
+interface Props {
+  currentPage: "home" | "projects";
 }
 
-export function Footer({ paddingBottom = false }: FooterProps) {
+export function Footer({ currentPage }: Props) {
   const currentYear = new Date().getFullYear();
 
   return (
-    <div id="footer" className={`${styles.container} ${paddingBottom && styles.paddingBottom}`}>
+    <div id="footer" className={`${styles.container} ${currentPage === "home" && styles.paddingBottom}`}>
       <div className={styles.main}>
         <h5>Luiz Oliveira</h5>
 

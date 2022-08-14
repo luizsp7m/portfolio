@@ -1,20 +1,18 @@
-import Link from "next/link";
-import Head from "next/head";
 import styles from "../../../../styles/projects.module.scss";
 
+import Link from "next/link";
+
 import { GetStaticPaths, GetStaticProps } from "next";
-import { Header } from "../../../../components/Header";
 import { Project, Technology } from "../../../../types";
+import { Layout } from "../../../../components/Layout";
 import { ProjectCard } from "../../../../components/ProjectCard";
-import { Footer } from "../../../../components/Footer";
 import { Filter } from "../../../../components/Filter";
 import { client } from "../../../../services/apollo";
-
-import { GET_ALL_TECHNOLOGIES_QUERY, GET_COUNT_PROJECTS_QUERY, GET_PROJECTS_BY_TECHNOLOGY, GET_TECHNOLOGY_BY_SLUG } from "../../../../graphql/queries";
+import { COUNT_PROJECTS_QUERY, GET_PROJECTS_QUERY, GET_TECHNOLOGIES_QUERY, GET_TECHNOLOGY_QUERY } from "../../../../graphql/queries";
 
 const ITEMS_PER_PAGE = 9;
 
-interface ProjectsProps {
+interface Props {
   projects: Array<Project>;
   technologies: Array<Technology>;
   technology: Technology;
@@ -22,68 +20,50 @@ interface ProjectsProps {
   currentPage: number;
 }
 
-export default function Projects({ projects, technologies, technology, numberPages, currentPage }: ProjectsProps) {
+export default function Projects({ projects, technologies, technology, numberPages, currentPage }: Props) {
   return (
-    <>
-      <Head>
-        <title>Projetos com {technology.name} - Página {currentPage}</title>
-      </Head>
-
+    <Layout title={`Projetos com ${technology.name} - Página ${currentPage}`} currentPage="projects">
       <div className={styles.container}>
-        <Header to="home" />
-
-        <div className={styles.main}>
-          <div className={styles.row}>
-            <div className={styles.header}>
-              <h1>Projetos</h1>
-              <Filter technologies={technologies} />
-            </div>
-
-            <p>Lista de projetos desenvolvidos com {technology.name}</p>
-
-            <span>Página {currentPage} de {numberPages}</span>
+        <div className={styles.row}>
+          <div className={styles.header}>
+            <h1>Projetos</h1>
+            <Filter technologies={technologies} />
           </div>
 
-          <div className={styles.projects}>
-            {projects.map(project => (
-              <ProjectCard
-                key={project.id}
-                title={project.title}
-                description={project.description}
-                repository={project.repository}
-                deploy={project.deploy}
-                thumbnail={project.thumbnail.url}
-                technologies={project.technologies}
-              />
-            ))}
-          </div>
+          <p>Lista de todos os projetos que foram desenvolvidos com {technology.name}</p>
 
-          <div className={styles.pagination}>
-            {Array.from(Array(numberPages), (item, index) => (
-              <Link key={index} href={`/projetos/${technology.slug}/page/${index + 1}`}>
-                <a className={`${styles.pagination_item} ${index + 1 === currentPage && styles.selected}`}>{index + 1}</a>
-              </Link>
-            ))}
-          </div>
+          <span>Página {currentPage} de {numberPages}</span>
         </div>
 
-        <Footer />
+        <div className={styles.projects}>
+          {projects.map(project => (
+            <ProjectCard key={project.id} project={project} />
+          ))}
+        </div>
+
+        <div className={styles.pagination}>
+          {Array.from(Array(numberPages), (item, index) => (
+            <Link key={index} href={`/projetos/page/${index + 1}`}>
+              <a className={`${styles.pagination_item} ${index + 1 === currentPage && styles.selected}`}>{index + 1}</a>
+            </Link>
+          ))}
+        </div>
       </div>
-    </>
+    </Layout>
   );
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const { data: technologies } = await client.query({
-    query: GET_ALL_TECHNOLOGIES_QUERY,
+    query: GET_TECHNOLOGIES_QUERY
   });
 
   const counter = technologies.allTechnologies.map(async technology => {
     const { data: countProjects } = await client.query({
-      query: GET_COUNT_PROJECTS_QUERY,
+      query: COUNT_PROJECTS_QUERY,
       variables: {
         allIn: technology.id,
-      },
+      }
     });
 
     let numberPages = Math.ceil(countProjects._allProjectsMeta.count / ITEMS_PER_PAGE);
@@ -121,30 +101,30 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const startIndex = currentPage * ITEMS_PER_PAGE - ITEMS_PER_PAGE;
 
   const { data: technology } = await client.query({
-    query: GET_TECHNOLOGY_BY_SLUG,
+    query: GET_TECHNOLOGY_QUERY,
     variables: {
       slug: params.technology,
     }
   });
 
   const { data: technologies } = await client.query({
-    query: GET_ALL_TECHNOLOGIES_QUERY,
+    query: GET_TECHNOLOGIES_QUERY,
   });
 
   const { data: countProjects } = await client.query({
-    query: GET_COUNT_PROJECTS_QUERY,
+    query: COUNT_PROJECTS_QUERY,
     variables: {
-      allIn: technology.allTechnologies[0].id,
-    },
+      allIn: technology.technology.id,
+    }
   });
 
   const { data: projects } = await client.query({
-    query: GET_PROJECTS_BY_TECHNOLOGY,
+    query: GET_PROJECTS_QUERY,
     variables: {
-      allIn: technology.allTechnologies[0].id,
+      allIn: technology.technology.id,
       first: ITEMS_PER_PAGE,
       skip: startIndex,
-    },
+    }
   });
 
   const numberPages = Math.ceil(countProjects._allProjectsMeta.count / ITEMS_PER_PAGE);
@@ -153,7 +133,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     props: {
       projects: projects.allProjects,
       technologies: technologies.allTechnologies,
-      technology: technology.allTechnologies[0],
+      technology: technology.technology,
       numberPages,
       currentPage,
     },

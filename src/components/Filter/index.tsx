@@ -1,8 +1,8 @@
-import Link from "next/link";
 import styles from "./styles.module.scss";
 
-import { Technology } from "../../types";
+import Link from "next/link";
 
+import { Technology } from "../../types";
 import { BsFilterRight } from "react-icons/bs";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";

@@ -1,6 +1,7 @@
 import styles from "./styles.module.scss";
 
-import { BiHomeAlt, BiUser, BiBriefcaseAlt2, BiBookAlt } from "react-icons/bi";
+import { BiHomeAlt, BiUser, BiFolder } from "react-icons/bi";
+import { ImStack } from "react-icons/im";
 
 export function Menu() {
   return (
@@ -15,11 +16,11 @@ export function Menu() {
         </a>
 
         <a href="#projects">
-          <BiBriefcaseAlt2 size={20} />
+          <BiFolder size={20} />
         </a>
 
         <a href="#technologies">
-          <BiBookAlt size={20} />
+          <ImStack size={20} />
         </a>
       </div>
     </div>

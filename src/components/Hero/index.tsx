@@ -1,12 +1,13 @@
-import Link from "next/link";
 import styles from "./styles.module.scss";
+
+import Link from "next/link";
 
 import { FaGithub, FaLinkedinIn, FaEnvelope } from "react-icons/fa";
 
 export function Hero() {
   return (
     <div id="home" className={styles.container}>
-      <div data-aos="fade-down" className={styles.presentation}>
+      <div className={styles.presentation}>
         <div className={styles.image}>
           <img src="https://github.com/luizsp7m.png" alt="Luiz" />
         </div>
@@ -16,7 +17,7 @@ export function Hero() {
         <a href="/assets/Currículo - Luiz Antonio S. de Oliveira - 032022.pdf" download="Currículo - Luiz Antonio S de Oliveira">Download CV</a>
       </div>
 
-      <div data-aos="fade-up" className={styles.social}>
+      <div className={styles.social}>
         <Link href="https://github.com/luizsp7m">
           <a target="_blank">
             <FaGithub size={20} />
@@ -36,7 +37,7 @@ export function Hero() {
         </Link>
       </div>
 
-      <div data-aos="fade-up" className={styles.scroll}>
+      <div className={styles.scroll}>
         <Link href="#about">
           <a>
             Scroll down

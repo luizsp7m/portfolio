@@ -1,19 +1,19 @@
-import Link from "next/link";
 import styles from "./styles.module.scss";
+
+import Link from "next/link";
 
 import { Technology } from "../../types";
 
-interface TechnologiesProps {
+interface Props {
   technologies: Array<Technology>;
 }
 
-export function Technologies({ technologies }: TechnologiesProps) {
+export function TechnologyList({ technologies }: Props) {
   return (
-    <div data-aos="fade-in" id="technologies" className={styles.container}>
+    <div id="technologies" className={styles.container}>
       <div className={styles.row}>
         <h1>Tecnologias</h1>
         <p>Principais tecnologias que eu tenho conhecimento e uso no dia a dia no desenvolvimento de aplicações</p>
-        {/* <span>Clique em alguma tecnologia para ver os projetos que foram desenvolvidos com ela</span> */}
       </div>
 
       <div className={styles.technologies}>

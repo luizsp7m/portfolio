@@ -1,27 +1,21 @@
-import Link from "next/link";
 import styles from "./styles.module.scss";
 
-import { FiExternalLink, FiArrowRight } from "react-icons/fi";
-import { Technology } from "../../types";
+import Link from "next/link";
 
-interface ProjectCardProps {
-  title: string;
-  description: string;
-  repository: string;
-  deploy: string;
-  thumbnail: string;
-  technologies: Array<Technology>;
+import { FiExternalLink, FiArrowRight } from "react-icons/fi";
+import { Project } from "../../types";
+
+interface Props {
+  project: Project;
 }
 
-export function ProjectCard({
-  title, description, repository, deploy, thumbnail, technologies
-}: ProjectCardProps) {
+export function ProjectCard({ project }: Props) {
   return (
     <div className={styles.container}>
       <div className={styles.project_image}>
-        <img src={thumbnail} alt={title} />
+        <img src={project.thumbnail.url} alt={project.title} />
 
-        <Link href={deploy}>
+        <Link href={project.deploy}>
           <a target="_blank">
             <FiExternalLink size={18} />
           </a>
@@ -29,28 +23,28 @@ export function ProjectCard({
       </div>
 
       <div className={styles.project_body}>
-        <h5>{title}</h5>
-        <p>{description}</p>
-        <Link href={repository}>
+        <h5>{project.title}</h5>
+        <p>{project.description}</p>
+        <Link href={project.repository}>
           <a target="_blank">Ver repositório <FiArrowRight size={16} /></a>
         </Link>
 
         <div className={styles.technologies}>
-          {technologies.map((technology, index) => index < 3 && (
+          {project.technologies.map((technology, index) => index < 3 && (
             <Link key={technology.id} href={`/projetos/${technology.slug}/page/1`}>
-              <a className={`${technologies.length > 3 && styles.width}`}>
+              <a className={`${project.technologies.length > 3 && styles.width}`}>
                 {technology.name}
               </a>
             </Link>
           ))}
 
-          {technologies.length > 3 && (
+          {project.technologies.length > 3 && (
             <span>
-              +{technologies.length - 3}
+              +{project.technologies.length - 3}
 
               <div className={styles.popover_area}>
                 <div className={styles.popover}>
-                  {technologies.map((technology, index) => index >= 3 && (
+                  {project.technologies.map((technology, index) => index >= 3 && (
                     <Link key={technology.id} href={`/projetos/${technology.slug}/page/1`}>
                       <a>{technology.name}</a>
                     </Link>

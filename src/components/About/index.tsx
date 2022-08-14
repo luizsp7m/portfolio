@@ -2,7 +2,7 @@ import styles from "./styles.module.scss";
 
 export function About() {
   return (
-    <div data-aos="fade-in" id="about" className={styles.container}>
+    <div id="about" className={styles.container}>
       <h1>Sobre mim</h1>
 
       <div className={styles.description}>
