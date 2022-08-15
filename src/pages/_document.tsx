@@ -41,8 +41,8 @@ export default class MyDocument extends Document {
           <meta name="twitter:image" content="/design/desktop-preview.jpg" />
           <meta name="twitter:image:src" content="/design/desktop-preview.jpg" />
           <meta name="twitter:image:alt" content="Thumbnail" />
-          <meta name="twitter:image:width" content="900" />
-          <meta name="twitter:image:height" content="600" />
+          <meta name="twitter:image:width" content="600" />
+          <meta name="twitter:image:height" content="200" />
         </Head>
 
         <body>

@@ -1,5 +1,5 @@
 import { Curriculum, GetCurriculumResponse, GetLatestProjectsResponse, GetTechnologiesResponse, Project, Technology } from "../types";
-import { GetServerSideProps } from "next";
+import { GetServerSideProps, GetStaticPaths, GetStaticProps } from "next";
 import { Layout } from "../components/Layout";
 import { Hero } from "../components/Hero";
 import { About } from "../components/About";
@@ -25,7 +25,7 @@ export default function Home({ projects, technologies, curriculum }: Props) {
   );
 }
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
   const { data: projects } = await client.query<GetLatestProjectsResponse>({
     query: GET_LATEST_PROJECTS_QUERY
   });
@@ -43,6 +43,8 @@ export const getServerSideProps: GetServerSideProps = async () => {
       projects: projects.allProjects,
       technologies: technologies.allTechnologies,
       curriculum: curriculum.curriculum,
-    }
+    },
+
+    revalidate: 86400,
   }
 }
