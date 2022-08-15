@@ -23,9 +23,11 @@ export function ProjectList({ projects }: Props) {
         ))}
       </div>
 
-      <Link href="/projetos/page/1">
-        <a>Ver lista completa <FiArrowRight size={16} /></a>
-      </Link>
+      <div className={styles.row}>
+        <Link href="/projetos/page/1">
+          <a>Ver lista completa <FiArrowRight size={16} /></a>
+        </Link>
+      </div>
     </div>
   );
 }
