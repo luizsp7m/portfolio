@@ -24,3 +24,29 @@ export type Curriculum = {
     url: string;
   }
 }
+
+export type GetLatestProjectsResponse = {
+  allProjects: Array<Project>;
+}
+
+export type GetTechnologiesResponse = {
+  allTechnologies: Array<Technology>;
+}
+
+export type GetTechnologyResponse = {
+  technology: Technology;
+}
+
+export type CountProjectsResponse = {
+  _allProjectsMeta: {
+    count: number;
+  }
+}
+
+export type GetProjectsResponse = {
+  allProjects: Array<Project>;
+}
+
+export type GetCurriculumResponse = {
+  curriculum: Curriculum;
+}

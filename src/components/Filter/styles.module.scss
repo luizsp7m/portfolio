@@ -38,6 +38,7 @@
   box-shadow: 0px 8px 28px rgba(0, 0, 0, 0.15);
   visibility: hidden;
   opacity: 0;
+  border: 1px solid rgba(255, 255, 255, 0.025);
 
   a {
     display: flex;
@@ -48,6 +49,10 @@
     text-decoration: none;
     padding: 1.25rem;
     transition: background 0.25s ease-in-out;
+    
+    & + a {
+      border-top: 1px solid rgba(255, 255, 255, 0.025);
+    }
 
     img {
       width: 1.6rem;

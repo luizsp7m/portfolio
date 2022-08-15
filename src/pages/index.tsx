@@ -1,5 +1,5 @@
-import { Curriculum, Project, Technology } from "../types";
-import { GetServerSideProps, GetStaticProps } from "next";
+import { Curriculum, GetCurriculumResponse, GetLatestProjectsResponse, GetTechnologiesResponse, Project, Technology } from "../types";
+import { GetServerSideProps } from "next";
 import { Layout } from "../components/Layout";
 import { Hero } from "../components/Hero";
 import { About } from "../components/About";
@@ -12,14 +12,6 @@ interface Props {
   projects: Array<Project>;
   technologies: Array<Technology>;
   curriculum: Curriculum;
-}
-
-interface GetLatestProjectsResponse {
-  allProjects: Array<Project>;
-}
-
-interface GetTechnologiesResponse {
-  allTechnologies: Array<Technology>;
 }
 
 export default function Home({ projects, technologies, curriculum }: Props) {
@@ -42,7 +34,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
     query: GET_TECHNOLOGIES_QUERY
   });
 
-  const { data: curriculum } = await client.query({
+  const { data: curriculum } = await client.query<GetCurriculumResponse>({
     query: GET_CURRICULUM_QUERY
   });
 

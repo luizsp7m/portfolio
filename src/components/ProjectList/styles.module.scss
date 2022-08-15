@@ -4,28 +4,6 @@
   flex-direction: column;
   gap: 3.2rem;
   scroll-margin-top: 60px;
-}
-
-.row {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 2.2rem;
-
-  h1 {
-    color: var(--text-primary);
-    font-size: 2.6rem;
-  }
-
-  p {
-    font-size: 1.6rem;
-    color: var(--text-primary);
-  }
-
-  span {
-    font-size: 1.35rem;
-    color: var(--text-secondary);
-  }
 
   a {
     display: flex;
@@ -49,6 +27,28 @@
         transform: translateX(2px);
       }
     }
+  }
+}
+
+.row {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2.2rem;
+
+  h1 {
+    color: var(--text-primary);
+    font-size: 2.6rem;
+  }
+
+  p {
+    font-size: 1.6rem;
+    color: var(--text-primary);
+  }
+
+  span {
+    font-size: 1.35rem;
+    color: var(--text-secondary);
   }
 }
 

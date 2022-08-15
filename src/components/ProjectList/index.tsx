@@ -15,11 +15,6 @@ export function ProjectList({ projects }: Props) {
     <div id="projects" className={styles.container}>
       <div className={styles.row}>
         <h1>Últimos Projetos</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque quis rhoncus est.</p>
-
-        <Link href="/projetos/page/1">
-          <a>Ver lista completa <FiArrowRight size={16} /></a>
-        </Link>
       </div>
 
       <div className={styles.projects}>
@@ -27,6 +22,10 @@ export function ProjectList({ projects }: Props) {
           <ProjectCard key={project.id} project={project} />
         ))}
       </div>
+
+      <Link href="/projetos/page/1">
+        <a>Ver lista completa <FiArrowRight size={16} /></a>
+      </Link>
     </div>
   );
 }

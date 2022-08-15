@@ -7,11 +7,11 @@ import { BsFilterRight } from "react-icons/bs";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
-interface TechnologyNavigationProps {
+interface Props {
   technologies: Array<Technology>;
 }
 
-export function Filter({ technologies }: TechnologyNavigationProps) {
+export function Filter({ technologies }: Props) {
   const [openDropdown, setOpenDropdown] = useState(false);
 
   const router = useRouter();

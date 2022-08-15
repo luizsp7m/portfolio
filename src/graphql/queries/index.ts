@@ -84,7 +84,6 @@ export const GET_CURRICULUM_QUERY = gql`
   query MyQuery {
     curriculum {
       file {
-        filename
         url(imgixParams: {})
       }
     }

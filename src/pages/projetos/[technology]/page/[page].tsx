@@ -3,7 +3,7 @@ import styles from "../../../../styles/projects.module.scss";
 import Link from "next/link";
 
 import { GetStaticPaths, GetStaticProps } from "next";
-import { Project, Technology } from "../../../../types";
+import { CountProjectsResponse, GetProjectsResponse, GetTechnologiesResponse, GetTechnologyResponse, Project, Technology } from "../../../../types";
 import { Layout } from "../../../../components/Layout";
 import { ProjectCard } from "../../../../components/ProjectCard";
 import { Filter } from "../../../../components/Filter";
@@ -54,37 +54,34 @@ export default function Projects({ projects, technologies, technology, numberPag
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const { data: technologies } = await client.query({
+  const { data: technologies } = await client.query<GetTechnologiesResponse>({
     query: GET_TECHNOLOGIES_QUERY
   });
 
-  const counter = technologies.allTechnologies.map(async technology => {
-    const { data: countProjects } = await client.query({
+  const pages = await Promise.all(technologies.allTechnologies.map(async technology => {
+    const { data: countProjects } = await client.query<CountProjectsResponse>({
       query: COUNT_PROJECTS_QUERY,
       variables: {
         allIn: technology.id,
       }
     });
 
-    let numberPages = Math.ceil(countProjects._allProjectsMeta.count / ITEMS_PER_PAGE);
-    numberPages = numberPages > 0 ? numberPages : 1;
+    const numberPages = Math.ceil(countProjects._allProjectsMeta.count / ITEMS_PER_PAGE);
 
     return {
-      technology: technology.slug,
+      slug: technology.slug,
       numberPages,
     }
-  });
+  }));
 
-  const pages = await Promise.all(counter);
+  const paths = [];
 
-  let paths = [];
-
-  pages.map(page => {
-    for (let i = 0; i < page.numberPages; i++) {
+  pages.forEach(page => {
+    for (let index = 1; index <= page.numberPages; index++) {
       paths.push({
         params: {
-          technology: page.technology,
-          page: `${i + 1}`,
+          technology: page.slug,
+          page: String(index),
         }
       });
     }
@@ -100,25 +97,25 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const currentPage = Number(params.page);
   const startIndex = currentPage * ITEMS_PER_PAGE - ITEMS_PER_PAGE;
 
-  const { data: technology } = await client.query({
+  const { data: technology } = await client.query<GetTechnologyResponse>({
     query: GET_TECHNOLOGY_QUERY,
     variables: {
       slug: params.technology,
     }
   });
 
-  const { data: technologies } = await client.query({
+  const { data: technologies } = await client.query<GetTechnologiesResponse>({
     query: GET_TECHNOLOGIES_QUERY,
   });
 
-  const { data: countProjects } = await client.query({
+  const { data: countProjects } = await client.query<CountProjectsResponse>({
     query: COUNT_PROJECTS_QUERY,
     variables: {
       allIn: technology.technology.id,
     }
   });
 
-  const { data: projects } = await client.query({
+  const { data: projects } = await client.query<GetProjectsResponse>({
     query: GET_PROJECTS_QUERY,
     variables: {
       allIn: technology.technology.id,

@@ -3,7 +3,7 @@ import styles from "../../../styles/projects.module.scss";
 import Link from "next/link";
 
 import { GetStaticPaths, GetStaticProps } from "next";
-import { Project, Technology } from "../../../types";
+import { CountProjectsResponse, GetProjectsResponse, GetTechnologiesResponse, Project, Technology } from "../../../types";
 import { Layout } from "../../../components/Layout";
 import { ProjectCard } from "../../../components/ProjectCard";
 import { Filter } from "../../../components/Filter";
@@ -53,7 +53,7 @@ export default function Projects({ projects, technologies, numberPages, currentP
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const { data: countProjects } = await client.query({
+  const { data: countProjects } = await client.query<CountProjectsResponse>({
     query: COUNT_PROJECTS_QUERY,
   });
 
@@ -75,7 +75,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const currentPage = Number(params.page);
   const startIndex = currentPage * ITEMS_PER_PAGE - ITEMS_PER_PAGE;
 
-  const { data: projects } = await client.query({
+  const { data: projects } = await client.query<GetProjectsResponse>({
     query: GET_PROJECTS_QUERY,
     variables: {
       first: ITEMS_PER_PAGE,
@@ -83,11 +83,11 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     },
   });
 
-  const { data: technologies } = await client.query({
+  const { data: technologies } = await client.query<GetTechnologiesResponse>({
     query: GET_TECHNOLOGIES_QUERY,
   });
 
-  const { data: countProjects } = await client.query({
+  const { data: countProjects } = await client.query<CountProjectsResponse>({
     query: COUNT_PROJECTS_QUERY,
   });
 
