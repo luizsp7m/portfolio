@@ -61,7 +61,9 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   const paths = Array.from(Array(numberPages)).map((item, index) => {
     return {
-      params: { page: `${index + 1}` }
+      params: {
+        page: String(index + 1),
+      }
     }
   });
 
