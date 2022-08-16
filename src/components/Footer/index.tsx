@@ -54,7 +54,7 @@ export function Footer({ currentPage }: Props) {
           </Link>
         </div>
 
-        <span>&copy; Luiz Oliveira {currentYear}. Todos os direitos reservados.</span>
+        <span>&copy; Luiz Oliveira {currentYear}</span>
       </div>
     </div>
   );

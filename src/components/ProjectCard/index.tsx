@@ -48,7 +48,7 @@ export function ProjectCard({ project }: Props) {
 
           {project.technologies.length > 3 && (
             <span>
-              +{project.technologies.length - 3}
+              + {project.technologies.length - 3}
 
               <div className={styles.popover_area}>
                 <div className={styles.popover}>

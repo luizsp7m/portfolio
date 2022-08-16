@@ -49,23 +49,21 @@
   }
 }
 
-.imageContainer {
+.image {
+  background: linear-gradient(to right, var(--primary-color) 50%, transparent 50%);
   height: 16.5rem;
   width: 16.5rem;
-  border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(to right, var(--primary-color) 50%, transparent 50%);
-}
+  border-radius: 50%;
 
-.image {
-  height: 15rem;
-  width: 15rem;
-  position: relative;
-  
   img {
+    width: 15rem;
+    height: 15rem;
     border-radius: 50%;
+    object-fit: cover;
+    background: var(--background-secondary);
   }
 }
 

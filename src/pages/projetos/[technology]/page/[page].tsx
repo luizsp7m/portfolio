@@ -33,7 +33,7 @@ export default function Projects({ projects, technologies, technology, numberPag
           <p>Lista de todos os projetos que foram desenvolvidos com {technology.name}</p>
 
           <span>{numberPages === 0 ? (`
-            Nenhum projeto desenvolvido com essa tecnologia
+            Nenhum projeto cadastrado ou desenvolvido com essa tecnologia
           `) : (`
             Página ${currentPage} de ${numberPages}
           `)}</span>

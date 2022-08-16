@@ -44,12 +44,21 @@
     display: flex;
     align-items: center;
     gap: 1.2rem;
-    font-size: 1.35rem;
-    color: var(--text-primary);
     text-decoration: none;
     padding: 1.25rem;
     transition: background 0.25s ease-in-out;
-    
+
+    img {
+      width: 1.6rem;
+      height: 1.6rem;
+      object-fit: contain;
+    }
+
+    span {
+      font-size: 1.35rem;
+      color: var(--text-primary);
+    }
+
     & + a {
       border-top: 1px solid rgba(255, 255, 255, 0.025);
     }
@@ -64,10 +73,4 @@
   visibility: visible;
   opacity: 1;
   margin-top: 1.6rem;
-}
-
-.image {
-  width: 1.6rem;
-  height: 1.6rem;
-  position: relative;
 }

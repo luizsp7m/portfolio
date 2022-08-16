@@ -10,6 +10,12 @@
   }
 }
 
+.row {
+  display: flex;
+  align-items: center;
+  gap: 3.2rem;
+}
+
 .description {
   display: flex;
   flex-direction: column;
@@ -19,6 +25,24 @@
     font-size: 1.55rem;
     line-height: 3.2rem;
     color: var(--text-secondary);
+  }
+}
+
+.image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    width: 31.5rem;
+    height: auto;
+    object-fit: contain;
+  }
+}
+
+@media(max-width: 1084px) {
+  .image {
+    display: none;
   }
 }
 

@@ -32,7 +32,7 @@ export default function Projects({ projects, technologies, numberPages, currentP
           <p>Lista de todos os projetos que foram desenvolvidos durante minha trajetória como desenvolvedor</p>
 
           <span>{numberPages === 0 ? (`
-            Nenhum projeto desenvolvido
+            Nenhum projeto cadastrado ou desenvolvido
           `) : (`
             Página ${currentPage} de ${numberPages}
           `)}</span>

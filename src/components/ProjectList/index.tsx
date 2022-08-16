@@ -14,7 +14,7 @@ export function ProjectList({ projects }: Props) {
   return (
     <div id="projects" className={styles.container}>
       <div className={styles.row}>
-        <h1>Últimos Projetos</h1>
+        <h1>Últimos projetos</h1>
       </div>
 
       <div className={styles.projects}>

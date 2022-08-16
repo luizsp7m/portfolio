@@ -1,7 +1,6 @@
 import styles from "./styles.module.scss";
 
 import Link from "next/link";
-import Image from "next/image";
 
 import { FaGithub, FaLinkedinIn, FaEnvelope } from "react-icons/fa";
 import { Curriculum } from "../../types";
@@ -14,18 +13,11 @@ export function Hero({ curriculum }: Props) {
   return (
     <div id="home" className={styles.container}>
       <div className={styles.presentation}>
-        <div className={styles.imageContainer}>
-          <div className={styles.image}>
-            <Image
-              src="https://github.com/luizsp7m.png"
-              alt="Luiz"
-              layout="fill"
-              objectFit="contain"
-              quality={100}
-              placeholder="blur"
-              blurDataURL="https://github.com/luizsp7m.png"
-            />
-          </div>
+        <div className={styles.image}>
+          <img
+            src="https://github.com/luizsp7m.png"
+            alt="Luiz Oliveira"
+          />
         </div>
 
         <h1>Luiz Oliveira</h1>
