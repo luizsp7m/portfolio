@@ -31,40 +31,6 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   gap: 1.6rem;
-
-  a {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1.85rem;
-    background: var(--background-secondary);
-    padding: 2.2rem;
-    border-radius: 0.25rem;
-    text-decoration: none;
-    cursor: pointer;
-
-    img {
-      height: 5rem;
-      width: 5rem;
-      object-fit: contain;
-    }
-
-    span {
-      font-size: 1.4rem;
-      color: var(--text-primary);
-      font-weight: 500;
-      max-width: 100%;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
-
-    &:hover {
-      span {
-        text-decoration: underline;
-      }
-    }
-  }
 }
 
 @media (max-width: 425px) {
@@ -76,12 +42,6 @@
 @media (max-width: 360px) {
   .technologies {
     grid-template-columns: repeat(2, 1fr);
-
-    a {
-      span {
-        max-width: 10rem;
-      }
-    }
   }
 }
 

@@ -1,6 +1,7 @@
 import styles from "./styles.module.scss";
 
 import Link from "next/link";
+import Image from "next/image";
 
 import { Technology } from "../../types";
 import { BsFilterRight } from "react-icons/bs";
@@ -30,7 +31,14 @@ export function Filter({ technologies }: Props) {
         {technologies.map(technology => (
           <Link key={technology.id} href={`/projetos/${technology.slug}/page/1`}>
             <a>
-              <img src={technology.logo.url} alt={technology.name} />
+              <div className={styles.image}>
+                <Image
+                  src={technology.logo.url}
+                  alt={technology.name}
+                  layout="fill"
+                  objectFit="contain"
+                />
+              </div>
               {technology.name}
             </a>
           </Link>
@@ -38,7 +46,14 @@ export function Filter({ technologies }: Props) {
 
         <Link href={`/projetos/page/1`}>
           <a>
-            <img src="/assets/list.svg" alt="Todos os projetos" />
+            <div className={styles.image}>
+              <Image
+                src="/assets/list.svg"
+                alt="Todos os projetos"
+                layout="fill"
+                objectFit="contain"
+              />
+            </div>
             Todos os projetos
           </a>
         </Link>

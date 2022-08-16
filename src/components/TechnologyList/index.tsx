@@ -1,8 +1,7 @@
 import styles from "./styles.module.scss";
 
-import Link from "next/link";
-
 import { Technology } from "../../types";
+import { TechnologyItem } from "../TechnologyItem";
 
 interface Props {
   technologies: Array<Technology>;
@@ -17,14 +16,9 @@ export function TechnologyList({ technologies }: Props) {
       </div>
 
       <div className={styles.technologies}>
-        { technologies.map(technology => (
-          <Link key={technology.id} href={`/projetos/${technology.slug}/page/1`}>
-            <a>
-              <img src={technology.logo.url} alt={technology.name} />
-              <span>{technology.name}</span>
-            </a>
-          </Link>
-        )) }
+        {technologies.map(technology => (
+          <TechnologyItem key={technology.id} technology={technology} />
+        ))}
       </div>
     </div>
   );

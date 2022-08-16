@@ -54,11 +54,6 @@
       border-top: 1px solid rgba(255, 255, 255, 0.025);
     }
 
-    img {
-      width: 1.6rem;
-      height: 1.6rem;
-    }
-
     &:hover {
       background: var(--primary-color);
     }
@@ -69,4 +64,10 @@
   visibility: visible;
   opacity: 1;
   margin-top: 1.6rem;
+}
+
+.image {
+  width: 1.6rem;
+  height: 1.6rem;
+  position: relative;
 }

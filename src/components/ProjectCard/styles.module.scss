@@ -22,11 +22,9 @@
 
 .project_image {
   position: relative;
+  height: 22.5rem; // Next Image
 
   img {
-    width: 100%;
-    height: 22.5rem;
-    object-fit: cover;
     transition: opacity 0.25s ease-in-out;
   }
 

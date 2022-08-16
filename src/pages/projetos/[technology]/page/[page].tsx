@@ -32,7 +32,11 @@ export default function Projects({ projects, technologies, technology, numberPag
 
           <p>Lista de todos os projetos que foram desenvolvidos com {technology.name}</p>
 
-          <span>Página {currentPage} de {numberPages}</span>
+          <span>{numberPages === 0 ? (`
+            Nenhum projeto desenvolvido com essa tecnologia
+          `) : (`
+            Página ${currentPage} de ${numberPages}
+          `)}</span>
         </div>
 
         <div className={styles.projects}>
@@ -66,7 +70,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
       }
     });
 
-    const numberPages = Math.ceil(countProjects._allProjectsMeta.count / ITEMS_PER_PAGE);
+    const numberPages = countProjects._allProjectsMeta.count === 0 ? 1 : Math.ceil(countProjects._allProjectsMeta.count / ITEMS_PER_PAGE);
 
     return {
       slug: technology.slug,

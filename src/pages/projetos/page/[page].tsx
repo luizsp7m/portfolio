@@ -31,7 +31,11 @@ export default function Projects({ projects, technologies, numberPages, currentP
 
           <p>Lista de todos os projetos que foram desenvolvidos durante minha trajetória como desenvolvedor</p>
 
-          <span>Página {currentPage} de {numberPages}</span>
+          <span>{0 === 0 ? (`
+            Nenhum projeto desenvolvido
+          `) : (`
+            Página ${currentPage} de ${numberPages}
+          `)}</span>
         </div>
 
         <div className={styles.projects}>
@@ -57,7 +61,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
     query: COUNT_PROJECTS_QUERY,
   });
 
-  const numberPages = Math.ceil(countProjects._allProjectsMeta.count / ITEMS_PER_PAGE);
+  const numberPages = countProjects._allProjectsMeta.count === 0 ? 1 : Math.ceil(countProjects._allProjectsMeta.count / ITEMS_PER_PAGE);
 
   const paths = Array.from(Array(numberPages)).map((item, index) => {
     return {

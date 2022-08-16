@@ -1,6 +1,7 @@
 import styles from "./styles.module.scss";
 
 import Link from "next/link";
+import Image from "next/image";
 
 import { FiExternalLink, FiArrowRight } from "react-icons/fi";
 import { Project } from "../../types";
@@ -13,7 +14,12 @@ export function ProjectCard({ project }: Props) {
   return (
     <div className={styles.container}>
       <div className={styles.project_image}>
-        <img src={project.thumbnail.url} alt={project.title} />
+        <Image
+          src={project.thumbnail.url}
+          alt={project.title}
+          layout="fill"
+          objectFit="cover"
+        />
 
         <Link href={project.deploy}>
           <a target="_blank">
