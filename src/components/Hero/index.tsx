@@ -22,6 +22,8 @@ export function Hero({ curriculum }: Props) {
               layout="fill"
               objectFit="contain"
               quality={100}
+              placeholder="blur"
+              blurDataURL="https://github.com/luizsp7m.png"
             />
           </div>
         </div>

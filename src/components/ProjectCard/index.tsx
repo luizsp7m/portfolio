@@ -19,6 +19,8 @@ export function ProjectCard({ project }: Props) {
           alt={project.title}
           layout="fill"
           objectFit="cover"
+          placeholder="blur"
+          blurDataURL={project.thumbnail.url}
         />
 
         <Link href={project.deploy}>
