@@ -10,7 +10,7 @@ import { Menu } from "../Menu";
 interface Props {
   title: string;
   children: ReactNode;
-  currentPage: "home" | "projects";
+  currentPage: "home" | "projects" | "404";
 }
 
 export function Layout({ title, children, currentPage }: Props) {

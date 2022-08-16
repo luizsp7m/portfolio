@@ -1,0 +1,23 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 3.2rem;
+
+  height: calc(100vh - 34.8rem);
+
+  h1 {
+    color: var(--text-secondary);
+    font-weight: 500;
+    font-size: 1.65rem;
+  }
+}
+
+.image {
+  img {
+    width: 100%;
+    max-width: 50rem;
+    height: auto;
+  }
+}

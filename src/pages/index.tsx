@@ -16,7 +16,7 @@ interface Props {
 
 export default function Home({ projects, technologies, curriculum }: Props) {
   return (
-    <Layout title="Portfólio - Luiz Oliveira" currentPage="home">
+    <Layout title="Luiz Oliveira - Portfólio" currentPage="home">
       <Hero curriculum={curriculum} />
       <About />
       <ProjectList projects={projects} />

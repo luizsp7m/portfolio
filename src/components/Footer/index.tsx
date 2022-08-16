@@ -5,7 +5,7 @@ import Link from "next/link";
 import { FaGithub, FaLinkedinIn, FaEnvelope } from "react-icons/fa";
 
 interface Props {
-  currentPage: "home" | "projects";
+  currentPage: "home" | "projects" | "404";
 }
 
 export function Footer({ currentPage }: Props) {

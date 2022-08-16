@@ -1,5 +1,5 @@
 .container {
-  padding: 12rem 0 4rem 0;
+  padding: 4rem 0;
   display: flex;
   flex-direction: column;
   gap: 3.2rem;
@@ -36,7 +36,6 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
   gap: 1.7rem;
-  min-height: 48.55rem;
 }
 
 .pagination {

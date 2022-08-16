@@ -5,6 +5,8 @@
 .main {
   width: 100%;
   max-width: 1084px;
-  padding: 0 3rem;
+  padding: 8.1rem 3rem 0 3rem; // 1px de border bottom
   margin: 0 auto;
+
+  min-height: calc(100vh - 26.7rem); // 100vh - Height Footer // 1px de border top
 }

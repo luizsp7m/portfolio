@@ -5,7 +5,7 @@ import Link from "next/link";
 import { FiArrowRight, FiArrowLeft } from "react-icons/fi";
 
 interface Props {
-  currentPage: "home" | "projects";
+  currentPage: "home" | "projects" | "404";
 }
 
 export function Header({ currentPage }: Props) {

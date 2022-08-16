@@ -44,7 +44,7 @@ export function Filter({ technologies }: Props) {
           <a>
             <img
               src="/assets/list.svg"
-              alt="Todos os projetos"
+              alt="Icon"
             />
 
             <span>Todos os projetos</span>
