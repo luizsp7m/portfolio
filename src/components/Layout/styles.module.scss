@@ -1,5 +1,4 @@
 .container {
-  
 }
 
 .main {
@@ -9,4 +8,10 @@
   margin: 0 auto;
 
   min-height: calc(100vh - 26.7rem); // 100vh - Height Footer // 1px de border top
+}
+
+@media (max-width: 365px) {
+  .main {
+    min-height: calc(100vh - 302.97px);
+  }
 }

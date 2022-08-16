@@ -11,6 +11,7 @@
     color: var(--text-secondary);
     font-weight: 500;
     font-size: 1.65rem;
+    text-align: center;
   }
 }
 
@@ -19,5 +20,11 @@
     width: 100%;
     max-width: 50rem;
     height: auto;
+  }
+}
+
+@media (max-width: 365px) {
+  .container {
+    height: calc(100vh - 367.97px);
   }
 }
