@@ -3,12 +3,13 @@ import styles from "./styles.module.scss";
 export function About() {
   return (
     <div id="about" className={styles.container}>
-      <h1>Sobre mim</h1>
+      <h1>Um resumo sobre mim</h1>
 
       <div className={styles.description}>
-        <p>Olá, meu nome é Luiz, tenho 21 anos, moro no interior de São Paulo e sou tecnólogo em análise e desenvolvimento de sistemas.</p>
-        <p>Minha trajetória na programação começou em 2018 e desde então tive contato com várias linguagens de programação, como Java, C, Python, PHP, mas logo me identifiquei com o desenvolvimento web, especificamente pelo front-end.</p>
-        <p>Comecei estudando HTML, CSS e Javascript, passando por jQuery e Bootstrap até chegar em React e Next.js onde a cada dia estou buscando aprimorar meus conhecimentos.</p>
+        <p>Olá, meu nome é Luiz, tenho 21 anos, moro em Ourinhos - SP, sou formado em análise e desenvolvimento de sistemas (2018 - 2020) e sou desenvolvedor web front-end.</p>
+        <p>Minha trajetória na programação começou em 2018 e desde então eu tive contato com várias linguagens de programação, como por exemplo C, PHP, Java e Javascript.</p>
+        <p>Como não possuo experiência profissional na área, estou sempre colocando em prática meus conhecimentos em projetos pessoais.</p>
+        <p>Desenvolvi esse portfólio com o objetivo de expor esses projetos pessoais e demonstrar minhas habilidades para que as empresas vejam que sou um profissional capacitado.</p>
       </div>
     </div>
   );

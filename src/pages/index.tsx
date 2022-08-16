@@ -27,11 +27,11 @@ export default function Home({ projects, technologies, curriculum }: Props) {
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const { data: projects } = await client.query<GetLatestProjectsResponse>({
-    query: GET_LATEST_PROJECTS_QUERY
+    query: GET_LATEST_PROJECTS_QUERY,
   });
 
   const { data: technologies } = await client.query<GetTechnologiesResponse>({
-    query: GET_TECHNOLOGIES_QUERY
+    query: GET_TECHNOLOGIES_QUERY,
   });
 
   const { data: curriculum } = await client.query<GetCurriculumResponse>({

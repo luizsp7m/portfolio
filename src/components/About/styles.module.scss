@@ -11,10 +11,14 @@
 }
 
 .description {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+
   p {
     font-size: 1.55rem;
     line-height: 3.2rem;
-    color: var(--text-primary);
+    color: var(--text-secondary);
   }
 }
 
