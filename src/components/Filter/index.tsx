@@ -14,11 +14,11 @@ interface Props {
 export function Filter({ technologies }: Props) {
   const [openDropdown, setOpenDropdown] = useState(false);
 
-  const router = useRouter();
+  const { asPath } = useRouter();
 
   useEffect(() => {
     setOpenDropdown(false);
-  }, [router.asPath]);
+  }, [asPath]);
 
   return (
     <div className={styles.container}>
