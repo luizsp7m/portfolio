@@ -3,7 +3,7 @@ import styles from "./styles.module.scss";
 import Link from "next/link";
 
 import { Technology } from "../../types";
-import { BsFilterRight } from "react-icons/bs";
+import { BsFilterRight, BsX } from "react-icons/bs";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
@@ -12,45 +12,55 @@ interface Props {
 }
 
 export function Filter({ technologies }: Props) {
-  const [openDropdown, setOpenDropdown] = useState(false);
+  const [openSidebar, setOpenSidebar] = useState(false);
 
   const { asPath } = useRouter();
 
+  if (typeof window !== "undefined") { // ==> client side
+    document.body.style.overflow = openSidebar ? "hidden" : "auto";
+  }
+
+  function isCurrentTechnology(slug: string) {
+    return asPath.split("/")[2] === slug;
+  }
+
   useEffect(() => {
-    setOpenDropdown(false);
+    setOpenSidebar(false);
   }, [asPath]);
 
   return (
     <div className={styles.container}>
-      <button type="button" className={`${openDropdown && styles.actived}`} onClick={() => setOpenDropdown(!openDropdown)}>
+      <button type="button" className={styles.button} onClick={() => setOpenSidebar(true)}>
         <BsFilterRight size={20} />
       </button>
 
-      <div className={`${styles.select} ${openDropdown && styles.open}`}>
-        {technologies.map(technology => (
-          <Link key={technology.id} href={`/projetos/${technology.slug}/page/1`}>
-            <a>
-              <img
-                src={technology.logo.url}
-                alt={technology.name}
-              />
+      <div className={`${styles.sidebar} ${openSidebar && styles.open}`}>
+        <div className={styles.sidebarHeader}>
+          <button type="button" className={styles.button} onClick={() => setOpenSidebar(false)}>
+            <BsX size={20} />
+          </button>
+        </div>
 
-              <span>{technology.name}</span>
+        <div className={styles.sidebarBody}>
+          {technologies.map(technology => (
+            <Link key={technology.id} href={`/projetos/${technology.slug}/page/1`}>
+              <a className={`${styles.sidebarItem} ${isCurrentTechnology(technology.slug) && styles.actived}`}>
+                <img src={technology.logo.url} alt={technology.name} />
+                <span>{technology.name}</span>
+              </a>
+            </Link>
+          ))}
+
+          <Link href={`/projetos/page/1`}>
+            <a className={styles.sidebarItem}>
+              <img src="/assets/list.svg" alt="Icon" />
+              <span>Todos os projetos</span>
             </a>
           </Link>
-        ))}
-
-        <Link href={`/projetos/page/1`}>
-          <a>
-            <img
-              src="/assets/list.svg"
-              alt="Icon"
-            />
-
-            <span>Todos os projetos</span>
-          </a>
-        </Link>
+        </div>
       </div>
+
+      {openSidebar && <div onClick={() => setOpenSidebar(false)} className={styles.background} />}
     </div>
   );
 }
