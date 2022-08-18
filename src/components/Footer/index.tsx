@@ -21,15 +21,15 @@ export function Footer({ currentPage }: Props) {
             <a>Início</a>
           </Link>
 
-          <Link href="/#about">
+          <Link href="/#sobre-mim">
             <a>Sobre mim</a>
           </Link>
 
-          <Link href="/#projects">
+          <Link href="/#projetos">
             <a>Projetos</a>
           </Link>
 
-          <Link href="/#technologies">
+          <Link href="/#tecnologias">
             <a>Tecnologias</a>
           </Link>
         </nav>

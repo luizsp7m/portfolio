@@ -9,7 +9,7 @@ interface Props {
 
 export function TechnologyList({ technologies }: Props) {
   return (
-    <div id="technologies" className={styles.container}>
+    <div id="tecnologias" className={styles.container}>
       <div className={styles.row}>
         <h1>Tecnologias</h1>
         <p>Principais tecnologias que eu tenho conhecimento e uso no dia a dia no desenvolvimento de aplicações</p>

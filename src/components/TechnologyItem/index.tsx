@@ -10,7 +10,7 @@ interface Props {
 
 export function TechnologyItem({ technology }: Props) {
   return (
-    <Link href={`/projetos/${technology.slug}/page/1`}>
+    <Link href={`/projetos/${technology.slug}/1`}>
       <a className={styles.container}>
         <img
           src={technology.logo.url}

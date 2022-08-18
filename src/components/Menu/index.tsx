@@ -11,15 +11,15 @@ export function Menu() {
           <BiHomeAlt size={20} />
         </a>
 
-        <a href="#about">
+        <a href="#sobre-mim">
           <BiUser size={20} />
         </a>
 
-        <a href="#projects">
+        <a href="#projetos">
           <BiFolder size={20} />
         </a>
 
-        <a href="#technologies">
+        <a href="#tecnologias">
           <ImStack size={20} />
         </a>
       </div>

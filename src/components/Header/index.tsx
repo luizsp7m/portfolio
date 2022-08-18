@@ -18,7 +18,7 @@ export function Header({ currentPage }: Props) {
               <a className={styles.logo}>Luiz Oliveira</a>
             </Link>
 
-            <Link href="/projetos/page/1">
+            <Link href="/projetos/1">
               <a>Projetos <FiArrowRight size={16} /></a>
             </Link>
           </>

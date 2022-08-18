@@ -39,7 +39,7 @@ export function ProjectCard({ project }: Props) {
 
         <div className={styles.technologies}>
           {project.technologies.map((technology, index) => index < 3 && (
-            <Link key={technology.id} href={`/projetos/${technology.slug}/page/1`}>
+            <Link key={technology.id} href={`/projetos/${technology.slug}/1`}>
               <a className={`${project.technologies.length > 3 && styles.width}`}>
                 {technology.name}
               </a>
@@ -53,7 +53,7 @@ export function ProjectCard({ project }: Props) {
               <div className={styles.popover_area}>
                 <div className={styles.popover}>
                   {project.technologies.map((technology, index) => index >= 3 && (
-                    <Link key={technology.id} href={`/projetos/${technology.slug}/page/1`}>
+                    <Link key={technology.id} href={`/projetos/${technology.slug}/1`}>
                       <a>{technology.name}</a>
                     </Link>
                   ))}

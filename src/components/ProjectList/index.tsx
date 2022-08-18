@@ -12,7 +12,7 @@ interface Props {
 
 export function ProjectList({ projects }: Props) {
   return (
-    <div id="projects" className={styles.container}>
+    <div id="projetos" className={styles.container}>
       <div className={styles.row}>
         <h1>Últimos projetos</h1>
       </div>
@@ -24,7 +24,7 @@ export function ProjectList({ projects }: Props) {
       </div>
 
       <div className={styles.row}>
-        <Link href="/projetos/page/1">
+        <Link href="/projetos/1">
           <a>Ver lista completa <FiArrowRight size={16} /></a>
         </Link>
       </div>

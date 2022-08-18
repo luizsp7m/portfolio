@@ -13,6 +13,14 @@
   transform: translateX(100%);
   transition: transform 0.25s ease-in-out;
 
+  .button {
+    background: none !important;
+
+    &:hover {
+      opacity: 0.85;
+    }
+  }
+
   overflow-y: auto;
 
   &::-webkit-scrollbar {

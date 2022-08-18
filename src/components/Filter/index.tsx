@@ -43,7 +43,7 @@ export function Filter({ technologies }: Props) {
 
         <div className={styles.sidebarBody}>
           {technologies.map(technology => (
-            <Link key={technology.id} href={`/projetos/${technology.slug}/page/1`}>
+            <Link key={technology.id} href={`/projetos/${technology.slug}/1`}>
               <a className={`${styles.sidebarItem} ${isCurrentTechnology(technology.slug) && styles.actived}`}>
                 <img src={technology.logo.url} alt={technology.name} />
                 <span>{technology.name}</span>
@@ -51,7 +51,7 @@ export function Filter({ technologies }: Props) {
             </Link>
           ))}
 
-          <Link href={`/projetos/page/1`}>
+          <Link href={`/projetos/1`}>
             <a className={styles.sidebarItem}>
               <img src="/assets/list.svg" alt="Icon" />
               <span>Todos os projetos</span>
