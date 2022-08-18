@@ -4,13 +4,13 @@
   justify-content: center;
   align-items: center;
   gap: 3.2rem;
-
-  height: calc(100vh - 34.8rem);
+  padding-top: 8.1rem;
+  height: calc(100vh - 26.7rem);
 
   h1 {
     color: var(--text-secondary);
     font-weight: 400;
-    font-size: 1.50rem;
+    font-size: 1.5rem;
     text-align: center;
   }
 }
@@ -25,6 +25,6 @@
 
 @media (max-width: 365px) {
   .container {
-    height: calc(100vh - 367.97px);
+    height: calc(100vh - 302.97px);
   }
 }
