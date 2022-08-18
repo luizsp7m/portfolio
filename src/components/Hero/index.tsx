@@ -49,7 +49,7 @@ export function Hero({ curriculum }: Props) {
       </div>
 
       <div className={styles.scroll}>
-        <Link href="#about">
+        <Link href="#sobre-mim">
           <a>
             Scroll down
           </a>
