@@ -107,7 +107,7 @@ async function getPathsWithTechnology() {
 
   const paths = [];
 
-  pages.map(page => {
+  pages.forEach(page => {
     for (let index = 1; index <= page.numberPages; index++) {
       paths.push({
         params: {
@@ -122,8 +122,6 @@ async function getPathsWithTechnology() {
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const paths = [...await getPathsWithoutTechnology(), ...await getPathsWithTechnology()];
-
-  getPathsWithTechnology();
 
   return {
     paths,
