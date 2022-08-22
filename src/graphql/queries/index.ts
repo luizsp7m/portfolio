@@ -89,3 +89,11 @@ export const GET_CURRICULUM_QUERY = gql`
     }
   }
 `;
+
+export const GET_ABOUT_QUERY = gql`
+  query MyQuery {
+    about {
+      description(markdown: true)
+    }
+  }
+`;

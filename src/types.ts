@@ -25,6 +25,10 @@ export type Curriculum = {
   }
 }
 
+export type About = {
+  description: string;
+}
+
 export type GetLatestProjectsResponse = {
   allProjects: Array<Project>;
 }
@@ -49,4 +53,8 @@ export type GetProjectsResponse = {
 
 export type GetCurriculumResponse = {
   curriculum: Curriculum;
+}
+
+export type GetAboutResponse = {
+  about: About;
 }
