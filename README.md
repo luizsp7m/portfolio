@@ -13,4 +13,4 @@ Para a página de projetos foram utilizadas as funções <b><i>getStaticProps</i
 - TypeScript
 - SASS
 - DatoCMS
-- AOS
+- GraphQL
