@@ -1,0 +1,30 @@
+.button {
+  position: fixed;
+  right: 2rem;
+  bottom: 2rem;
+
+  height: 4.8rem;
+  width: 4.8rem;
+  font-size: 0;
+  border: 0;
+  border-radius: 50%;
+  cursor: pointer;
+
+  background: var(--background-secondary);
+  color: var(--primary-color);
+  transition: 0.25s ease-in-out;
+
+  svg {
+    width: 2rem;
+    height: auto;
+  }
+
+  &:hover {
+    background: var(--primary-color);
+    color: var(--text-primary);
+  }
+
+  @media (max-width: 1180px) {
+    display: none;
+  }
+}

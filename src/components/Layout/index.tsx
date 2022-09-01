@@ -6,6 +6,7 @@ import { ReactNode } from "react";
 import { Footer } from "../Footer";
 import { Header } from "../Header";
 import { Menu } from "../Menu";
+import { ButtonToTop } from "../ButtonToTop";
 
 interface Props {
   title: string;
@@ -27,6 +28,8 @@ export function Layout({ title, children, currentPage }: Props) {
       </div>
 
       <Footer currentPage={currentPage} />
+
+      <ButtonToTop />
 
       {currentPage === "home" && <Menu />}
     </div>
