@@ -51,11 +51,25 @@
 }
 
 .technologiesContainer {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
-  gap: 1.2rem;
-  align-content: flex-start;
-  min-height: 324px;
+  // display: grid;
+  // grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  // gap: 1.2rem;
+  // align-content: flex-start;
+  
+  overflow-y: auto;
+  height: 214px;
+
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: 0;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.1);
+  }
 }
 
 .technologyItem {
