@@ -1,13 +1,11 @@
 import styles from "./styles.module.scss";
-
 import Link from "next/link";
 import Modal from "react-modal";
 
 import { Technology } from "../../types";
-import { BsFilterRight, BsX, BsSearch } from "react-icons/bs";
-import { Fragment, useEffect, useState } from "react";
+import { BsFilterRight, BsSearch } from "react-icons/bs";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import { TechnologyItem } from "../TechnologyItem";
 
 interface Props {
   technologies: Array<Technology>;
@@ -35,11 +33,11 @@ const customStyles = {
 };
 
 export function Filter({ technologies }: Props) {
-  const [menuIsOpen, setMenuIsOpen] = useState(false);
+  const [menuIsOpen, setMenuIsOpen] = useState(true);
   const [searchValue, setSearchValue] = useState("");
 
   const technologiesFiltered = technologies.filter(technology => {
-    return technology.name.toLowerCase().includes(searchValue);
+    return technology.name.toLowerCase().includes(searchValue.toLowerCase());
   })
 
   const { asPath } = useRouter();
@@ -56,9 +54,9 @@ export function Filter({ technologies }: Props) {
     document.body.style.overflow = menuIsOpen ? "hidden" : "auto";
   }
 
-  useEffect(() => {
-    setMenuIsOpen(false);
-  }, [asPath]);
+  // useEffect(() => {
+  //   setMenuIsOpen(false);
+  // }, [asPath]);
 
   return (
     <div>
@@ -83,22 +81,20 @@ export function Filter({ technologies }: Props) {
             />
           </div>
 
-          {technologiesFiltered.length > 0 ? (
-            <div className={styles.technologiesContainer}>
-              {technologiesFiltered.map(technology => (
+          <div className={`${styles.technologiesContainer} ${technologiesFiltered.length === 0 && styles.noResults}`}>
+            {technologiesFiltered.length > 0 ? (
+              technologiesFiltered.map(technology => (
                 <Link key={technology.id} href={`/projetos/${technology.slug}/1`}>
                   <a className={styles.technologyItem}>
                     <img src={technology.logo.url} alt="" />
                     <span>{technology.name}</span>
                   </a>
                 </Link>
-              ))}
-            </div>
-          ) : (
-            <div className={styles.noResults}>
+              ))
+            ) : (
               <span>Nenhuma tecnologia encontrada</span>
-            </div>
-          )}
+            )}
+          </div>
         </div>
       </Modal>
     </div>

@@ -23,17 +23,6 @@
   gap: 2.4rem;
 }
 
-.noResults {
-  display: flex;
-  justify-content: center;
-
-  span {
-    font-size: 1.35rem;
-    color: var(--text-secondary);
-    opacity: 0.5;
-  }
-}
-
 .searchBar {
   flex: 1;
   display: flex;
@@ -41,10 +30,10 @@
   gap: 1.6rem;
   padding: 0 1.6rem;
   background: rgba(0, 0, 0, 0.1);
-  border-radius: 0.4rem;
 
-  // border-bottom: 2px solid var(--primary-color);
-  // border-top: 2px solid transparent;
+  border-radius: 0.4rem 0.4rem 0 0;
+  border-bottom: 2px solid var(--primary-color);
+  border-top: 2px solid transparent;
 
   svg {
     font-size: 1.45rem;
@@ -65,10 +54,12 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
   gap: 1.2rem;
+  align-content: flex-start;
+  min-height: 324px;
 }
 
 .technologyItem {
-  //  background: rgba(0, 0, 0, 0.1);
+  // background: rgba(0, 0, 0, 0.1);
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -100,5 +91,16 @@
     span {
       text-decoration: underline;
     }
+  }
+}
+
+.noResults {
+  display: flex;
+  justify-content: center;
+
+  span {
+    font-size: 1.35rem;
+    color: var(--text-secondary);
+    opacity: 0.5;
   }
 }
