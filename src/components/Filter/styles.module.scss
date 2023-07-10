@@ -45,8 +45,14 @@
     background: 0;
     border: 0;
     outline: 0;
-    height: 4.4rem;
+    height: 44px;
     color: var(--text-secondary);
+  }
+
+  @media (max-width: 475px) {
+    input {
+      height: 40px;
+    }
   }
 }
 
@@ -55,7 +61,7 @@
   // grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
   // gap: 1.2rem;
   // align-content: flex-start;
-  
+
   overflow-y: auto;
   height: 214px;
 
