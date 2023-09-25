@@ -75,7 +75,8 @@
     align-items: center;
     gap: 0.6rem;
     font-size: 1.4rem;
-    margin-bottom: 2rem;
+    // margin-bottom: 2rem;
+    margin: 1.2rem 0 1.6rem 0;
     text-decoration: none;
     color: var(--primary-color);
     transition: color 0.25s ease-in-out;
@@ -87,6 +88,7 @@
 
     &:hover {
       color: var(--primary-color-hover);
+      text-decoration: underline;
 
       svg {
         transform: translateX(2px);

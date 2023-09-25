@@ -32,9 +32,14 @@ export function ProjectCard({ project }: Props) {
 
       <div className={styles.project_body}>
         <h5>{project.title}</h5>
-        <p>{project.description}</p>
+
+        {/* <p>{project.description}</p> */}
+
         <Link href={project.repository}>
-          <a target="_blank">Ver repositório <FiArrowRight size={16} /></a>
+          <a target="_blank">
+            Ver repositório
+            {/* <FiArrowRight size={16} /> */}
+          </a>
         </Link>
 
         <div className={styles.technologies}>
