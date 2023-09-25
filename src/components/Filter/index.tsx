@@ -34,7 +34,7 @@ const customStyles = {
 };
 
 export function Filter({ technologies }: Props) {
-  const [menuIsOpen, setMenuIsOpen] = useState(true);
+  const [menuIsOpen, setMenuIsOpen] = useState(false);
   const [searchValue, setSearchValue] = useState("");
 
   const technologiesFiltered = technologies.filter(technology => {
@@ -55,9 +55,9 @@ export function Filter({ technologies }: Props) {
     document.body.style.overflow = menuIsOpen ? "hidden" : "auto";
   }
 
-  // useEffect(() => {
-  //   setMenuIsOpen(false);
-  // }, [asPath]);
+  useEffect(() => {
+    setMenuIsOpen(false);
+  }, [asPath]);
 
   return (
     <div>
