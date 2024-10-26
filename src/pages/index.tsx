@@ -15,7 +15,12 @@ interface Props {
   about: About;
 }
 
-export default function Home({ projects, technologies, curriculum, about }: Props) {
+export default function Home({ 
+  projects,
+   technologies,
+    curriculum, 
+    about 
+  }: Props) {
   return (
     <Layout title="Luiz Oliveira - Portfólio" currentPage="home">
       <Hero curriculum={curriculum} />
@@ -42,6 +47,8 @@ export const getServerSideProps: GetServerSideProps = async () => {
   const { data: about } = await client.query<GetAboutResponse>({
     query: GET_ABOUT_QUERY
   });
+
+  console.log(curriculum)
 
   return {
     props: {
