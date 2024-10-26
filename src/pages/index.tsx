@@ -48,8 +48,6 @@ export const getServerSideProps: GetServerSideProps = async () => {
     query: GET_ABOUT_QUERY
   });
 
-  console.log(curriculum)
-
   return {
     props: {
       projects: projects.allProjects,
