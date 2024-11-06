@@ -29,3 +29,15 @@
     white-space: nowrap;
   }
 }
+
+.light-theme {
+  span {
+    transition: color 0.25s ease-in-out;
+  }
+
+  &:hover {
+    span {
+      color: var(--text-white);
+    }
+  }
+}

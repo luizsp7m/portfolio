@@ -4,11 +4,26 @@ import Link from "next/link";
 
 import { GetStaticPaths, GetStaticProps } from "next";
 import { Layout } from "../../components/Layout";
-import { COUNT_PROJECTS_QUERY, GET_PROJECTS_QUERY, GET_TECHNOLOGIES_QUERY, GET_TECHNOLOGY_QUERY } from "../../graphql/queries";
+
+import {
+  COUNT_PROJECTS_QUERY,
+  GET_PROJECTS_QUERY,
+  GET_TECHNOLOGIES_QUERY,
+  GET_TECHNOLOGY_QUERY,
+} from "../../graphql/queries";
+
+import {
+  CountProjectsResponse,
+  GetProjectsResponse,
+  GetTechnologiesResponse,
+  GetTechnologyResponse,
+  Project,
+  Technology,
+} from "../../types";
+
 import { client } from "../../services/apollo";
-import { CountProjectsResponse, GetProjectsResponse, GetTechnologiesResponse, GetTechnologyResponse, Project, Technology } from "../../types";
 import { Filter } from "../../components/Filter";
-import { ProjectCard } from "../../components/ProjectCard";
+import { ProjectCard } from "../../components/ProjectList/components/ProjectCard";
 
 const ITEMS_PER_PAGE = 9;
 
@@ -20,8 +35,16 @@ interface Props {
   currentPage: number;
 }
 
-export default function Page({ projects, technologies, technology, numberPages, currentPage }: Props) {
-  const title = technology ? `Projetos com ${technology.name} - Página ${currentPage}` : `Projetos - Página ${currentPage}`;
+export default function Page({
+  projects,
+  technologies,
+  technology,
+  numberPages,
+  currentPage,
+}: Props) {
+  const title = technology
+    ? `Projetos com ${technology.name} - Página ${currentPage}`
+    : `Projetos - Página ${currentPage}`;
 
   return (
     <Layout title={title} currentPage="projects">
@@ -33,36 +56,59 @@ export default function Page({ projects, technologies, technology, numberPages, 
           </div>
 
           {technology ? (
-            <p>Lista de todos os projetos que foram desenvolvidos com {technology.name}</p>
+            <p>
+              Lista de todos os projetos que foram desenvolvidos com{" "}
+              {technology.name}
+            </p>
           ) : (
-            <p>Lista de todos os projetos que foram desenvolvidos durante minha trajetória como desenvolvedor</p>
+            <p>
+              Lista de todos os projetos que foram desenvolvidos durante minha
+              trajetória como desenvolvedor
+            </p>
           )}
 
-          { numberPages > 0 ? (
-            <span>Página {currentPage} de {numberPages}</span>
+          {numberPages > 0 ? (
+            <span>
+              Página {currentPage} de {numberPages}
+            </span>
           ) : (
             <span>Nenhum projeto encontrado</span>
-          ) }
+          )}
         </div>
 
         <div className={styles.projects}>
-          {projects.map(project => (
+          {projects.map((project) => (
             <ProjectCard key={project.id} project={project} />
           ))}
         </div>
 
         <div className={styles.pagination}>
-          {Array.from(Array(numberPages), (item, index) => (
+          {Array.from(Array(numberPages), (item, index) =>
             technology ? (
-              <Link key={index} href={`/projetos/${technology.slug}/${index + 1}`}>
-                <a className={`${styles.pagination_item} ${index + 1 == currentPage && styles.selected}`}>{index + 1}</a>
+              <Link
+                key={index}
+                href={`/projetos/${technology.slug}/${index + 1}`}
+              >
+                <a
+                  className={`${styles.pagination_item} ${
+                    index + 1 == currentPage && styles.selected
+                  }`}
+                >
+                  {index + 1}
+                </a>
               </Link>
             ) : (
               <Link key={index} href={`/projetos/${index + 1}`}>
-                <a className={`${styles.pagination_item} ${index + 1 == currentPage && styles.selected}`}>{index + 1}</a>
+                <a
+                  className={`${styles.pagination_item} ${
+                    index + 1 == currentPage && styles.selected
+                  }`}
+                >
+                  {index + 1}
+                </a>
               </Link>
             )
-          ))}
+          )}
         </div>
       </div>
     </Layout>
@@ -70,7 +116,11 @@ export default function Page({ projects, technologies, technology, numberPages, 
 }
 
 async function getPathsWithoutTechnology() {
-  const { data: { _allProjectsMeta: { count } } } = await client.query<CountProjectsResponse>({
+  const {
+    data: {
+      _allProjectsMeta: { count },
+    },
+  } = await client.query<CountProjectsResponse>({
     query: COUNT_PROJECTS_QUERY,
   });
 
@@ -79,9 +129,9 @@ async function getPathsWithoutTechnology() {
   const paths = Array.from(Array(numberPages)).map((item, index) => {
     return {
       params: {
-        page: [String(index + 1)]
-      }
-    }
+        page: [String(index + 1)],
+      },
+    };
   });
 
   return paths;
@@ -89,30 +139,36 @@ async function getPathsWithoutTechnology() {
 
 async function getPathsWithTechnology() {
   const { data: technologies } = await client.query<GetTechnologiesResponse>({
-    query: GET_TECHNOLOGIES_QUERY
+    query: GET_TECHNOLOGIES_QUERY,
   });
 
-  const pages = await Promise.all(technologies.allTechnologies.map(async technology => {
-    const { data: { _allProjectsMeta: { count } } } = await client.query<CountProjectsResponse>({
-      query: COUNT_PROJECTS_QUERY,
-      variables: {
-        allIn: technology.id,
-      }
-    });
+  const pages = await Promise.all(
+    technologies.allTechnologies.map(async (technology) => {
+      const {
+        data: {
+          _allProjectsMeta: { count },
+        },
+      } = await client.query<CountProjectsResponse>({
+        query: COUNT_PROJECTS_QUERY,
+        variables: {
+          allIn: technology.id,
+        },
+      });
 
-    const numberPages = count === 0 ? 1 : Math.ceil(count / ITEMS_PER_PAGE);
+      const numberPages = count === 0 ? 1 : Math.ceil(count / ITEMS_PER_PAGE);
 
-    return { ...technology, numberPages }
-  }));
+      return { ...technology, numberPages };
+    })
+  );
 
   const paths = [];
 
-  pages.forEach(page => {
+  pages.forEach((page) => {
     for (let index = 1; index <= page.numberPages; index++) {
       paths.push({
         params: {
-          page: [`${page.slug}`, `${index}`]
-        }
+          page: [`${page.slug}`, `${index}`],
+        },
       });
     }
   });
@@ -121,19 +177,22 @@ async function getPathsWithTechnology() {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const paths = [...await getPathsWithoutTechnology(), ...await getPathsWithTechnology()];
+  const paths = [
+    ...(await getPathsWithoutTechnology()),
+    ...(await getPathsWithTechnology()),
+  ];
 
   return {
     paths,
     fallback: false,
-  }
-}
+  };
+};
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { page } = params;
 
   const { data: technologies } = await client.query<GetTechnologiesResponse>({
-    query: GET_TECHNOLOGIES_QUERY
+    query: GET_TECHNOLOGIES_QUERY,
   });
 
   if (page.length === 1) {
@@ -149,7 +208,11 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       },
     });
 
-    const { data: { _allProjectsMeta: { count } } } = await client.query<CountProjectsResponse>({
+    const {
+      data: {
+        _allProjectsMeta: { count },
+      },
+    } = await client.query<CountProjectsResponse>({
       query: COUNT_PROJECTS_QUERY,
     });
 
@@ -161,8 +224,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         technologies: technologies.allTechnologies,
         numberPages,
         currentPage,
-      }
-    }
+      },
+    };
   }
 
   const [slug, currentPage] = page as string[];
@@ -173,7 +236,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     query: GET_TECHNOLOGY_QUERY,
     variables: {
       slug,
-    }
+    },
   });
 
   const { data: projects } = await client.query<GetProjectsResponse>({
@@ -181,15 +244,19 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     variables: {
       first: ITEMS_PER_PAGE,
       skip: startIndex,
-      allIn: technology.technology.id
+      allIn: technology.technology.id,
     },
   });
 
-  const { data: { _allProjectsMeta: { count } } } = await client.query<CountProjectsResponse>({
+  const {
+    data: {
+      _allProjectsMeta: { count },
+    },
+  } = await client.query<CountProjectsResponse>({
     query: COUNT_PROJECTS_QUERY,
     variables: {
       allIn: technology.technology.id,
-    }
+    },
   });
 
   const numberPages = Math.ceil(count / ITEMS_PER_PAGE);
@@ -201,6 +268,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       technology: technology.technology,
       numberPages,
       currentPage,
-    }
-  }
-}
+    },
+  };
+};

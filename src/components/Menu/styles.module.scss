@@ -14,7 +14,7 @@
   align-items: center;
   gap: 2.2rem;
   backdrop-filter: blur(16px);
-  background: rgba(44, 58, 71, 0.75);
+  background: var(--menu-color);
 
   a {
     height: 4rem;
@@ -24,7 +24,7 @@
     align-items: center;
     padding: 0.5rem;
     border-radius: 50%;
-    color: var(--text-primary);
+    color: var(--text-white);
     transition: 0.25s ease-in-out;
     cursor: pointer;
 

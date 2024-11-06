@@ -3,8 +3,8 @@ import styles from "./styles.module.scss";
 import Link from "next/link";
 import Image from "next/image";
 
-import { FiExternalLink, FiArrowRight } from "react-icons/fi";
-import { Project } from "../../types";
+import { FiExternalLink } from "react-icons/fi";
+import { Project } from "../../../../types";
 
 interface Props {
   project: Project;
@@ -43,25 +43,40 @@ export function ProjectCard({ project }: Props) {
         </Link>
 
         <div className={styles.technologies}>
-          {project.technologies.map((technology, index) => index < 3 && (
-            <Link key={technology.id} href={`/projetos/${technology.slug}/1`}>
-              <a className={`${project.technologies.length > 3 && styles.width}`}>
-                {technology.name}
-              </a>
-            </Link>
-          ))}
+          {project.technologies.map(
+            (technology, index) =>
+              index < 3 && (
+                <Link
+                  key={technology.id}
+                  href={`/projetos/${technology.slug}/1`}
+                >
+                  <a
+                    className={`${
+                      project.technologies.length > 3 && styles.width
+                    }`}
+                  >
+                    {technology.name}
+                  </a>
+                </Link>
+              )
+          )}
 
           {project.technologies.length > 3 && (
             <span>
               + {project.technologies.length - 3}
-
               <div className={styles.popover_area}>
                 <div className={styles.popover}>
-                  {project.technologies.map((technology, index) => index >= 3 && (
-                    <Link key={technology.id} href={`/projetos/${technology.slug}/1`}>
-                      <a>{technology.name}</a>
-                    </Link>
-                  ))}
+                  {project.technologies.map(
+                    (technology, index) =>
+                      index >= 3 && (
+                        <Link
+                          key={technology.id}
+                          href={`/projetos/${technology.slug}/1`}
+                        >
+                          <a>{technology.name}</a>
+                        </Link>
+                      )
+                  )}
                 </div>
               </div>
             </span>

@@ -41,7 +41,7 @@
     align-items: center;
     font-size: 0;
     background: var(--primary-color);
-    color: var(--text-primary);
+    color: var(--text-white);
     animation: fadeIn 0.25s ease-in-out;
     transition: background 0.25s ease-in-out;
 
@@ -75,6 +75,7 @@
     align-items: center;
     gap: 0.6rem;
     font-size: 1.4rem;
+    justify-self: flex-start;
     // margin-bottom: 2rem;
     margin: 1.2rem 0 1.6rem 0;
     text-decoration: none;
@@ -156,7 +157,7 @@
   width: 10rem;
   display: flex;
   flex-direction: column;
-  background: #252c39;
+  background: var(--popover-color);
   padding: 0.6rem 0;
   position: relative;
   transition: 0.25s ease-in-out;
@@ -169,7 +170,7 @@
     height: 1.2rem;
     width: 1.2rem;
     transform: rotate(45deg);
-    background: #252c39;
+    background: var(--popover-color);
   }
 
   a {

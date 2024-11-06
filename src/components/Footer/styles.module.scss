@@ -1,6 +1,6 @@
 .container {
   background: var(--background-primary);
-  border-top: 1px solid rgba(255, 255, 255, 0.025);
+  border-top: 1px solid var(--divider-color);
   padding: 4rem 0;
 }
 
@@ -65,11 +65,11 @@
     align-items: center;
     background: var(--background-secondary);
     color: var(--primary-color);
-    transition: 0.25s ease-in-out;
+    transition: background 0.25s ease-in-out;
 
     &:hover {
       background: var(--primary-color);
-      color: var(--text-primary);
+      color: var(--text-white);
     }
   }
 }

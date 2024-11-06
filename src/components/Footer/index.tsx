@@ -12,7 +12,12 @@ export function Footer({ currentPage }: Props) {
   const currentYear = new Date().getFullYear();
 
   return (
-    <div id="footer" className={`${styles.container} ${currentPage === "home" && styles.paddingBottom}`}>
+    <div
+      id="footer"
+      className={`${styles.container} ${
+        currentPage === "home" && styles.paddingBottom
+      }`}
+    >
       <div className={styles.main}>
         <h5>Luiz Oliveira</h5>
 

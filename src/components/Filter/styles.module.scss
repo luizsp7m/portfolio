@@ -14,6 +14,7 @@
 
   &:hover {
     background: var(--primary-color);
+    color: var(--text-white);
   }
 }
 
@@ -29,7 +30,7 @@
   align-items: center;
   gap: 1.6rem;
   padding: 0 1.6rem;
-  background: rgba(0, 0, 0, 0.1);
+  background: rgba(0, 0, 0, 0.15);
 
   border-radius: 0.4rem 0.4rem 0 0;
   border-bottom: 2px solid var(--primary-color);
@@ -56,12 +57,15 @@
   }
 }
 
-.technologiesContainer {
-  // display: grid;
-  // grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
-  // gap: 1.2rem;
-  // align-content: flex-start;
+.searchBarLight {
+  background: rgba(0, 0, 0, 0.015);
 
+  svg {
+    color: rgba(0, 0, 0, 0.15);
+  }
+}
+
+.technologiesContainer {
   overflow-y: auto;
   height: 214px;
 
@@ -79,7 +83,6 @@
 }
 
 .technologyItem {
-  // background: rgba(0, 0, 0, 0.1);
   display: flex;
   justify-content: flex-start;
   align-items: center;

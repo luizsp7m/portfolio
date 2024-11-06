@@ -2,15 +2,32 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  transition:
+    background 0.15s,
+    color 0.15s;
 }
 
 :root {
   --background-primary: #161616;
-  --background-secondary: #20242C;
-  --text-primary: #FFFFFF;
+  --background-secondary: #20242c;
+  --text-primary: #ffffff;
   --text-secondary: #d1d5db;
   --primary-color: #6d79ff;
   --primary-color-hover: #7d88ff;
+  --text-white: #fff;
+  --divider-color: rgba(255, 255, 255, 0.025);
+  --menu-color: rgba(44, 58, 71, 0.75);
+  --popover-color: #252c39;
+}
+
+.light-theme {
+  --background-primary: #fafafa;
+  --background-secondary: #fff;
+  --text-primary: #1f2937;
+  --text-secondary: #4b5563;
+  --divider-color: rgba(0, 0, 0, 0.035);
+  --menu-color: rgba(44, 58, 71, 0.45);
+  --popover-color: #f5f5f5;
 }
 
 html {

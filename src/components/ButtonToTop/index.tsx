@@ -11,7 +11,11 @@ export function ButtonToTop() {
   }
 
   return (
-    <button type="button" className={styles.button} onClick={() => scrollToTop()}>
+    <button
+      type="button"
+      className={styles.button}
+      onClick={() => scrollToTop()}
+    >
       <RiArrowUpLine />
     </button>
   );

@@ -23,9 +23,7 @@ export function Layout({ title, children, currentPage }: Props) {
 
       <Header currentPage={currentPage} />
 
-      <div className={styles.main}>
-        {children}
-      </div>
+      <div className={styles.main}>{children}</div>
 
       <Footer currentPage={currentPage} />
 

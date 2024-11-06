@@ -14,10 +14,7 @@ export function Hero({ curriculum }: Props) {
     <div id="home" className={styles.container}>
       <div className={styles.presentation}>
         <div className={styles.image}>
-          <img
-            src="https://github.com/luizsp7m.png"
-            alt="Luiz Oliveira"
-          />
+          <img src="https://github.com/luizsp7m.png" alt="Luiz Oliveira" />
         </div>
 
         <h1>Luiz Oliveira</h1>
@@ -50,9 +47,7 @@ export function Hero({ curriculum }: Props) {
 
       <div className={styles.scroll}>
         <Link href="#sobre-mim">
-          <a>
-            Scroll down
-          </a>
+          <a>Scroll down</a>
         </Link>
       </div>
     </div>
