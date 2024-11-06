@@ -20,16 +20,15 @@
     font-weight: 500;
     text-decoration: none;
     color: var(--primary-color);
-    transition: color 0.25s ease-in-out;
     cursor: pointer;
-  
+
     svg {
       transition: transform 0.25s ease-in-out;
     }
-  
+
     &:hover {
       color: var(--primary-color-hover);
-  
+
       svg {
         transform: translateX(2px);
       }

@@ -60,10 +60,6 @@
   text-decoration: none;
   cursor: pointer;
 
-  transition:
-    background 0.25s ease-in-out,
-    color 0.25s ease-in-out;
-
   &:hover {
     background: var(--primary-color);
     color: var(--text-white);

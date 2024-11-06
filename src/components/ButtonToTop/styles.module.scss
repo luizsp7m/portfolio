@@ -11,18 +11,19 @@
   cursor: pointer;
 
   background: var(--background-secondary);
-  color: var(--primary-color);
-  transition: background 0.25s ease-in-out;
 
   svg {
     width: 2rem;
     height: auto;
-    transition: none;
+    color: var(--primary-color);
   }
 
   &:hover {
     background: var(--primary-color);
-    color: var(--text-white);
+
+    svg {
+      color: var(--text-white);
+    }
   }
 
   @media (max-width: 1180px) {

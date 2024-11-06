@@ -4,12 +4,12 @@
   align-items: center;
   border: 0;
   outline: 0;
+  font-size: 0;
   height: 4rem;
   width: 4rem;
   border-radius: 0.25rem;
   background: var(--background-secondary);
   color: var(--text-primary);
-  transition: background 0.25s ease-in-out;
   cursor: pointer;
 
   &:hover {
@@ -93,8 +93,6 @@
 
   border-radius: 4px;
   cursor: pointer;
-
-  transition: background 0.15s;
 
   img {
     width: 1.75rem;

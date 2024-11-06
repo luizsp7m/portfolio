@@ -43,7 +43,6 @@
     background: var(--primary-color);
     color: var(--text-white);
     animation: fadeIn 0.25s ease-in-out;
-    transition: background 0.25s ease-in-out;
 
     &:hover {
       background: var(--primary-color-hover);
@@ -76,11 +75,9 @@
     gap: 0.6rem;
     font-size: 1.4rem;
     justify-self: flex-start;
-    // margin-bottom: 2rem;
     margin: 1.2rem 0 1.6rem 0;
     text-decoration: none;
     color: var(--primary-color);
-    transition: color 0.25s ease-in-out;
     cursor: pointer;
 
     svg {
@@ -111,7 +108,6 @@
     text-decoration: none;
     color: var(--text-primary);
     background: rgba(0, 0, 0, 0.1);
-    transition: background 0.25s ease-in-out;
 
     position: relative; // para o popover_area
 

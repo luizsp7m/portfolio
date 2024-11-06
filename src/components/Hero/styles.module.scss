@@ -38,7 +38,6 @@
     margin-top: 0.8rem;
     color: var(--text-white);
     background: var(--primary-color);
-    transition: background 0.25s ease-in-out;
     cursor: pointer;
 
     text-decoration: none;
@@ -101,7 +100,6 @@
     align-items: center;
     background: var(--background-secondary);
     color: var(--primary-color);
-    transition: background 0.25s ease-in-out;
 
     &:hover {
       background: var(--primary-color);
@@ -124,7 +122,6 @@
     border-radius: 0.25rem;
     color: var(--primary-color);
     font-weight: 500;
-    transition: color 0.25s ease-in-out;
 
     &:hover {
       color: var(--primary-color-hover);

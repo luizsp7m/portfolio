@@ -25,7 +25,6 @@
     font-weight: 600;
     text-decoration: none;
     color: var(--primary-color);
-    transition: color 0.25s ease-in-out;
   }
 
   nav {
@@ -34,7 +33,6 @@
       text-decoration: none;
       color: var(--text-secondary);
       margin: 0 1.6rem;
-      transition: color 0.25s ease-in-out;
 
       &:hover {
         color: var(--primary-color);
@@ -65,7 +63,6 @@
     align-items: center;
     background: var(--background-secondary);
     color: var(--primary-color);
-    transition: background 0.25s ease-in-out;
 
     &:hover {
       background: var(--primary-color);
