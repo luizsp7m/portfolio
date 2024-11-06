@@ -5,12 +5,11 @@
   position: relative;
   border-radius: 0.25rem;
   overflow: hidden;
-  cursor: pointer;
 
   &:hover {
-    .project_image {
+    .project-image {
       img {
-        opacity: 0.7;
+        opacity: 0.75;
       }
 
       a {
@@ -20,13 +19,9 @@
   }
 }
 
-.project_image {
+.project-image {
   position: relative;
-  height: 22.5rem; // Next Image
-
-  img {
-    transition: opacity 0.25s ease-in-out;
-  }
+  height: 22.5rem;
 
   a {
     position: absolute;
@@ -42,7 +37,7 @@
     font-size: 0;
     background: var(--primary-color);
     color: var(--text-white);
-    animation: fadeIn 0.25s ease-in-out;
+    animation: fadeIn 0.2s ease;
 
     &:hover {
       background: var(--primary-color-hover);
@@ -50,8 +45,10 @@
   }
 }
 
-.project_body {
+.project-body {
   padding: 2.2rem;
+  display: flex;
+  flex-direction: column;
 
   h5 {
     font-size: 1.6rem;
@@ -61,67 +58,46 @@
     white-space: nowrap;
   }
 
-  p {
-    font-size: 1.4rem;
-    margin: 2rem 0 3rem 0;
-    line-height: 2.45rem;
-    letter-spacing: 0.025rem;
-    color: var(--text-secondary);
-  }
-
   > a {
     display: flex;
-    align-items: center;
-    gap: 0.6rem;
+    align-self: flex-start;
     font-size: 1.4rem;
-    justify-self: flex-start;
     margin: 1.2rem 0 1.6rem 0;
     text-decoration: none;
     color: var(--primary-color);
     cursor: pointer;
 
-    svg {
-      transition: transform 0.25s ease-in-out;
-    }
-
     &:hover {
       color: var(--primary-color-hover);
-      text-decoration: underline;
-
-      svg {
-        transform: translateX(2px);
-      }
     }
   }
 }
 
 .technologies {
   display: flex;
+  flex-wrap: wrap;
   gap: 0.6rem;
 
   > a,
   span {
-    padding: 0.5rem 1rem;
-    border-radius: 0.25rem;
+    padding: 0.6rem 1rem;
+    border-radius: 4px;
     font-size: 1.15rem;
-    font-weight: 500;
+    font-weight: 400;
     text-decoration: none;
     color: var(--text-primary);
-    background: rgba(0, 0, 0, 0.1);
-
-    position: relative; // para o popover_area
+    background: var(--background-tertiary);
+    cursor: pointer;
+    position: relative;
 
     &:hover {
-      background: rgba(0, 0, 0, 0.2);
       text-decoration: underline;
     }
   }
 
   span {
-    text-decoration: none;
-
     &:hover {
-      .popover_area {
+      .popover-overlay {
         visibility: visible;
         opacity: 1;
         padding-bottom: 1.2rem;
@@ -137,26 +113,26 @@
   }
 }
 
-.popover_area {
+.popover-overlay {
   position: absolute;
   right: 0;
   bottom: 2.7rem;
   padding-bottom: 0.6rem;
+  transition: 0.2s ease;
   visibility: hidden;
   opacity: 0;
-  transition: 0.25s ease-in-out;
 }
 
 .popover {
-  border-radius: 0.25rem;
-  gap: 0.6rem;
-  width: 10rem;
   display: flex;
   flex-direction: column;
-  background: var(--popover-color);
+  border-radius: 4px;
+  gap: 4px;
+  width: 128px;
+  background: var(--background-tertiary);
   padding: 0.6rem 0;
   position: relative;
-  transition: 0.25s ease-in-out;
+  transition: 0.2s ease;
 
   &::before {
     content: "";
@@ -166,14 +142,13 @@
     height: 1.2rem;
     width: 1.2rem;
     transform: rotate(45deg);
-    background: var(--popover-color);
+    background: var(--background-tertiary);
   }
 
   a {
     padding: 0.5rem 1rem;
-    border-radius: 0.25rem;
     font-size: 1.15rem;
-    font-weight: 500;
+    font-weight: 400;
     text-decoration: none;
     color: var(--text-primary);
     text-align: center;
@@ -181,6 +156,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    text-align: center;
 
     &:hover {
       text-decoration: underline;

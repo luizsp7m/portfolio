@@ -4,6 +4,7 @@ import Link from "next/link";
 
 import { FiArrowRight, FiArrowLeft } from "react-icons/fi";
 import { useTheme } from "../../hooks/useTheme";
+import { SwitchThemeButton } from "./components/SwitchThemeButton";
 
 interface Props {
   currentPage: "home" | "projects" | "404";
@@ -28,15 +29,7 @@ export function Header({ currentPage }: Props) {
                 gap: 8,
               }}
             >
-              <button
-                onClick={handleToggleLightTheme}
-                style={{
-                  width: 100,
-                  height: 38,
-                }}
-              >
-                {isLightTheme ? "Dark Theme" : "Light Theme"}
-              </button>
+              <SwitchThemeButton />
 
               <Link href="/projetos/1">
                 <a>
@@ -52,16 +45,6 @@ export function Header({ currentPage }: Props) {
                 <FiArrowLeft size={16} /> Voltar
               </a>
             </Link>
-
-            <button
-              onClick={handleToggleLightTheme}
-              style={{
-                width: 100,
-                height: 38,
-              }}
-            >
-              {isLightTheme ? "Dark Theme" : "Light Theme"}
-            </button>
           </div>
         )}
       </div>

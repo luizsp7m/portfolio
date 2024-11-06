@@ -1,0 +1,19 @@
+.button-container {
+  outline: 0;
+  background: 0;
+  border: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 32px;
+  width: 32px;
+  border-radius: 100%;
+  cursor: pointer;
+
+  background: var(--primary-color);
+  color: var(--text-white);
+
+  &:hover {
+    background: var(--primary-color-hover);
+  }
+}

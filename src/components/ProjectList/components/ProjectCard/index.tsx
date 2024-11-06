@@ -2,8 +2,9 @@ import styles from "./styles.module.scss";
 
 import Link from "next/link";
 import Image from "next/image";
+import clsx from "clsx";
 
-import { FiExternalLink } from "react-icons/fi";
+import { FaGithub } from "react-icons/fa";
 import { Project } from "../../../../types";
 
 interface Props {
@@ -13,7 +14,7 @@ interface Props {
 export function ProjectCard({ project }: Props) {
   return (
     <div className={styles.container}>
-      <div className={styles.project_image}>
+      <div className={styles["project-image"]}>
         <Image
           src={project.thumbnail.url}
           alt={project.title}
@@ -23,23 +24,18 @@ export function ProjectCard({ project }: Props) {
           blurDataURL={project.thumbnail.url}
         />
 
-        <Link href={project.deploy}>
+        <Link href={project.repository}>
           <a target="_blank">
-            <FiExternalLink size={18} />
+            <FaGithub size={18} />
           </a>
         </Link>
       </div>
 
-      <div className={styles.project_body}>
+      <div className={styles["project-body"]}>
         <h5>{project.title}</h5>
 
-        {/* <p>{project.description}</p> */}
-
-        <Link href={project.repository}>
-          <a target="_blank">
-            Ver repositório
-            {/* <FiArrowRight size={16} /> */}
-          </a>
+        <Link href={project.deploy}>
+          <a target="_blank">Ver prévia</a>
         </Link>
 
         <div className={styles.technologies}>
@@ -51,9 +47,9 @@ export function ProjectCard({ project }: Props) {
                   href={`/projetos/${technology.slug}/1`}
                 >
                   <a
-                    className={`${
-                      project.technologies.length > 3 && styles.width
-                    }`}
+                    className={clsx({
+                      [styles.width]: project.technologies.length > 3,
+                    })}
                   >
                     {technology.name}
                   </a>
@@ -64,7 +60,7 @@ export function ProjectCard({ project }: Props) {
           {project.technologies.length > 3 && (
             <span>
               + {project.technologies.length - 3}
-              <div className={styles.popover_area}>
+              <div className={styles["popover-overlay"]}>
                 <div className={styles.popover}>
                   {project.technologies.map(
                     (technology, index) =>
