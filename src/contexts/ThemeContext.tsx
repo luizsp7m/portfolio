@@ -1,4 +1,6 @@
-import { createContext, ReactNode, useEffect, useState } from "react";
+import Cookies from "js-cookie";
+
+import { createContext, ReactNode, useLayoutEffect, useState } from "react";
 
 interface ThemeContextProps {
   isLightTheme: boolean;
@@ -6,23 +8,41 @@ interface ThemeContextProps {
 }
 
 interface ThemeProviderProps {
+  defaultTheme: "dark" | "light";
   children: ReactNode;
 }
 
 export const ThemeContext = createContext({} as ThemeContextProps);
 
-export function ThemeProvider({ children }: ThemeProviderProps) {
-  const [isLightTheme, setIsLightTheme] = useState(false);
+export function ThemeProvider({ defaultTheme, children }: ThemeProviderProps) {
+  const [currentTheme, setCurrentTheme] = useState<"dark" | "light">(
+    defaultTheme
+  );
 
   function handleToggleLightTheme() {
-    document.body.classList.toggle("light-theme");
-    setIsLightTheme((prevState) => !prevState);
+    if (currentTheme === "dark") {
+      Cookies.set("theme", "light");
+
+      setCurrentTheme("light");
+    } else {
+      Cookies.set("theme", "dark");
+      document.body.classList.remove("light-theme");
+      setCurrentTheme("dark");
+    }
   }
+
+  useLayoutEffect(() => {
+    if (currentTheme === "dark") {
+      document.body.classList.remove("light-theme");
+    } else {
+      document.body.classList.add("light-theme");
+    }
+  }, [currentTheme]);
 
   return (
     <ThemeContext.Provider
       value={{
-        isLightTheme,
+        isLightTheme: currentTheme === "light",
         handleToggleLightTheme,
       }}
     >
