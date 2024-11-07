@@ -23,6 +23,9 @@ import {
 import { client } from "../../services/apollo";
 import { Filter } from "../../components/Filter";
 import { ProjectCard } from "../../components/ProjectList/components/ProjectCard";
+import { useState } from "react";
+import { Modal } from "../../components/Modal";
+import { ProjectDetails } from "../../components/ProjectList/components/ProjectDetails";
 
 const ITEMS_PER_PAGE = 9;
 
@@ -44,6 +47,19 @@ export default function Page({
   const title = technology
     ? `Projetos com ${technology.name} - Página ${currentPage}`
     : `Projetos - Página ${currentPage}`;
+
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+
+  function handleOpenModal(project: Project) {
+    setSelectedProject(project);
+    setModalIsOpen(true);
+  }
+
+  function handleCloseModal() {
+    setModalIsOpen(false);
+    setSelectedProject(null);
+  }
 
   return (
     <Layout title={title}>
@@ -77,7 +93,11 @@ export default function Page({
 
         <div className={styles.projects}>
           {projects.map((project) => (
-            <ProjectCard key={project.id} project={project} />
+            <ProjectCard
+              key={project.id}
+              project={project}
+              handleOpenModal={handleOpenModal}
+            />
           ))}
         </div>
 
@@ -110,6 +130,15 @@ export default function Page({
           )}
         </div>
       </div>
+
+      <Modal
+        title={selectedProject?.title ?? ""}
+        isOpen={modalIsOpen}
+        onClose={handleCloseModal}
+        removeBodyPadding
+      >
+        {selectedProject && <ProjectDetails project={selectedProject} />}
+      </Modal>
     </Layout>
   );
 }

@@ -1,0 +1,45 @@
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.6rem;
+  border-bottom: 1px solid var(--divider-color);
+
+  span {
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  button {
+    border: 0;
+    background: 0;
+    outline: 0;
+    height: 22px;
+    width: 22px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    color: #c0392b;
+    border-radius: 22px;
+
+    &:hover {
+      background: #c0392b;
+      color: #fafafa;
+    }
+  }
+}
+
+.modal-body {
+  padding: 1.6rem;
+  overflow-y: auto;
+  max-height: 512px;
+}
+
+.remove-body-padding {
+  padding: 0;
+}

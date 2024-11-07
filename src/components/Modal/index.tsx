@@ -1,35 +1,56 @@
+import styles from "./styles.module.scss";
+import clsx from "clsx";
 import ReactModal from "react-modal";
 
-import { useEffect, useState } from "react";
-
-const customStyles = {
-  content: {
-    top: "50%",
-    left: "50%",
-    right: "auto",
-    bottom: "auto",
-    marginRight: "-50%",
-    transform: "translate(-50%, -50%)",
-  },
-};
+import { ReactNode, useEffect } from "react";
+import { useTheme } from "../../hooks/useTheme";
+import { IoCloseSharp } from "react-icons/io5";
 
 ReactModal.setAppElement("#__next");
 
-export function Modal() {
-  const [modalIsOpen, setIsOpen] = useState(false);
+const customStyles = (isLightTheme: boolean): ReactModal.Styles => {
+  return {
+    overlay: {
+      zIndex: 10,
+      background: "rgba(0, 0, 0, 0.5)",
+    },
 
-  function openModal() {
-    setIsOpen(true);
-  }
+    content: {
+      top: "50%",
+      left: "50%",
+      right: "auto",
+      bottom: "auto",
+      marginRight: "-50%",
+      transform: "translate(-50%, -50%)",
+      background: isLightTheme ? "#f9f9f9" : "#2f3640",
+      border: 0,
+      padding: 0,
+      width: "90%",
+      maxWidth: 512,
+      maxHeight: "90%",
+    },
+  };
+};
 
-  function afterOpenModal() {}
+interface ModalProps {
+  title: string;
+  isOpen: boolean;
+  onClose: () => void;
+  children: ReactNode;
+  removeBodyPadding?: boolean;
+}
 
-  function closeModal() {
-    setIsOpen(false);
-  }
+export function Modal({
+  title,
+  isOpen,
+  onClose,
+  removeBodyPadding = false,
+  children,
+}: ModalProps) {
+  const { isLightTheme } = useTheme();
 
   useEffect(() => {
-    if (modalIsOpen) {
+    if (isOpen) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "auto";
@@ -38,30 +59,30 @@ export function Modal() {
     return () => {
       document.body.style.overflow = "auto";
     };
-  }, [modalIsOpen]);
+  }, [isOpen]);
 
   return (
-    <div>
-      <button onClick={openModal}>Open Modal</button>
+    <ReactModal
+      isOpen={isOpen}
+      onRequestClose={onClose}
+      style={customStyles(isLightTheme)}
+      preventScroll
+    >
+      <div className={styles["modal-header"]}>
+        <span>{title}</span>
 
-      <ReactModal
-        isOpen={modalIsOpen}
-        onAfterOpen={afterOpenModal}
-        onRequestClose={closeModal}
-        style={customStyles}
-        contentLabel="Example Modal"
+        <button onClick={onClose}>
+          <IoCloseSharp size={16} />
+        </button>
+      </div>
+
+      <div
+        className={clsx(styles["modal-body"], {
+          [styles["remove-body-padding"]]: removeBodyPadding,
+        })}
       >
-        <h2>Hello</h2>
-        <button onClick={closeModal}>close</button>
-        <div>I am a modal</div>
-        <form>
-          <input />
-          <button>tab navigation</button>
-          <button>stays</button>
-          <button>inside</button>
-          <button>the modal</button>
-        </form>
-      </ReactModal>
-    </div>
+        {children}
+      </div>
+    </ReactModal>
   );
 }

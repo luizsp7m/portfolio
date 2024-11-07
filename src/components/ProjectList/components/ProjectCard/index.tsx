@@ -11,9 +11,10 @@ import { useState } from "react";
 
 interface Props {
   project: Project;
+  handleOpenModal: (project: Project) => void;
 }
 
-export function ProjectCard({ project }: Props) {
+export function ProjectCard({ project, handleOpenModal }: Props) {
   const [drawerIsOpen, setDrawerIsOpen] = useState(false);
 
   function handleOpenDrawer() {
@@ -34,6 +35,7 @@ export function ProjectCard({ project }: Props) {
           objectFit="cover"
           placeholder="blur"
           blurDataURL={project.thumbnail.url}
+          onClick={() => handleOpenModal(project)}
         />
 
         <Link href={project.repository}>
