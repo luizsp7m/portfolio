@@ -20,7 +20,7 @@ import { client } from "../services/apollo";
 import {
   GET_ABOUT_QUERY,
   GET_CURRICULUM_QUERY,
-  GET_LATEST_PROJECTS_QUERY,
+  GET_PROJECTS_ON_HOMEPAGE_QUERY,
   GET_TECHNOLOGIES_QUERY,
 } from "../graphql/queries";
 
@@ -49,7 +49,7 @@ export default function Home({
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const { data: projects } = await client.query<GetLatestProjectsResponse>({
-    query: GET_LATEST_PROJECTS_QUERY,
+    query: GET_PROJECTS_ON_HOMEPAGE_QUERY,
   });
 
   const { data: technologies } = await client.query<GetTechnologiesResponse>({
