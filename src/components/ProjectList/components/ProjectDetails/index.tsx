@@ -1,9 +1,10 @@
 import styles from "./styles.module.scss";
+import Link from "next/link";
+import Image from "next/image";
 
 import { FaGithub } from "react-icons/fa";
 import { FiExternalLink } from "react-icons/fi";
 import { Project } from "../../../../types";
-import Link from "next/link";
 
 interface ProjectDetailsProps {
   project: Project;
@@ -13,7 +14,19 @@ export function ProjectDetails({ project }: ProjectDetailsProps) {
   return (
     <div className={styles.container}>
       <div className={styles["project-image"]}>
-        <img src={project.thumbnail.url} alt={project.title} />
+        <Link href={project.thumbnail.url}>
+          <a target="_blank">
+            <Image
+              src={project.thumbnail.url}
+              alt={project.title}
+              width={512}
+              height={288}
+              placeholder="blur"
+              blurDataURL={project.thumbnail.url}
+              quality={85}
+            />
+          </a>
+        </Link>
       </div>
 
       <div className={styles["project-details-body"]}>
@@ -26,7 +39,7 @@ export function ProjectDetails({ project }: ProjectDetailsProps) {
         <p>{project.description}</p>
 
         <div className={styles["project-external-links"]}>
-          <Link href={project.repository}>
+          <Link href={project.deploy}>
             <a target="_blank">
               <button>
                 <FiExternalLink size={18} />

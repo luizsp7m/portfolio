@@ -4,7 +4,7 @@ import { Layout } from "../layout";
 
 export default function NotFound() {
   return (
-    <Layout title="Página não encontrada">
+    <Layout title="404 - Página não encontrada">
       <div className={styles.container}>
         <div className={styles.image}>
           <img src="/assets/404.svg" alt="404 Image" />
