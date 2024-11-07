@@ -1,16 +1,18 @@
 .container {
+  display: flex;
+  flex-direction: column;
 }
 
 .main {
+  padding: 0 3rem;
+  padding-top: 81px;
+  min-height: calc(100vh - 267px);
   width: 100%;
   max-width: 1084px;
-  padding: 0 3rem;
   margin: 0 auto;
-
-  min-height: calc(100vh - 26.7rem); // 100vh - Height Footer // 1px de border top
 }
 
-@media (max-width: 365px) {
+@media (max-width: 384px) {
   .main {
     min-height: calc(100vh - 302.97px);
   }

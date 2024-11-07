@@ -3,13 +3,13 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 3.2rem;
-  padding-top: 8.1rem;
-  height: calc(100vh - 26.7rem);
+  gap: 1.8rem;
+  min-height: calc(100vh - (81px + 267px));
+  padding: 3.2rem 0;
 
   h1 {
     color: var(--text-secondary);
-    font-weight: 400;
+    font-weight: 500;
     font-size: 1.5rem;
     text-align: center;
   }
@@ -18,12 +18,12 @@
 .image {
   img {
     width: 100%;
-    max-width: 35rem;
+    max-width: 256px;
     height: auto;
   }
 }
 
-@media (max-width: 365px) {
+@media (max-width: 384px) {
   .container {
     height: calc(100vh - 302.97px);
   }
