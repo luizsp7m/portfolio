@@ -1,22 +1,22 @@
+import clsx from "clsx";
 import styles from "./styles.module.scss";
-
 import Link from "next/link";
 
 import { FaGithub, FaLinkedinIn, FaEnvelope } from "react-icons/fa";
 
 interface Props {
-  currentPage: "home" | "projects" | "404";
+  isHomepage: boolean;
 }
 
-export function Footer({ currentPage }: Props) {
+export function Footer({ isHomepage = false }: Props) {
   const currentYear = new Date().getFullYear();
 
   return (
     <div
       id="footer"
-      className={`${styles.container} ${
-        currentPage === "home" && styles.paddingBottom
-      }`}
+      className={clsx(styles.container, {
+        [styles.paddingBottom]: isHomepage,
+      })}
     >
       <div className={styles.main}>
         <h5>Luiz Oliveira</h5>

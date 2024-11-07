@@ -3,20 +3,17 @@ import styles from "./styles.module.scss";
 import Link from "next/link";
 
 import { FiArrowRight, FiArrowLeft } from "react-icons/fi";
-import { useTheme } from "../../hooks/useTheme";
 import { SwitchThemeButton } from "./components/SwitchThemeButton";
 
 interface Props {
-  currentPage: "home" | "projects" | "404";
+  isHomepage: boolean;
 }
 
-export function Header({ currentPage }: Props) {
-  const { isLightTheme, handleToggleLightTheme } = useTheme();
-
+export function Header({ isHomepage }: Props) {
   return (
     <div className={styles.container}>
       <div className={styles.main}>
-        {currentPage === "home" ? (
+        {isHomepage ? (
           <>
             <Link href="/">
               <a className={styles.logo}>Luiz Oliveira</a>

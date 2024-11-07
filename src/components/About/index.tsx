@@ -12,15 +12,15 @@ export function About({ about }: Props) {
       <h1>Um resumo sobre mim</h1>
 
       <div className={styles.row}>
-        <div className={styles.description} dangerouslySetInnerHTML={{ __html: about.description }} />
+        <div
+          className={styles.description}
+          dangerouslySetInnerHTML={{ __html: about.description }}
+        />
 
         <div className={styles.image}>
-          <img
-            src="/assets/developer.svg"
-            alt="Developer"
-          />
+          <img src="/assets/developer.svg" alt="Developer" />
         </div>
       </div>
-    </div >
+    </div>
   );
 }

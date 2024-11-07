@@ -1,9 +1,8 @@
 import styles from "../../styles/projects.module.scss";
-
 import Link from "next/link";
 
 import { GetStaticPaths, GetStaticProps } from "next";
-import { Layout } from "../../components/Layout";
+import { Layout } from "../../layout";
 
 import {
   COUNT_PROJECTS_QUERY,
@@ -47,7 +46,7 @@ export default function Page({
     : `Projetos - Página ${currentPage}`;
 
   return (
-    <Layout title={title} currentPage="projects">
+    <Layout title={title}>
       <div className={styles.container}>
         <div className={styles.row}>
           <div className={styles.header}>
