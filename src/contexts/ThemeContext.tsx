@@ -22,7 +22,7 @@ export function ThemeProvider({ defaultTheme, children }: ThemeProviderProps) {
   function handleToggleLightTheme() {
     if (currentTheme === "dark") {
       Cookies.set("theme", "light");
-
+      document.body.classList.add("light-theme");
       setCurrentTheme("light");
     } else {
       Cookies.set("theme", "dark");
@@ -30,14 +30,6 @@ export function ThemeProvider({ defaultTheme, children }: ThemeProviderProps) {
       setCurrentTheme("dark");
     }
   }
-
-  useLayoutEffect(() => {
-    if (currentTheme === "dark") {
-      document.body.classList.remove("light-theme");
-    } else {
-      document.body.classList.add("light-theme");
-    }
-  }, [currentTheme]);
 
   return (
     <ThemeContext.Provider

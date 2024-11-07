@@ -6,6 +6,12 @@ import { client } from "../services/apollo";
 import { ThemeProvider } from "../contexts/ThemeContext";
 
 function MyApp({ Component, pageProps, theme }) {
+  if (typeof window !== "undefined") {
+    if (theme === "light") {
+      document.body.classList.add("light-theme");
+    }
+  }
+
   return (
     <ApolloProvider client={client}>
       <ThemeProvider defaultTheme={theme}>
