@@ -23,9 +23,10 @@ import {
 import { client } from "../../services/apollo";
 import { Filter } from "../../components/Filter";
 import { ProjectCard } from "../../components/ProjectList/components/ProjectCard";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Modal } from "../../components/Modal";
 import { ProjectDetails } from "../../components/ProjectList/components/ProjectDetails";
+import { scrollToTop } from "../../utils/scroll-to-top";
 
 const ITEMS_PER_PAGE = 9;
 
@@ -60,6 +61,10 @@ export default function Page({
     setModalIsOpen(false);
     setSelectedProject(null);
   }
+
+  useEffect(() => {
+    scrollToTop();
+  }, [currentPage]);
 
   return (
     <Layout title={title}>

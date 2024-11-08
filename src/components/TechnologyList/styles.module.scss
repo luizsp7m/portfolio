@@ -38,9 +38,3 @@
     padding: 4rem 0 10rem 0;
   }
 }
-
-@media (max-width: 384px) {
-  .technologies {
-    grid-template-columns: repeat(1, 1fr);
-  }
-}
