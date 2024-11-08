@@ -1,5 +1,4 @@
 .container {
-  margin-top: -41px;
   min-height: calc(100vh - 81px);
   display: flex;
   justify-content: center;
@@ -12,6 +11,7 @@
   align-items: center;
   gap: 1.4rem;
   animation: fadeDown ease-out 0.75s;
+  margin-bottom: 81px;
 
   h1 {
     color: var(--text-primary);
