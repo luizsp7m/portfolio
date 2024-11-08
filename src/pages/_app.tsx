@@ -1,10 +1,10 @@
-import "../styles/global.scss";
 import "nprogress/nprogress.css";
+import "../styles/global.scss";
 
 import NProgress from "nprogress";
 
 import { ApolloProvider } from "@apollo/client";
-import { client } from "../services/apollo";
+import { client } from "../lib/apollo";
 import { ThemeProvider } from "../contexts/ThemeContext";
 import { configureNProgress } from "../lib/nprogress";
 import { useEffect } from "react";

@@ -12,7 +12,7 @@ export function Footer({ isHomepage = false }: Props) {
   const currentYear = new Date().getFullYear();
 
   return (
-    <div
+    <footer
       id="footer"
       className={clsx(styles.container, {
         [styles.paddingBottom]: isHomepage,
@@ -61,6 +61,6 @@ export function Footer({ isHomepage = false }: Props) {
 
         <span>&copy; Luiz Oliveira {currentYear}</span>
       </div>
-    </div>
+    </footer>
   );
 }

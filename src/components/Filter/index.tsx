@@ -2,12 +2,12 @@ import styles from "./styles.module.scss";
 import clsx from "clsx";
 import Link from "next/link";
 
-import { Technology } from "../../types";
 import { BsFilterRight, BsSearch } from "react-icons/bs";
 import { Fragment, useEffect, useState } from "react";
 import { Modal } from "../Modal";
 import { useRouter } from "next/router";
 import { useTheme } from "../../hooks/useTheme";
+import { Technology } from "../../types/Technology";
 
 interface Props {
   technologies: Array<Technology>;

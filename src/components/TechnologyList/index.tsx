@@ -1,6 +1,6 @@
 import styles from "./styles.module.scss";
 
-import { Technology } from "../../types";
+import { Technology } from "../../types/Technology";
 import { TechnologyItem } from "./components/TechnologyItem";
 
 interface Props {

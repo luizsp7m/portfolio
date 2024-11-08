@@ -1,6 +1,6 @@
-import { About } from "../../types";
-
 import styles from "./styles.module.scss";
+
+import { About } from "../../types/About";
 
 interface Props {
   about: About;

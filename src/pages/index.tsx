@@ -1,28 +1,31 @@
-import {
-  About,
-  Curriculum,
-  GetAboutResponse,
-  GetCurriculumResponse,
-  GetLatestProjectsResponse,
-  GetTechnologiesResponse,
-  Project,
-  Technology,
-} from "../types";
-
 import { GetServerSideProps } from "next";
 import { Layout } from "../layout";
 import { Hero } from "../components/Hero";
 import { About as AboutComponent } from "../components/About";
 import { ProjectList } from "../components/ProjectList";
 import { TechnologyList } from "../components/TechnologyList";
-import { client } from "../services/apollo";
+import { client } from "../lib/apollo";
+import { Project } from "../types/Project";
+import { Technology } from "../types/Technology";
+import { Curriculum } from "../types/Curriculum";
+import { About } from "../types/About";
 
 import {
-  GET_ABOUT_QUERY,
-  GET_CURRICULUM_QUERY,
   GET_PROJECTS_ON_HOMEPAGE_QUERY,
+  GetProjectsOnHomepageResponse,
+} from "../services/get-projects-on-homepage-query";
+
+import {
   GET_TECHNOLOGIES_QUERY,
-} from "../graphql/queries";
+  GetTechnologiesResponse,
+} from "../services/get-technologies-query";
+
+import {
+  GET_CURRICULUM_QUERY,
+  GetCurriculumResponse,
+} from "../services/get-curriculum-query";
+
+import { GET_ABOUT_QUERY, GetAboutResponse } from "../services/get-about-query";
 
 interface Props {
   projects: Array<Project>;
@@ -48,7 +51,7 @@ export default function Home({
 }
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const { data: projects } = await client.query<GetLatestProjectsResponse>({
+  const { data: projects } = await client.query<GetProjectsOnHomepageResponse>({
     query: GET_PROJECTS_ON_HOMEPAGE_QUERY,
   });
 

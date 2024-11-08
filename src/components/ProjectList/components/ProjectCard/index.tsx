@@ -5,9 +5,9 @@ import Image from "next/image";
 import clsx from "clsx";
 
 import { FaGithub } from "react-icons/fa";
-import { Project } from "../../../../types";
 import { IoCloseSharp } from "react-icons/io5";
 import { useState } from "react";
+import { Project } from "../../../../types/Project";
 
 interface Props {
   project: Project;

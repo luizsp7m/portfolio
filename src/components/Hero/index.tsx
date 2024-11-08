@@ -2,7 +2,7 @@ import styles from "./styles.module.scss";
 import Link from "next/link";
 
 import { FaGithub, FaLinkedinIn, FaEnvelope } from "react-icons/fa";
-import { Curriculum } from "../../types";
+import { Curriculum } from "../../types/Curriculum";
 
 interface Props {
   curriculum: Curriculum;

@@ -4,7 +4,7 @@ import Image from "next/image";
 
 import { FaGithub } from "react-icons/fa";
 import { FiExternalLink } from "react-icons/fi";
-import { Project } from "../../../../types";
+import { Project } from "../../../../types/Project";
 
 interface ProjectDetailsProps {
   project: Project;

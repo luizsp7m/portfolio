@@ -4,29 +4,35 @@ import Link from "next/link";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { Layout } from "../../layout";
 
-import {
-  COUNT_PROJECTS_QUERY,
-  GET_PROJECTS_QUERY,
-  GET_TECHNOLOGIES_QUERY,
-  GET_TECHNOLOGY_QUERY,
-} from "../../graphql/queries";
-
-import {
-  CountProjectsResponse,
-  GetProjectsResponse,
-  GetTechnologiesResponse,
-  GetTechnologyResponse,
-  Project,
-  Technology,
-} from "../../types";
-
-import { client } from "../../services/apollo";
+import { client } from "../../lib/apollo";
 import { Filter } from "../../components/Filter";
 import { ProjectCard } from "../../components/ProjectList/components/ProjectCard";
 import { useEffect, useState } from "react";
 import { Modal } from "../../components/Modal";
 import { ProjectDetails } from "../../components/ProjectList/components/ProjectDetails";
 import { scrollToTop } from "../../utils/scroll-to-top";
+import { Project } from "../../types/Project";
+import { Technology } from "../../types/Technology";
+
+import {
+  COUNT_PROJECTS_QUERY,
+  CountProjectsResponse,
+} from "../../services/count-projects-query";
+
+import {
+  GET_TECHNOLOGIES_QUERY,
+  GetTechnologiesResponse,
+} from "../../services/get-technologies-query";
+
+import {
+  GET_PROJECTS_QUERY,
+  GetProjectsResponse,
+} from "../../services/get-projects-query";
+
+import {
+  GET_TECHNOLOGY_QUERY,
+  GetTechnologyResponse,
+} from "../../services/get-technology-query";
 
 const ITEMS_PER_PAGE = 9;
 

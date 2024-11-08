@@ -1,11 +1,10 @@
 import styles from "./styles.module.scss";
-
-import Link from "next/link";
 import clsx from "clsx";
-
-import { Technology } from "../../../../types";
-import { useTheme } from "../../../../hooks/useTheme";
+import Link from "next/link";
 import Image from "next/image";
+
+import { Technology } from "../../../../types/Technology";
+import { useTheme } from "../../../../hooks/useTheme";
 
 interface Props {
   technology: Technology;

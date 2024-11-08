@@ -1,7 +1,7 @@
 import styles from "./styles.module.scss";
 
 import { useTheme } from "../../../../hooks/useTheme";
-import { IoIosSunny, IoIosMoon } from "react-icons/io";
+import { IoIosSunny } from "react-icons/io";
 import { BsFillMoonStarsFill } from "react-icons/bs";
 
 export function SwitchThemeButton() {
