@@ -1,6 +1,7 @@
 import styles from "./styles.module.scss";
 
 import { About } from "../../types/About";
+import Image from "next/image";
 
 interface Props {
   about: About;
@@ -18,7 +19,15 @@ export function About({ about }: Props) {
         />
 
         <div className={styles.image}>
-          <img src="/assets/developer.svg" alt="Developer" />
+          <Image
+            src="/assets/developer.svg"
+            alt="Developer"
+            width={315}
+            height={315}
+            layout="fixed"
+            placeholder="blur"
+            blurDataURL="/assets/developer.svg"
+          />
         </div>
       </div>
     </div>

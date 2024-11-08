@@ -8,6 +8,7 @@ import { Modal } from "../Modal";
 import { useRouter } from "next/router";
 import { useTheme } from "../../hooks/useTheme";
 import { Technology } from "../../types/Technology";
+import Image from "next/image";
 
 interface Props {
   technologies: Array<Technology>;
@@ -85,10 +86,17 @@ export function Filter({ technologies }: Props) {
                     aria-label={`Ir para projetos desenvolvidos com ${technology.name}`}
                     className={styles.technologyItem}
                   >
-                    <img
+                    <Image
                       src={technology.logo.url}
                       alt={`Logo da tecnologia ${technology.name}`}
+                      width={17.5}
+                      height={17.5}
+                      blurDataURL={technology.logo.url}
+                      quality={85}
+                      layout="fixed"
+                      objectFit="contain"
                     />
+
                     <span>{technology.name}</span>
                   </a>
                 </Link>
