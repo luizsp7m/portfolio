@@ -16,7 +16,9 @@ export function Header({ isHomepage }: Props) {
         {isHomepage ? (
           <>
             <Link href="/">
-              <a className={styles.logo}>Luiz Oliveira</a>
+              <a className={styles.logo} aria-label="Ir para início">
+                Luiz Oliveira
+              </a>
             </Link>
 
             <div
@@ -29,7 +31,7 @@ export function Header({ isHomepage }: Props) {
               <SwitchThemeButton />
 
               <Link href="/projetos/1">
-                <a>
+                <a aria-label="Ir para projetos">
                   Projetos <FiArrowRight size={16} />
                 </a>
               </Link>
@@ -38,7 +40,7 @@ export function Header({ isHomepage }: Props) {
         ) : (
           <div>
             <Link href="/">
-              <a className={styles.back}>
+              <a className={styles.back} aria-label="Voltar para início">
                 <FiArrowLeft size={16} /> Voltar
               </a>
             </Link>

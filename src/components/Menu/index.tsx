@@ -7,19 +7,19 @@ export function Menu() {
   return (
     <div className={styles.container}>
       <div className={styles.menu}>
-        <a href="#home">
+        <a href="#home" aria-label="Ir para o inicio">
           <BiHomeAlt size={20} />
         </a>
 
-        <a href="#sobre-mim">
+        <a href="#sobre-mim" aria-label="Ir para sobre mim">
           <BiUser size={20} />
         </a>
 
-        <a href="#projetos">
+        <a href="#projetos" aria-label="Ir para projetos">
           <BiFolder size={20} />
         </a>
 
-        <a href="#tecnologias">
+        <a href="#tecnologias" aria-label="Ir para tecnologias">
           <ImStack size={20} />
         </a>
       </div>

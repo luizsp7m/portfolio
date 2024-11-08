@@ -42,6 +42,7 @@ export function Filter({ technologies }: Props) {
         type="button"
         className={styles.menuButton}
         onClick={handleOpenModal}
+        aria-label="Abrir o filtro de tecnologias"
       >
         <BsFilterRight size={20} />
       </button>
@@ -65,6 +66,7 @@ export function Filter({ technologies }: Props) {
               placeholder="Pesquise por uma tecnologia"
               value={searchValue}
               onChange={({ target }) => setSearchValue(target.value)}
+              aria-label="Digite ou selecione uma tecnologia"
             />
           </div>
 
@@ -79,8 +81,14 @@ export function Filter({ technologies }: Props) {
                   key={technology.id}
                   href={`/projetos/${technology.slug}/1`}
                 >
-                  <a className={styles.technologyItem}>
-                    <img src={technology.logo.url} alt="" />
+                  <a
+                    aria-label={`Ir para projetos desenvolvidos com ${technology.name}`}
+                    className={styles.technologyItem}
+                  >
+                    <img
+                      src={technology.logo.url}
+                      alt={`Logo da tecnologia ${technology.name}`}
+                    />
                     <span>{technology.name}</span>
                   </a>
                 </Link>

@@ -71,7 +71,7 @@ export function Modal({
       <div className={styles["modal-header"]}>
         <span>{title}</span>
 
-        <button onClick={onClose}>
+        <button onClick={onClose} aria-label="Fechar modal">
           <IoCloseSharp size={16} />
         </button>
       </div>

@@ -114,6 +114,7 @@ export default function Page({
                 href={`/projetos/${technology.slug}/${index + 1}`}
               >
                 <a
+                  aria-label={`Ir para página ${index + 1}`}
                   className={`${styles.pagination_item} ${
                     index + 1 == currentPage && styles.selected
                   }`}
@@ -124,6 +125,7 @@ export default function Page({
             ) : (
               <Link key={index} href={`/projetos/${index + 1}`}>
                 <a
+                  aria-label={`Ir para página ${index + 1}`}
                   className={`${styles.pagination_item} ${
                     index + 1 == currentPage && styles.selected
                   }`}

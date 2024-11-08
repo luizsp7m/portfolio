@@ -11,6 +11,7 @@ export function SwitchThemeButton() {
     <button
       onClick={handleToggleLightTheme}
       className={styles["button-container"]}
+      aria-label="Alterar tema entre claro e escuro"
     >
       {isLightTheme ? (
         <IoIosSunny size={18} />

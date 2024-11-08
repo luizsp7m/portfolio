@@ -30,7 +30,7 @@ export function ProjectCard({ project, handleOpenModal }: Props) {
       <div className={styles["project-image"]}>
         <Image
           src={project.thumbnail.url}
-          alt={project.title}
+          alt={`Imagem do projeto ${project.title}`}
           layout="fill"
           objectFit="cover"
           placeholder="blur"
@@ -39,17 +39,19 @@ export function ProjectCard({ project, handleOpenModal }: Props) {
         />
 
         <Link href={project.repository}>
-          <a target="_blank">
+          <a target="_blank" aria-label="Ir para repositório do projeto">
             <FaGithub size={18} />
           </a>
         </Link>
       </div>
 
       <div className={styles["project-body"]}>
-        <h5>{project.title}</h5>
+        <h6>{project.title}</h6>
 
         <Link href={project.deploy}>
-          <a target="_blank">Ver prévia</a>
+          <a target="_blank" aria-label="Ver prévia do projeto">
+            Ver prévia
+          </a>
         </Link>
 
         <div className={styles.technologies}>
@@ -61,6 +63,7 @@ export function ProjectCard({ project, handleOpenModal }: Props) {
                   href={`/projetos/${technology.slug}/1`}
                 >
                   <a
+                    aria-label={`Ir para projetos desenvolvidos com ${technology.name}`}
                     className={clsx(styles["technology-link"], {
                       [styles.width]: project.technologies.length > 3,
                     })}
@@ -72,7 +75,10 @@ export function ProjectCard({ project, handleOpenModal }: Props) {
           )}
 
           {project.technologies.length > 3 && (
-            <button onClick={handleOpenDrawer}>
+            <button
+              onClick={handleOpenDrawer}
+              aria-label="Abrir aba com tecnologias usadas no projeto"
+            >
               + {project.technologies.length - 3}
             </button>
           )}
@@ -86,7 +92,10 @@ export function ProjectCard({ project, handleOpenModal }: Props) {
           <div className={styles["technologies-drawer-header"]}>
             <h5>Tecnologias: </h5>
 
-            <button onClick={handleCloseDrawer}>
+            <button
+              onClick={handleCloseDrawer}
+              aria-label="Fechar aba das tecnologias usadas no projeto"
+            >
               <IoCloseSharp size={16} />
             </button>
           </div>
@@ -94,7 +103,12 @@ export function ProjectCard({ project, handleOpenModal }: Props) {
           <div className={styles["technologies-drawer-body"]}>
             {project.technologies.map((technology) => (
               <Link key={technology.id} href={`/projetos/${technology.slug}/1`}>
-                <a className={styles["technology-link"]}>{technology.name}</a>
+                <a
+                  aria-label={`Ir para projetos desenvolvidos com ${technology.name}`}
+                  className={styles["technology-link"]}
+                >
+                  {technology.name}
+                </a>
               </Link>
             ))}
           </div>

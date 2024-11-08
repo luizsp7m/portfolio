@@ -9,6 +9,7 @@ export function ButtonToTop() {
       type="button"
       className={styles.button}
       onClick={() => scrollToTop()}
+      aria-label="Voltar ao início da tela"
     >
       <RiArrowUpLine />
     </button>

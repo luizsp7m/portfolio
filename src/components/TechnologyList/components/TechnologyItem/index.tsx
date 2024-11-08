@@ -17,13 +17,14 @@ export function TechnologyItem({ technology }: Props) {
   return (
     <Link href={`/projetos/${technology.slug}/1`}>
       <a
+        aria-label={`Ir para projetos desenvolvidos com ${technology.name}`}
         className={clsx(styles.container, {
           [styles["light-theme"]]: isLightTheme,
         })}
       >
         <Image
           src={technology.logo.url}
-          alt={technology.name}
+          alt={`Logo da tecnologia ${technology.name}`}
           width={27.5}
           height={27.5}
           blurDataURL={technology.logo.url}
@@ -31,8 +32,6 @@ export function TechnologyItem({ technology }: Props) {
           layout="fixed"
           objectFit="contain"
         />
-
-        {/* <img src={technology.logo.url} alt={technology.name} /> */}
 
         <span>{technology.name}</span>
       </a>

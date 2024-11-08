@@ -18,7 +18,7 @@ export function ProjectDetails({ project }: ProjectDetailsProps) {
           <a target="_blank">
             <Image
               src={project.thumbnail.url}
-              alt={project.title}
+              alt={`Imagem do projeto ${project.title}`}
               width={512}
               height={288}
               placeholder="blur"
@@ -43,7 +43,7 @@ export function ProjectDetails({ project }: ProjectDetailsProps) {
         <div className={styles["project-external-links"]}>
           <Link href={project.deploy}>
             <a target="_blank">
-              <button>
+              <button aria-label="Botão para ver prévia do projeto">
                 <FiExternalLink size={18} />
                 Ver prévia
               </button>
@@ -52,7 +52,7 @@ export function ProjectDetails({ project }: ProjectDetailsProps) {
 
           <Link href={project.repository}>
             <a target="_blank">
-              <button>
+              <button aria-label="Botão para ver repositório do projeto">
                 <FaGithub size={18} />
                 Ver repositório
               </button>

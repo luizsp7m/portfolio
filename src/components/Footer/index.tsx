@@ -23,37 +23,37 @@ export function Footer({ isHomepage = false }: Props) {
 
         <nav>
           <Link href="/#home">
-            <a>Início</a>
+            <a aria-label="Ir para início">Início</a>
           </Link>
 
           <Link href="/#sobre-mim">
-            <a>Sobre mim</a>
+            <a aria-label="Ir para sobre mim">Sobre mim</a>
           </Link>
 
           <Link href="/#projetos">
-            <a>Projetos</a>
+            <a aria-label="Ir para projetos">Projetos</a>
           </Link>
 
           <Link href="/#tecnologias">
-            <a>Tecnologias</a>
+            <a aria-label="Ir para tecnologias">Tecnologias</a>
           </Link>
         </nav>
 
         <div className={styles.social}>
           <Link href="https://github.com/luizsp7m">
-            <a target="_blank">
+            <a target="_blank" aria-label="Abrir GitHub">
               <FaGithub size={20} />
             </a>
           </Link>
 
           <Link href="https://www.linkedin.com/in/luiz-oliveira-08/">
-            <a target="_blank">
+            <a target="_blank" aria-label="Abrir LinkedIn">
               <FaLinkedinIn size={20} />
             </a>
           </Link>
 
           <Link href="mailto:luizoliveira2808@gmail.com">
-            <a target="_blank">
+            <a target="_blank" aria-label="Abrir e-mail">
               <FaEnvelope size={20} />
             </a>
           </Link>

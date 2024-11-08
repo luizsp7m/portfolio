@@ -46,7 +46,7 @@ export function ProjectList({ projects }: Props) {
 
         <div className={styles.row}>
           <Link href="/projetos/1">
-            <a>
+            <a aria-label="Ir para página de projetos">
               Ver lista completa <FiArrowRight size={16} />
             </a>
           </Link>

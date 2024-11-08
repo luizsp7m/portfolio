@@ -21,34 +21,30 @@ export function Hero({ curriculum }: Props) {
 
         <div className={styles.social}>
           <Link href="https://github.com/luizsp7m">
-            <a target="_blank">
+            <a target="_blank" aria-label="Abrir GitHub">
               <FaGithub size={20} />
             </a>
           </Link>
 
           <Link href="https://www.linkedin.com/in/luiz-oliveira-08/">
-            <a target="_blank">
+            <a target="_blank" aria-label="Abrir LinkedIn">
               <FaLinkedinIn size={20} />
             </a>
           </Link>
 
           <Link href="mailto:luizoliveira2808@gmail.com">
-            <a target="_blank">
+            <a target="_blank" aria-label="Abrir e-mail">
               <FaEnvelope size={20} />
             </a>
           </Link>
         </div>
 
         <Link href={curriculum.file.url}>
-          <a target="_blank">Download CV</a>
+          <a target="_blank" aria-label="Baixar currículo">
+            Download CV
+          </a>
         </Link>
       </div>
-
-      {/* <div className={styles.scroll}>
-        <Link href="#sobre-mim">
-          <a>Scroll down</a>
-        </Link>
-      </div> */}
     </div>
   );
 }
