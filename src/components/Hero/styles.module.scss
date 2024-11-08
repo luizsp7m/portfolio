@@ -1,31 +1,32 @@
 .container {
-  min-height: 510px;
-  height: 100vh;
+  margin-top: -41px;
+  min-height: calc(100vh - 81px);
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative;
-  overflow: hidden;
-  margin-top: -81px;
 }
 
 .presentation {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.6rem;
-  animation: fadeDown ease-out 1.25s;
+  gap: 1.4rem;
+  animation: fadeDown ease-out 0.75s;
 
   h1 {
     color: var(--text-primary);
     font-size: 2.4rem;
     text-align: center;
+    margin: 0;
   }
 
   span {
     color: var(--text-secondary);
-    font-size: 1.65rem;
+    font-size: 1.6rem;
     text-align: center;
+    font-weight: 500;
+    margin: 0;
+    margin-top: -0.6rem;
   }
 
   a {
@@ -36,7 +37,6 @@
     border-radius: 0.25rem;
     font-size: 1.6rem;
     font-weight: 500;
-    margin-top: 0.8rem;
     color: var(--text-white);
     background: var(--primary-color);
     cursor: pointer;
@@ -53,7 +53,7 @@
 }
 
 .image {
-  background: linear-gradient(to right, var(--primary-color) 50%, transparent 50%);
+  background: var(--primary-color);
   height: 16.5rem;
   width: 16.5rem;
   display: flex;
@@ -70,26 +70,10 @@
   }
 }
 
-.social,
-.scroll {
-  position: absolute;
-  bottom: 0;
+.social {
   display: flex;
-  flex-direction: column;
   align-items: center;
   gap: 1.2rem;
-  animation: fadeUp ease-out 1.25s;
-
-  &::after {
-    content: "";
-    width: 0.2rem;
-    height: 5rem;
-    background: var(--primary-color);
-  }
-}
-
-.social {
-  left: 0;
 
   a {
     height: 4rem;
@@ -109,43 +93,10 @@
   }
 }
 
-.scroll {
-  right: 0;
-
-  a {
-    writing-mode: vertical-rl;
-    width: 4rem;
-    padding: 0.5rem;
-    font-size: 1.45rem;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    border-radius: 0.25rem;
-    color: var(--primary-color);
-    font-weight: 500;
-
-    &:hover {
-      color: var(--primary-color-hover);
-    }
-  }
-}
-
 @keyframes fadeDown {
   from {
     opacity: 0;
-    transform: translateY(-110px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(110px);
+    transform: translateY(-24px);
   }
 
   to {
