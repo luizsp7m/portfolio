@@ -11,7 +11,14 @@
 .project-details-body {
   padding: 1.6rem;
 
-  p {
+  > span {
+    font-size: 1.4rem;
+    color: var(--text-secondary);
+    display: block;
+    margin-bottom: 1.2rem;
+  }
+
+  > p {
     font-size: 1.4rem;
     color: var(--text-secondary);
     margin: 1.6rem 0;

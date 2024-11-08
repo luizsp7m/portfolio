@@ -30,6 +30,8 @@ export function ProjectDetails({ project }: ProjectDetailsProps) {
       </div>
 
       <div className={styles["project-details-body"]}>
+        <span>Tecnologias: </span>
+
         <div className={styles["project-technologies"]}>
           {project.technologies.map((technology) => (
             <span key={technology.id}>{technology.name}</span>
