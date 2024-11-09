@@ -1,38 +1,41 @@
 .container {
-  min-height: calc(100vh - 81px);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.presentation {
+  height: calc(100vh - 81px);
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 1.4rem;
-  margin-bottom: 81px;
+  justify-content: center;
+  align-items: flex-start;
+  padding-bottom: 81px;
 
-  h1 {
-    color: var(--text-primary);
-    font-size: 2.4rem;
-    text-align: center;
-    margin: 0;
+  > span {
+    color: var(--text-secondary);
+    font-size: 2.2rem;
     opacity: 0;
-    animation: fadeIn 0.5s ease-in-out 0.75s forwards;
+    animation: fadeIn 0.5s ease-in-out 0.5s forwards;
   }
 
-  span {
-    color: var(--text-secondary);
-    font-size: 1.6rem;
-    text-align: center;
-    font-weight: 500;
-    margin: 0;
-    margin-top: -0.6rem;
+  > h1 {
+    color: var(--text-primary);
+    text-transform: uppercase;
+    font-weight: 900;
+    font-size: 8rem;
     opacity: 0;
-    animation: fadeIn 0.5s ease-in-out 1.25s forwards;
+    animation: fadeIn 2s ease-in-out 1.25s forwards;
+  }
+
+  > h2 {
+    color: var(--primary-color);
+    text-transform: uppercase;
+    font-size: 3.2rem;
+
+    overflow: hidden;
+    white-space: nowrap;
+    width: 0;
+    animation: revealText 5s ease 2.75s forwards;
   }
 
   > a {
+    opacity: 0;
+    margin-top: 2.2rem;
     border: 0;
     outline: 0;
     height: 4.4rem;
@@ -49,10 +52,7 @@
     align-items: center;
     justify-content: center;
 
-    opacity: 0;
-    animation: fadeIn 0.5s ease-in-out 3.25s forwards;
-
-    margin-top: 0.6rem;
+    animation: fadeIn 0.5s ease-in-out 6s forwards;
 
     &:hover {
       background: var(--primary-color-hover);
@@ -60,31 +60,11 @@
   }
 }
 
-.image {
-  background: var(--background-tertiary);
-  height: 16.5rem;
-  width: 16.5rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 50%;
-
-  opacity: 0;
-  animation: fadeIn 0.5s ease-in-out 0.25s forwards;
-
-  img {
-    width: 15rem;
-    height: 15rem;
-    border-radius: 50%;
-    object-fit: cover;
-    background: var(--background-secondary);
-  }
-}
-
 .social {
   display: flex;
   align-items: center;
   gap: 1.2rem;
+  margin-top: 2.2rem;
 
   a {
     height: 4rem;
@@ -106,15 +86,15 @@
     }
 
     &:nth-child(1) {
-      animation-delay: 1.75s;
+      animation-delay: 4.5s;
     }
 
     &:nth-child(2) {
-      animation-delay: 2.25s;
+      animation-delay: 5s;
     }
 
     &:nth-child(3) {
-      animation-delay: 2.75s;
+      animation-delay: 5.5s;
     }
   }
 }
@@ -133,7 +113,6 @@
   from {
     width: 0;
   }
-
   to {
     width: 100%;
   }
@@ -144,7 +123,6 @@
     opacity: 0;
     transform: translateY(20px);
   }
-
   to {
     opacity: 1;
     transform: translateX(0);
