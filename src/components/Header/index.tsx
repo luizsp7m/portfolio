@@ -28,7 +28,7 @@ export function Header({ isHomepage }: Props) {
                 gap: 8,
               }}
             >
-              <SwitchThemeButton />
+              {/* <SwitchThemeButton /> */}
 
               <Link href="/projetos/1">
                 <a aria-label="Ir para projetos">
