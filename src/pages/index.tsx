@@ -26,7 +26,6 @@ import {
 } from "../services/get-curriculum-query";
 
 import { GET_ABOUT_QUERY, GetAboutResponse } from "../services/get-about-query";
-import { HeroAlternative } from "../components/HeroAlternative";
 
 interface Props {
   projects: Array<Project>;
@@ -44,7 +43,6 @@ export default function Home({
   return (
     <Layout title="Luiz Oliveira - Portfólio" isHomepage>
       <Hero curriculum={curriculum} />
-      {/* <HeroAlternative curriculum={curriculum} /> */}
       <AboutComponent about={about} />
       <ProjectList projects={projects} />
       <TechnologyList technologies={technologies} />
