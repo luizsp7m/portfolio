@@ -27,11 +27,12 @@ export function ProjectCard({ project, handleOpenModal }: Props) {
 
   return (
     <div className={styles.container}>
-      <div className={styles["project-image"]}>
+      <div className={styles["project-image-wrapper"]}>
         <Image
           src={project.thumbnail.url}
           alt={`Imagem do projeto ${project.title}`}
-          layout="fill"
+          width={1920}
+          height={1080}
           objectFit="cover"
           placeholder="blur"
           blurDataURL={project.thumbnail.url}

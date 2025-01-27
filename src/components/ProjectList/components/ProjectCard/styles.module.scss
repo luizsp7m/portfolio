@@ -7,7 +7,7 @@
   overflow: hidden;
 
   &:hover {
-    .project-image {
+    .project-image-wrapper {
       img {
         opacity: 0.75;
       }
@@ -19,10 +19,9 @@
   }
 }
 
-.project-image {
+.project-image-wrapper {
+  display: flex;
   position: relative;
-  height: 22.5rem;
-
   cursor: pointer;
 
   a {
