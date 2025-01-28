@@ -19,28 +19,18 @@ export function Header({ isHomepage }: Props) {
               </a>
             </Link>
 
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: 8,
-              }}
-            >
-              <Link href="/projetos/1">
-                <a aria-label="Ir para projetos">
-                  Projetos <FiArrowRight size={16} />
-                </a>
-              </Link>
-            </div>
-          </>
-        ) : (
-          <div>
-            <Link href="/">
-              <a className={styles.back} aria-label="Voltar para início">
-                <FiArrowLeft size={16} /> Voltar
+            <Link href="/projetos/1">
+              <a aria-label="Ir para projetos">
+                Projetos <FiArrowRight size={16} />
               </a>
             </Link>
-          </div>
+          </>
+        ) : (
+          <Link href="/">
+            <a className={styles.back} aria-label="Voltar para início">
+              <FiArrowLeft size={16} /> Voltar para o início
+            </a>
+          </Link>
         )}
       </div>
     </div>

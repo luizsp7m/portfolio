@@ -2,7 +2,7 @@ import styles from "./styles.module.scss";
 
 import Head from "next/head";
 
-import { Fragment, ReactNode } from "react";
+import { ReactNode } from "react";
 import { Footer } from "../components/Footer";
 import { Header } from "../components/Header";
 import { Menu } from "../components/Menu";
@@ -16,19 +16,20 @@ interface Props {
 
 export function Layout({ title, children, isHomepage = false }: Props) {
   return (
-    <Fragment>
+    <div className={styles.container}>
       <Head>
         <title>{title}</title>
       </Head>
 
       <Header isHomepage={isHomepage} />
 
-      <div id="container-scrollable" className={styles.container}>
-        <div className={styles.main}>{children}</div>
-        <Footer isHomepage={isHomepage} />
-        <ButtonToTop />
-        {isHomepage && <Menu />}
-      </div>
-    </Fragment>
+      <div className={styles.main}>{children}</div>
+
+      <Footer isHomepage={isHomepage} />
+
+      <ButtonToTop />
+
+      {isHomepage && <Menu />}
+    </div>
   );
 }

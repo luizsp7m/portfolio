@@ -1,9 +1,15 @@
 import styles from "./styles.module.scss";
 
-import { scrollToTop } from "../../utils/scroll-to-top";
 import { RiArrowUpLine } from "react-icons/ri";
 
 export function ButtonToTop() {
+  function scrollToTop() {
+    window.scroll({
+      top: 0,
+      behavior: "smooth",
+    });
+  }
+
   return (
     <button
       type="button"
