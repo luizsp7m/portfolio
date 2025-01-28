@@ -19,7 +19,7 @@ export function Footer({ isHomepage = false }: Props) {
       })}
     >
       <div className={styles.main}>
-        <h5>Luiz Oliveira</h5>
+        <h6>Luiz Oliveira</h6>
 
         <nav>
           <Link href="/#home">
