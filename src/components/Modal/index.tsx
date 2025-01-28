@@ -2,8 +2,9 @@ import styles from "./styles.module.scss";
 import clsx from "clsx";
 import ReactModal from "react-modal";
 
-import { ReactNode, useEffect } from "react";
+import { ReactNode } from "react";
 import { IoCloseSharp } from "react-icons/io5";
+import { useScrollbarCompensation } from "./use-scrollbar-compensation";
 
 ReactModal.setAppElement("#__next");
 
@@ -46,54 +47,7 @@ export function Modal({
   removeBodyPadding = false,
   children,
 }: ModalProps) {
-  useEffect(() => {
-    const header = document.getElementById("header");
-    const buttonToTop = document.getElementById("button-to-top");
-
-    const handleScrollCompensation = () => {
-      if (isOpen) {
-        const scrollbarWidth =
-          window.innerWidth - document.documentElement.clientWidth;
-
-        document.body.style.overflow = "hidden";
-        document.body.style.paddingRight = `${scrollbarWidth}px`;
-
-        if (header) {
-          header.style.paddingRight = `${scrollbarWidth}px`;
-        }
-
-        if (buttonToTop) {
-          buttonToTop.style.visibility = "hidden";
-        }
-      } else {
-        document.body.style.overflow = "";
-        document.body.style.paddingRight = "";
-
-        if (header) {
-          header.style.paddingRight = "";
-        }
-
-        if (buttonToTop) {
-          buttonToTop.style.visibility = "";
-        }
-      }
-    };
-
-    handleScrollCompensation();
-
-    return () => {
-      document.body.style.overflow = "";
-      document.body.style.paddingRight = "";
-
-      if (header) {
-        header.style.paddingRight = "";
-      }
-
-      if (buttonToTop) {
-        buttonToTop.style.visibility = "";
-      }
-    };
-  }, [isOpen]);
+  useScrollbarCompensation(isOpen);
 
   return (
     <ReactModal
