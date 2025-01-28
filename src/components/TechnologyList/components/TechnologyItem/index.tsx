@@ -20,10 +20,10 @@ export function TechnologyItem({ technology }: Props) {
           alt={`Logo da tecnologia ${technology.name}`}
           width={27.5}
           height={27.5}
-          blurDataURL={technology.logo.url}
-          quality={85}
           layout="fixed"
           objectFit="contain"
+          blurDataURL={technology.logo.url}
+          quality={85}
         />
 
         <span>{technology.name}</span>

@@ -13,6 +13,7 @@ export function ButtonToTop() {
   return (
     <button
       type="button"
+      id="button-to-top"
       className={styles.button}
       onClick={() => scrollToTop()}
       aria-label="Voltar ao início da tela"

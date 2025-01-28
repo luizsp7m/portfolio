@@ -48,6 +48,7 @@ export function Modal({
 }: ModalProps) {
   useEffect(() => {
     const header = document.getElementById("header");
+    const buttonToTop = document.getElementById("button-to-top");
 
     const handleScrollCompensation = () => {
       if (isOpen) {
@@ -60,12 +61,20 @@ export function Modal({
         if (header) {
           header.style.paddingRight = `${scrollbarWidth}px`;
         }
+
+        if (buttonToTop) {
+          buttonToTop.style.visibility = "hidden";
+        }
       } else {
         document.body.style.overflow = "";
         document.body.style.paddingRight = "";
 
         if (header) {
           header.style.paddingRight = "";
+        }
+
+        if (buttonToTop) {
+          buttonToTop.style.visibility = "";
         }
       }
     };
@@ -78,6 +87,10 @@ export function Modal({
 
       if (header) {
         header.style.paddingRight = "";
+      }
+
+      if (buttonToTop) {
+        buttonToTop.style.visibility = "";
       }
     };
   }, [isOpen]);

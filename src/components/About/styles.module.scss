@@ -29,20 +29,18 @@
   }
 }
 
-.image {
+.image-wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
 
   img {
-    width: 31.5rem;
-    height: auto;
-    object-fit: contain;
+    /* */
   }
 }
 
 @media (max-width: 1084px) {
-  .image {
+  .image-wrapper {
     display: none;
   }
 }

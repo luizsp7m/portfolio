@@ -13,17 +13,17 @@ interface ProjectDetailsProps {
 export function ProjectDetails({ project }: ProjectDetailsProps) {
   return (
     <div className={styles.container}>
-      <div className={styles["project-image"]}>
+      <div className={styles["project-image-wrapper"]}>
         <Link href={project.thumbnail.url}>
           <a target="_blank">
             <Image
               src={project.thumbnail.url}
               alt={`Imagem do projeto ${project.title}`}
               width={512}
-              height={288}
+              height={512 * (9 / 16)}
               placeholder="blur"
               blurDataURL={project.thumbnail.url}
-              quality={85}
+              quality={100}
             />
           </a>
         </Link>

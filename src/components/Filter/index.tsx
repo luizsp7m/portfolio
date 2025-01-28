@@ -85,10 +85,10 @@ export function Filter({ technologies }: Props) {
                       alt={`Logo da tecnologia ${technology.name}`}
                       width={17.5}
                       height={17.5}
-                      blurDataURL={technology.logo.url}
-                      quality={85}
                       layout="fixed"
                       objectFit="contain"
+                      blurDataURL={technology.logo.url}
+                      quality={85}
                     />
 
                     <span>{technology.name}</span>

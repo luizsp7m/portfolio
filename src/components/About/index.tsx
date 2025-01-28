@@ -18,7 +18,7 @@ export function About({ about }: Props) {
           dangerouslySetInnerHTML={{ __html: about.description }}
         />
 
-        <div className={styles.image}>
+        <div className={styles["image-wrapper"]}>
           <Image
             src="/assets/developer.svg"
             alt="Developer"
