@@ -20,9 +20,13 @@
 }
 
 .project-image-wrapper {
-  display: flex;
   position: relative;
+  overflow: hidden;
   cursor: pointer;
+
+  img {
+    /* */
+  }
 
   a {
     position: absolute;
