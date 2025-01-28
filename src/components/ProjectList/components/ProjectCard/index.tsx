@@ -47,7 +47,7 @@ export function ProjectCard({ project, handleOpenModal }: Props) {
       </div>
 
       <div className={styles["project-body"]}>
-        <h6>{project.title}</h6>
+        <h5>{project.title}</h5>
 
         <Link href={project.deploy}>
           <a target="_blank" aria-label="Ver prévia do projeto">
