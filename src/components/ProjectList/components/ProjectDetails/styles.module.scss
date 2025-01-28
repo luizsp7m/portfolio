@@ -31,12 +31,18 @@
   flex-wrap: wrap;
 
   span {
-    background: red;
-    font-size: 1.2rem;
-    background: var(--background-secondary);
-    color: var(--text-primary);
-    padding: 0.8rem;
+    padding: 0.6rem 1rem;
     border-radius: 4px;
+    font-size: 1.15rem;
+    font-weight: 400;
+    text-decoration: none;
+    color: var(--text-primary);
+    background: var(--background-secondary);
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 }
 

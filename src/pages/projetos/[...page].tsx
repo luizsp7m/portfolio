@@ -145,7 +145,12 @@ export default function Page({
         onClose={handleCloseModal}
         removeBodyPadding
       >
-        {selectedProject && <ProjectDetails project={selectedProject} />}
+        {selectedProject && (
+          <ProjectDetails
+            handleCloseModal={handleCloseModal}
+            project={selectedProject}
+          />
+        )}
       </Modal>
     </Layout>
   );

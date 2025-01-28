@@ -59,7 +59,12 @@ export function ProjectList({ projects }: Props) {
         onClose={handleCloseModal}
         removeBodyPadding
       >
-        {selectedProject && <ProjectDetails project={selectedProject} />}
+        {selectedProject && (
+          <ProjectDetails
+            project={selectedProject}
+            handleCloseModal={handleCloseModal}
+          />
+        )}
       </Modal>
     </Fragment>
   );

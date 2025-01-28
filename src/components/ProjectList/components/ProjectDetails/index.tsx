@@ -5,12 +5,24 @@ import Image from "next/image";
 import { FaGithub } from "react-icons/fa";
 import { FiExternalLink } from "react-icons/fi";
 import { Project } from "../../../../types/Project";
+import { useRouter } from "next/router";
 
 interface ProjectDetailsProps {
   project: Project;
+  handleCloseModal: () => void;
 }
 
-export function ProjectDetails({ project }: ProjectDetailsProps) {
+export function ProjectDetails({
+  project,
+  handleCloseModal,
+}: ProjectDetailsProps) {
+  const router = useRouter();
+
+  function handleNavigate(destination: string) {
+    handleCloseModal();
+    router.push(destination);
+  }
+
   return (
     <div className={styles.container}>
       <div className={styles["project-image-wrapper"]}>
@@ -34,7 +46,13 @@ export function ProjectDetails({ project }: ProjectDetailsProps) {
 
         <div className={styles["project-technologies"]}>
           {project.technologies.map((technology) => (
-            <span key={technology.id}>{technology.name}</span>
+            <span
+              key={technology.id}
+              aria-label={`Ir para projetos desenvolvidos com ${technology.name}`}
+              onClick={() => handleNavigate(`/projetos/${technology.slug}/1`)}
+            >
+              {technology.name}
+            </span>
           ))}
         </div>
 
