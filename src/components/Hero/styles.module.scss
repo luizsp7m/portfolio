@@ -1,5 +1,6 @@
 .container {
-  height: 100dvh;
+  scroll-margin-top: var(--header-height);
+  height: calc(100dvh - var(--header-height));
   display: flex;
   justify-content: center;
   align-items: center;
@@ -10,7 +11,7 @@
   flex-direction: column;
   align-items: center;
   gap: 1.4rem;
-  margin-bottom: 81px;
+  margin-bottom: var(--header-height);
 
   h1 {
     color: var(--text-primary);
