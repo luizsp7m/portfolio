@@ -2,7 +2,7 @@ import styles from "./styles.module.scss";
 
 import Head from "next/head";
 
-import { ReactNode } from "react";
+import { Fragment, ReactNode } from "react";
 import { Footer } from "../components/Footer";
 import { Header } from "../components/Header";
 import { Menu } from "../components/Menu";
@@ -16,20 +16,22 @@ interface Props {
 
 export function Layout({ title, children, isHomepage = false }: Props) {
   return (
-    <div className={styles.container}>
+    <Fragment>
       <Head>
         <title>{title}</title>
       </Head>
 
-      <Header isHomepage={isHomepage} />
+      <div className={styles.container}>
+        <Header isHomepage={isHomepage} />
 
-      <div className={styles.main}>{children}</div>
+        <div className={styles.main}>{children}</div>
 
-      <Footer isHomepage={isHomepage} />
+        <Footer isHomepage={isHomepage} />
 
-      <ButtonToTop />
+        <ButtonToTop />
 
-      {isHomepage && <Menu />}
-    </div>
+        {isHomepage && <Menu />}
+      </div>
+    </Fragment>
   );
 }

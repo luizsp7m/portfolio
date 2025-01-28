@@ -1,19 +1,17 @@
 .container {
   display: flex;
   flex-direction: column;
+  min-height: 100dvh;
 }
 
 .main {
+  flex: 1;
+
   padding: 0 3rem;
-  padding-top: 81px;
-  min-height: calc(100vh - 267px);
   width: 100%;
   max-width: 1084px;
   margin: 0 auto;
-}
 
-@media (max-width: 384px) {
-  .main {
-    min-height: calc(100vh - 302.97px);
-  }
+  display: flex;
+  flex-direction: column;
 }

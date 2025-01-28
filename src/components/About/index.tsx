@@ -1,10 +1,10 @@
 import styles from "./styles.module.scss";
 
-import { About } from "../../types/About";
+import { About as AboutType } from "../../types/About";
 import Image from "next/image";
 
 interface Props {
-  about: About;
+  about: AboutType;
 }
 
 export function About({ about }: Props) {
