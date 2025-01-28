@@ -6,7 +6,6 @@ import { BsFilterRight, BsSearch } from "react-icons/bs";
 import { Fragment, useEffect, useState } from "react";
 import { Modal } from "../Modal";
 import { useRouter } from "next/router";
-import { useTheme } from "../../hooks/useTheme";
 import { Technology } from "../../types/Technology";
 import Image from "next/image";
 
@@ -19,7 +18,6 @@ export function Filter({ technologies }: Props) {
   const [searchValue, setSearchValue] = useState("");
 
   const { asPath } = useRouter();
-  const { isLightTheme } = useTheme();
 
   function handleOpenModal() {
     setModalIsOpen(true);
@@ -55,11 +53,7 @@ export function Filter({ technologies }: Props) {
         removeBodyPadding
       >
         <div className={styles.modalContent}>
-          <div
-            className={clsx(styles.searchBar, {
-              [styles.searchBarLight]: isLightTheme,
-            })}
-          >
+          <div className={styles.searchBar}>
             <BsSearch size={18} />
 
             <input

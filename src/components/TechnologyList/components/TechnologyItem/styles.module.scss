@@ -12,12 +12,6 @@
     background: var(--primary-color);
   }
 
-  // img {
-  //   width: 2.75rem;
-  //   height: 2.75rem;
-  //   object-fit: contain;
-  // }
-
   span {
     font-size: 1.25rem;
     color: var(--text-primary);
@@ -26,13 +20,5 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-  }
-}
-
-.light-theme {
-  &:hover {
-    span {
-      color: var(--text-white);
-    }
   }
 }

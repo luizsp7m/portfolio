@@ -5,7 +5,6 @@
   --background-transition: background 0.2s ease-in-out;
   --color-transition: color 0.2s ease-in-out;
 
-  // DEFAULT THEME
   --background-primary: #161616;
   --background-secondary: #20242c;
   --background-tertiary: #2f3640;
@@ -13,16 +12,6 @@
   --text-secondary: #d1d5db;
   --divider-color: rgba(255, 255, 255, 0.025);
   --menu-color: rgba(44, 58, 71, 0.75);
-}
-
-.light-theme {
-  --background-primary: #fafafa;
-  --background-secondary: #fff;
-  --background-tertiary: #f9f9f9;
-  --text-primary: #1f2937;
-  --text-secondary: #4b5563;
-  --divider-color: rgba(0, 0, 0, 0.035);
-  --menu-color: rgba(44, 58, 71, 0.45);
 }
 
 * {

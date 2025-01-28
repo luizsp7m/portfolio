@@ -3,12 +3,11 @@ import clsx from "clsx";
 import ReactModal from "react-modal";
 
 import { ReactNode, useEffect } from "react";
-import { useTheme } from "../../hooks/useTheme";
 import { IoCloseSharp } from "react-icons/io5";
 
 ReactModal.setAppElement("#__next");
 
-const customStyles = (isLightTheme: boolean): ReactModal.Styles => {
+const customStyles = (): ReactModal.Styles => {
   return {
     overlay: {
       zIndex: 10,
@@ -22,7 +21,7 @@ const customStyles = (isLightTheme: boolean): ReactModal.Styles => {
       bottom: "auto",
       marginRight: "-50%",
       transform: "translate(-50%, -50%)",
-      background: isLightTheme ? "#f9f9f9" : "#2f3640",
+      background: "#2f3640",
       border: 0,
       padding: 0,
       width: "90%",
@@ -47,8 +46,6 @@ export function Modal({
   removeBodyPadding = false,
   children,
 }: ModalProps) {
-  const { isLightTheme } = useTheme();
-
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden";
@@ -65,7 +62,7 @@ export function Modal({
     <ReactModal
       isOpen={isOpen}
       onRequestClose={onClose}
-      style={customStyles(isLightTheme)}
+      style={customStyles()}
       preventScroll
     >
       <div className={styles["modal-header"]}>

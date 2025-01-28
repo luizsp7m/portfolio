@@ -1,25 +1,19 @@
 import styles from "./styles.module.scss";
-import clsx from "clsx";
 import Link from "next/link";
 import Image from "next/image";
 
 import { Technology } from "../../../../types/Technology";
-import { useTheme } from "../../../../hooks/useTheme";
 
 interface Props {
   technology: Technology;
 }
 
 export function TechnologyItem({ technology }: Props) {
-  const { isLightTheme } = useTheme();
-
   return (
     <Link href={`/projetos/${technology.slug}/1`}>
       <a
         aria-label={`Ir para projetos desenvolvidos com ${technology.name}`}
-        className={clsx(styles.container, {
-          [styles["light-theme"]]: isLightTheme,
-        })}
+        className={styles.container}
       >
         <Image
           src={technology.logo.url}

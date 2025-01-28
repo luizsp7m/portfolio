@@ -1,9 +1,7 @@
 import styles from "./styles.module.scss";
-
 import Link from "next/link";
 
 import { FiArrowRight, FiArrowLeft } from "react-icons/fi";
-import { SwitchThemeButton } from "./components/SwitchThemeButton";
 
 interface Props {
   isHomepage: boolean;
@@ -28,8 +26,6 @@ export function Header({ isHomepage }: Props) {
                 gap: 8,
               }}
             >
-              {/* <SwitchThemeButton /> */}
-
               <Link href="/projetos/1">
                 <a aria-label="Ir para projetos">
                   Projetos <FiArrowRight size={16} />

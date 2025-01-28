@@ -5,7 +5,6 @@ import NProgress from "nprogress";
 
 import { ApolloProvider } from "@apollo/client";
 import { client } from "../lib/apollo";
-import { ThemeProvider } from "../contexts/ThemeContext";
 import { configureNProgress } from "../lib/nprogress";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
@@ -33,9 +32,7 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <ApolloProvider client={client}>
-      <ThemeProvider>
-        <Component {...pageProps} />
-      </ThemeProvider>
+      <Component {...pageProps} />
     </ApolloProvider>
   );
 }
