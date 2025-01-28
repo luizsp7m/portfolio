@@ -9,7 +9,7 @@ interface Props {
 
 export function Header({ isHomepage }: Props) {
   return (
-    <div className={styles.container}>
+    <header id="header" className={styles.container}>
       <div className={styles.main}>
         {isHomepage ? (
           <>
@@ -33,6 +33,6 @@ export function Header({ isHomepage }: Props) {
           </Link>
         )}
       </div>
-    </div>
+    </header>
   );
 }
