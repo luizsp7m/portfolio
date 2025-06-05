@@ -2,7 +2,7 @@ import styles from "./styles.module.scss";
 import Link from "next/link";
 import Image from "next/image";
 
-import { BsFilterRight, BsSearch } from "react-icons/bs";
+import { BsList, BsSearch } from "react-icons/bs";
 import { Fragment, useEffect, useState } from "react";
 import { Modal } from "../Modal";
 import { useRouter } from "next/router";
@@ -42,7 +42,7 @@ export function Filter({ technologies }: Props) {
         onClick={handleOpenModal}
         aria-label="Abrir o filtro de tecnologias"
       >
-        <BsFilterRight size={20} />
+        <BsList size={20} />
       </button>
 
       <Modal
