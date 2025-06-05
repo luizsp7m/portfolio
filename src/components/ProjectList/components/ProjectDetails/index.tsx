@@ -36,6 +36,7 @@ export function ProjectDetails({
               placeholder="blur"
               blurDataURL={project.thumbnail.url}
               quality={100}
+              objectFit="cover"
             />
           </a>
         </Link>

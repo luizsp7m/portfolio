@@ -37,6 +37,7 @@ export function ProjectCard({ project, handleOpenModal }: Props) {
           placeholder="blur"
           blurDataURL={project.thumbnail.url}
           onClick={() => handleOpenModal(project)}
+          objectFit="cover"
         />
 
         <Link href={project.repository}>
