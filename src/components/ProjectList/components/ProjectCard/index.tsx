@@ -32,8 +32,8 @@ export function ProjectCard({ project, handleOpenModal }: Props) {
           src={project.thumbnail.url}
           alt={`Imagem do projeto ${project.title}`}
           layout="responsive"
-          width={1366}
-          height={1366 * (9 / 16)}
+          width={1280}
+          height={1280 * (9 / 16)}
           placeholder="blur"
           blurDataURL={project.thumbnail.url}
           onClick={() => handleOpenModal(project)}
