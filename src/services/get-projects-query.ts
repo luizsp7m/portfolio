@@ -8,7 +8,7 @@ export type GetProjectsResponse = {
 export const GET_PROJECTS_QUERY = gql`
   query MyQuery($first: IntType, $skip: IntType, $allIn: [ItemId]) {
     allProjects(
-      orderBy: createdAt_DESC
+      orderBy: [priority_ASC, displayOnHomepage_DESC, createdAt_DESC]
       first: $first
       skip: $skip
       filter: { technologies: { allIn: $allIn } }
