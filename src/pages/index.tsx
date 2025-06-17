@@ -11,21 +11,9 @@ import { Curriculum } from "../types/Curriculum";
 import { About } from "../types/About";
 
 import {
-  GET_PROJECTS_ON_HOMEPAGE_QUERY,
-  GetProjectsOnHomepageResponse,
-} from "../services/get-projects-on-homepage-query";
-
-import {
-  GET_TECHNOLOGIES_QUERY,
-  GetTechnologiesResponse,
-} from "../services/get-technologies-query";
-
-import {
-  GET_CURRICULUM_QUERY,
-  GetCurriculumResponse,
-} from "../services/get-curriculum-query";
-
-import { GET_ABOUT_QUERY, GetAboutResponse } from "../services/get-about-query";
+  GET_HOME_PAGE_DATA_QUERY,
+  GetHomePageDataResponse,
+} from "../services/get-home-page-data-query";
 
 interface Props {
   projects: Array<Project>;
@@ -51,28 +39,17 @@ export default function Home({
 }
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const { data: projects } = await client.query<GetProjectsOnHomepageResponse>({
-    query: GET_PROJECTS_ON_HOMEPAGE_QUERY,
-  });
-
-  const { data: technologies } = await client.query<GetTechnologiesResponse>({
-    query: GET_TECHNOLOGIES_QUERY,
-  });
-
-  const { data: curriculum } = await client.query<GetCurriculumResponse>({
-    query: GET_CURRICULUM_QUERY,
-  });
-
-  const { data: about } = await client.query<GetAboutResponse>({
-    query: GET_ABOUT_QUERY,
-  });
+  const { data: homePageDataResponse } =
+    await client.query<GetHomePageDataResponse>({
+      query: GET_HOME_PAGE_DATA_QUERY,
+    });
 
   return {
     props: {
-      projects: projects.allProjects,
-      technologies: technologies.allTechnologies,
-      curriculum: curriculum.curriculum,
-      about: about.about,
+      curriculum: homePageDataResponse.curriculum,
+      about: homePageDataResponse.about,
+      projects: homePageDataResponse.projects,
+      technologies: homePageDataResponse.technologies,
     },
   };
 };
