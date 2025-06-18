@@ -32,8 +32,9 @@ import {
   GET_TECHNOLOGY_QUERY,
   GetTechnologyResponse,
 } from "../../services/get-technology-query";
+import { gql } from "@apollo/client";
 
-const ITEMS_PER_PAGE = 9;
+const ITEMS_PER_PAGE = 6;
 
 interface Props {
   projects: Array<Project>;
@@ -178,41 +179,104 @@ async function getPathsWithoutTechnology() {
   return paths;
 }
 
+// async function getPathsWithTechnology() {
+//   const { data: technologies } = await client.query<GetTechnologiesResponse>({
+//     query: GET_TECHNOLOGIES_QUERY,
+//   });
+
+//   // const pages = await Promise.all(
+//   //   technologies.allTechnologies.map(async (technology) => {
+//   //     const {
+//   //       data: {
+//   //         _allProjectsMeta: { count },
+//   //       },
+//   //     } = await client.query<CountProjectsResponse>({
+//   //       query: COUNT_PROJECTS_QUERY,
+//   //       variables: {
+//   //         allIn: technology.id,
+//   //       },
+//   //     });
+
+//   //     const numberPages = count === 0 ? 1 : Math.ceil(count / ITEMS_PER_PAGE);
+
+//   //     return { ...technology, numberPages };
+//   //   })
+//   // );
+
+//   const pages = [];
+//   const paths = [];
+
+//   console.log({ pages });
+
+//   pages.forEach((page) => {
+//     for (let index = 1; index <= page.numberPages; index++) {
+//       paths.push({
+//         params: {
+//           page: [`${page.slug}`, `${index}`],
+//         },
+//       });
+//     }
+//   });
+
+//   return paths;
+// }
+
+function sanitizeAlias(slug: string) {
+  return slug.replace(/[^a-zA-Z0-9]/g, "_"); // substitui hífens e outros por "_"
+}
+
 async function getPathsWithTechnology() {
   const { data: technologies } = await client.query<GetTechnologiesResponse>({
     query: GET_TECHNOLOGIES_QUERY,
   });
 
-  const pages = await Promise.all(
-    technologies.allTechnologies.map(async (technology) => {
-      const {
-        data: {
-          _allProjectsMeta: { count },
-        },
-      } = await client.query<CountProjectsResponse>({
-        query: COUNT_PROJECTS_QUERY,
-        variables: {
-          allIn: technology.id,
-        },
-      });
+  const projectsByTechnologiesCountQuery = technologies.allTechnologies
+    .map((technology) => {
+      const slug = sanitizeAlias(technology.slug);
+      const projectsByTechnologyCountQuery = `${slug}: _allProjectsMeta(filter: {technologies: {allIn: "${technology.id}"}}) { count }`;
 
-      const numberPages = count === 0 ? 1 : Math.ceil(count / ITEMS_PER_PAGE);
-
-      return { ...technology, numberPages };
+      return projectsByTechnologyCountQuery;
     })
-  );
+    .join();
+
+  const { data: projectsByTechnologiesCount } = await client.query<{
+    [key: string]: { count: number };
+  }>({
+    query: gql`
+      query MyQuery {
+        ${projectsByTechnologiesCountQuery}
+      }
+    `,
+  });
+
+  const projectsByTechnologiesNumberPages = Object.entries(
+    projectsByTechnologiesCount
+  ).map(([key, { count }]) => {
+    const numberPages = count === 0 ? 1 : Math.ceil(count / ITEMS_PER_PAGE);
+
+    const technology = technologies.allTechnologies.find(
+      (technology) => sanitizeAlias(technology.slug) === key
+    );
+
+    return {
+      slug: technology.slug,
+      numberPages,
+    };
+  });
 
   const paths = [];
 
-  pages.forEach((page) => {
-    for (let index = 1; index <= page.numberPages; index++) {
-      paths.push({
-        params: {
-          page: [`${page.slug}`, `${index}`],
-        },
-      });
+  projectsByTechnologiesNumberPages.forEach(
+    (projectsByTechnologyNumberPages) => {
+      for (let i = 1; i <= projectsByTechnologyNumberPages.numberPages; i++) {
+        paths.push({
+          params: {
+            page: [`${projectsByTechnologyNumberPages.slug}`, `${i}`],
+          },
+        });
+      }
     }
-  });
+  );
 
   return paths;
 }
