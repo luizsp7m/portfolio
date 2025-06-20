@@ -179,48 +179,6 @@ async function getPathsWithoutTechnology() {
   return paths;
 }
 
-// async function getPathsWithTechnology() {
-//   const { data: technologies } = await client.query<GetTechnologiesResponse>({
-//     query: GET_TECHNOLOGIES_QUERY,
-//   });
-
-//   // const pages = await Promise.all(
-//   //   technologies.allTechnologies.map(async (technology) => {
-//   //     const {
-//   //       data: {
-//   //         _allProjectsMeta: { count },
-//   //       },
-//   //     } = await client.query<CountProjectsResponse>({
-//   //       query: COUNT_PROJECTS_QUERY,
-//   //       variables: {
-//   //         allIn: technology.id,
-//   //       },
-//   //     });
-
-//   //     const numberPages = count === 0 ? 1 : Math.ceil(count / ITEMS_PER_PAGE);
-
-//   //     return { ...technology, numberPages };
-//   //   })
-//   // );
-
-//   const pages = [];
-//   const paths = [];
-
-//   console.log({ pages });
-
-//   pages.forEach((page) => {
-//     for (let index = 1; index <= page.numberPages; index++) {
-//       paths.push({
-//         params: {
-//           page: [`${page.slug}`, `${index}`],
-//         },
-//       });
-//     }
-//   });
-
-//   return paths;
-// }
-
 function sanitizeAlias(slug: string) {
   return slug.replace(/[^a-zA-Z0-9]/g, "_"); // substitui hífens e outros por "_"
 }
@@ -230,6 +188,7 @@ async function getPathsWithTechnology() {
     query: GET_TECHNOLOGIES_QUERY,
   });
 
+  // Query para buscar a quantidade de projetos que cada tecnologia possui
   const projectsByTechnologiesCountQuery = technologies.allTechnologies
     .map((technology) => {
       const slug = sanitizeAlias(technology.slug);
@@ -239,6 +198,8 @@ async function getPathsWithTechnology() {
     })
     .join();
 
+  // Chamada para o DatoCMS
+  // Ex. de resposta: { data: { html: { count: 5 }, css: { count: 2 } } }
   const { data: projectsByTechnologiesCount } = await client.query<{
     [key: string]: { count: number };
   }>({
@@ -249,6 +210,7 @@ async function getPathsWithTechnology() {
     `,
   });
 
+  // Número de páginas que cada tecnologia deve ter
   const projectsByTechnologiesNumberPages = Object.entries(
     projectsByTechnologiesCount
   ).map(([key, { count }]) => {
