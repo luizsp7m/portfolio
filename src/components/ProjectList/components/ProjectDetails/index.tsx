@@ -57,7 +57,7 @@ export function ProjectDetails({
           ))}
         </div>
 
-        <p>{project.description}</p>
+        <p>{project.summary}</p>
 
         <div className={styles["project-external-links"]}>
           <Link href={project.deploy}>

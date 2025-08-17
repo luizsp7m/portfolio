@@ -9,12 +9,12 @@ export const GET_PROJECTS_ON_HOMEPAGE_QUERY = gql`
   query MyQuery {
     allProjects(
       filter: { displayOnHomepage: { eq: true } }
-      orderBy: [priority_ASC, createdAt_DESC]
+      orderBy: [priority_ASC, date_DESC]
       first: "6"
     ) {
       id
       title
-      description
+      summary
       deploy
       repository
       thumbnail {
