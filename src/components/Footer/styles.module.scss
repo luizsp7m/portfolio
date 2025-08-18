@@ -1,27 +1,27 @@
 .container {
   background: var(--background-primary);
   border-top: 1px solid var(--divider-color);
-  padding: 4rem 0;
+  padding: 2.5rem 0; /* 4rem(10)=40px → 40/16 */
 }
 
 .container.paddingBottom {
-  padding: 4rem 0 11.2rem 0;
+  padding: 2.5rem 0 7rem 0; /* 11.2rem(10)=112px → 112/16 */
 }
 
 .main {
   width: 100%;
   max-width: 1084px;
-  padding: 0 3rem;
+  padding: 0 1.875rem; /* 3rem(10)=30px → 30/16 */
   margin: 0 auto;
 
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  gap: 2.2rem;
+  gap: 1.375rem; /* 2.2rem(10)=22px → 22/16 */
 
   h6 {
-    font-size: 1.55rem;
+    font-size: 0.96875rem; /* 1.55rem(10)=15.5px → 15.5/16 */
     font-weight: 600;
     text-decoration: none;
     color: var(--primary-color);
@@ -29,10 +29,10 @@
 
   nav {
     a {
-      font-size: 1.45rem;
+      font-size: 0.90625rem; /* 1.45rem(10)=14.5px → 14.5/16 */
       text-decoration: none;
       color: var(--text-secondary);
-      margin: 0 1.6rem;
+      margin: 0 0.625rem; /* 1.6rem(10)=16px → 16/16 */
 
       &:hover {
         color: var(--primary-color);
@@ -41,8 +41,8 @@
   }
 
   span {
-    margin-top: 1.6rem;
-    font-size: 1.35rem;
+    margin-top: 0.625rem; /* 1.6rem(10)=16px → 16/16 */
+    font-size: 0.84375rem; /* 1.35rem(10)=13.5px → 13.5/16 */
     color: var(--text-secondary);
     text-align: center;
   }
@@ -51,13 +51,13 @@
 .social {
   display: flex;
   align-items: center;
-  gap: 1.6rem;
+  gap: 0.875rem; /* 1.6rem(10)=14px → 14/16 */
 
   a {
-    height: 4rem;
-    width: 4rem;
-    padding: 0.5rem;
-    border-radius: 0.25rem;
+    height: 2.5rem; /* 4rem(10)=40px → 40/16 */
+    width: 2.5rem; /* idem */
+    padding: 0.3125rem; /* 0.5rem(10)=5px → 5/16 */
+    border-radius: 0.25rem; /* 4px → ok */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -76,7 +76,7 @@
     nav {
       display: flex;
       flex-direction: column;
-      gap: 1.6rem;
+      gap: 0.875rem; /* 1.6rem(10)=14px → 14/16 */
       align-items: center;
     }
   }

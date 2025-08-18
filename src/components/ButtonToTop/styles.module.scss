@@ -1,10 +1,10 @@
 .button {
   position: fixed;
-  right: 2rem;
-  bottom: 2rem;
+  right: 1.25rem; /* 2rem(10) = 20px → 20 ÷ 16 */
+  bottom: 1.25rem; /* idem */
 
-  height: 4.8rem;
-  width: 4.8rem;
+  height: 3rem; /* 4.8rem(10) = 48px → 48 ÷ 16 */
+  width: 3rem; /* idem */
   font-size: 0;
   border: 0;
   border-radius: 50%;
@@ -13,7 +13,7 @@
   background: var(--background-secondary);
 
   svg {
-    width: 2rem;
+    width: 1.25rem; /* 2rem(10) = 20px → 20 ÷ 16 */
     height: auto;
     color: var(--primary-color);
   }

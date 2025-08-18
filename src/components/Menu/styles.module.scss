@@ -6,24 +6,24 @@
 
 .menu {
   position: fixed;
-  bottom: 1rem;
+  bottom: 0.625rem; /* 1rem(10) = 10px → 10 ÷ 16 */
   z-index: 10;
-  border-radius: 0.5rem;
-  padding: 1.6rem 3.2rem;
+  border-radius: 0.5rem; /* 8px → já ok */
+  padding: 1rem 2rem; /* 1.6rem(10)=16px → 16/16=1rem; 3.2rem(10)=32px → 32/16=2rem */
   display: flex;
   align-items: center;
-  gap: 2.2rem;
-  backdrop-filter: blur(16px);
+  gap: 1.375rem; /* 2.2rem(10)=22px → 22/16 */
+  backdrop-filter: blur(1rem); /* 16px → 16/16 = 1rem */
   background: var(--menu-color);
 
   a {
-    height: 4rem;
-    width: 4rem;
+    height: 2.5rem; /* 4rem(10)=40px → 40/16 */
+    width: 2.5rem; /* idem */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 0.5rem;
+    padding: 0.3125rem; /* 0.5rem(10)=5px → 5/16 */
     border-radius: 50%;
     color: var(--text-white);
     transition: all 0.25s ease-in-out;
@@ -33,15 +33,15 @@
 
     span {
       background: var(--background-primary);
-      border-radius: 0.25rem;
-      padding: 4px 8px;
+      border-radius: 0.25rem; /* 4px → ok */
+      padding: 0.25rem 0.5rem; /* 4px 8px → 4/16=0.25rem; 8/16=0.5rem */
 
       position: absolute;
       white-space: nowrap;
       text-align: center;
-      font-size: 1.3rem;
+      font-size: 0.8125rem; /* 1.3rem(10)=13px → 13/16 */
       opacity: 0;
-      transform: translateY(-4.8rem);
+      transform: translateY(-3rem); /* -4.8rem(10)= -48px → -48/16=-3rem */
       transition:
         opacity 0.3s ease,
         transform 0.3s ease;
@@ -50,11 +50,11 @@
 
     &:hover {
       background: var(--primary-color);
-      box-shadow: 0 0 14px var(--primary-color-hover);
+      box-shadow: 0 0 0.875rem var(--primary-color-hover); /* 14px → 14/16=0.875rem */
 
       span {
         opacity: 1;
-        transform: translateY(-5.6rem);
+        transform: translateY(-3.5rem); /* -5.6rem(10)= -56px → -56/16=-3.5rem */
       }
     }
   }

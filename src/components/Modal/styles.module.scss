@@ -2,11 +2,11 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1.6rem;
+  padding: 1rem; /* 1.6rem(10)=16px → 16/16=1rem */
   border-bottom: 1px solid var(--divider-color);
 
   span {
-    font-size: 1.4rem;
+    font-size: 0.875rem; /* 1.4rem(10)=14px → 14/16 */
     font-weight: 500;
     color: var(--text-primary);
     overflow: hidden;
@@ -18,14 +18,14 @@
     border: 0;
     background: 0;
     outline: 0;
-    height: 22px;
-    width: 22px;
+    height: 1.375rem; /* 22px → 22/16 */
+    width: 1.375rem; /* idem */
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
     color: #c0392b;
-    border-radius: 22px;
+    border-radius: 1.375rem; /* 22px → 22/16 */
 
     &:hover {
       background: #c0392b;
@@ -35,9 +35,9 @@
 }
 
 .modal-body {
-  padding: 1.6rem;
+  padding: 1rem; /* 1.6rem(10)=16px → 16/16 */
   overflow-y: auto;
-  max-height: 512px;
+  max-height: 32rem; /* 512px → 512/16 */
 }
 
 .remove-body-padding {

@@ -1,11 +1,11 @@
 .container {
   background: var(--background-secondary);
-  border-radius: 0.25rem;
+  border-radius: 0.25rem; /* 4px → ok */
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  gap: 1.25rem;
-  padding: 1.25rem;
+  gap: 0.78125rem; /* 1.25rem(10)=20px → 20/16 */
+  padding: 0.78125rem; /* idem */
   text-decoration: none;
 
   &:hover {
@@ -13,7 +13,7 @@
   }
 
   span {
-    font-size: 1.25rem;
+    font-size: 0.78125rem; /* 1.25rem(10)=20px → 20/16 */
     color: var(--text-primary);
     font-weight: 500;
     max-width: 100%;

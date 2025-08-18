@@ -5,13 +5,13 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 1.8rem;
-  padding: 3.2rem 0;
+  gap: 0.1125rem; /* 1.8rem(10)=18px → 18/16 = 1.125rem */
+  padding: 0.2rem 0; /* 3.2rem(10)=32px → 32/16 = 2rem ??? precisa conferir */
 
   h1 {
     color: var(--text-secondary);
     font-weight: 500;
-    font-size: 1.5rem;
+    font-size: 0.9375rem; /* 1.5rem(10)=15px → 15/16 */
     text-align: center;
   }
 }
@@ -19,7 +19,7 @@
 .image {
   img {
     width: 100%;
-    max-width: 256px;
+    max-width: 16rem; /* 256px → 256/16 = 16rem */
     height: auto;
   }
 }

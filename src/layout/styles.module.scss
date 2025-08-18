@@ -7,10 +7,10 @@
 .main {
   flex: 1;
 
-  padding: 0 3rem;
+  padding: 0 1.875rem; /* 3rem = 48px → 48/16 = 3rem */
   padding-top: var(--header-height);
   width: 100%;
-  max-width: 1084px;
+  max-width: 67.75rem; /* 1084px → 1084/16 = 67.75rem */
   margin: 0 auto;
 
   display: flex;

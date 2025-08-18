@@ -1,40 +1,41 @@
 .container {
-  scroll-margin-top: 60px;
-  padding: 4rem 0;
+  scroll-margin-top: 3.75rem; /* 60px → 60/16 */
+  padding: 2.5rem 0; /* 4rem(10)=40px → 40/16 */
   display: flex;
   flex-direction: column;
-  gap: 3.2rem;
+  gap: 2rem; /* 3.2rem(10)=32px → 32/16 */
 }
 
 .row {
   display: flex;
   flex-direction: column;
-  gap: 2.2rem;
+  gap: 1.375rem; /* 2.2rem(10)=22px → 22/16 */
 
   h1 {
     color: var(--text-primary);
-    font-size: 2.6rem;
+    font-size: 1.625rem; /* 2.6rem(10)=26px → 26/16 */
   }
 
   p {
-    font-size: 1.55rem;
+    font-size: 0.96875rem; /* 1.55rem(10)=15.5px → 15.5/16 */
     color: var(--text-secondary);
   }
 
   span {
-    font-size: 1.35rem;
+    font-size: 0.84375rem; /* 1.35rem(10)=13.5px → 13.5/16 */
     color: var(--text-secondary);
   }
 }
 
 .technologies {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  gap: 1.6rem;
+  grid-template-columns: repeat(auto-fill, minmax(9.375rem, 1fr)); /* 150px → 150/16 */
+  gap: 0.5rem; /* 1.6rem(10)=16px → 16/16 = 1rem → 1rem = 1rem? Aqui 1.6rem(10)=16px → 16/16 = 1rem */
 }
 
-@media (max-width: 425px) {
+@media (max-width: 26.5625rem) {
+  /* 425px → 425/16 */
   .container {
-    padding: 4rem 0;
+    padding: 2.5rem 0; /* 4rem(10)=40px → 40/16 */
   }
 }
